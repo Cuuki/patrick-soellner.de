@@ -1,6 +1,7 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: Cuuki/patrick-soellner.de
+  branch: gatsby-blog
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
@@ -14,7 +15,7 @@ media_library:
     publicKey: 5e3b1b0a9534a243c6f1
     multiple: true
     imagesOnly: true
-    
+
 media_folder: static/img
 public_folder: /img
 
@@ -33,7 +34,6 @@ collections:
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-
   - name: "pages"
     label: "Pages"
     files:

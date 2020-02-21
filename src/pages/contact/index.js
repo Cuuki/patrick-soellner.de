@@ -1,37 +1,37 @@
-import React from 'react'
-import { navigate } from 'gatsby-link'
-import Layout from '../../components/Layout'
+import React from 'react';
+import {navigate} from 'gatsby-link';
+import Layout from '../../components/Layout';
 
 function encode(data) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
+    .join('&');
 }
 
 export default class Index extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = { isValidated: false }
+    super(props);
+    this.state = {isValidated: false};
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    this.setState({[e.target.name]: e.target.value});
+  };
 
   handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
+    e.preventDefault();
+    const form = e.target;
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: encode({
         'form-name': form.getAttribute('name'),
         ...this.state,
       }),
     })
       .then(() => navigate(form.getAttribute('action')))
-      .catch(error => alert(error))
-  }
+      .catch(error => alert(error));
+  };
 
   render() {
     return (
@@ -46,8 +46,7 @@ export default class Index extends React.Component {
                 action="/contact/thanks/"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-              >
+                onSubmit={this.handleSubmit}>
                 {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
                 <input type="hidden" name="form-name" value="contact" />
                 <div hidden>
@@ -110,6 +109,6 @@ export default class Index extends React.Component {
           </div>
         </section>
       </Layout>
-    )
+    );
   }
 }

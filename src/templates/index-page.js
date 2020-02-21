@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Link, graphql} from 'gatsby';
 
-import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
+import Layout from '../components/Layout';
+import BlogRoll from '../components/BlogRoll';
 
 export const IndexPageTemplate = ({
   image,
@@ -23,8 +23,7 @@ export const IndexPageTemplate = ({
         })`,
         backgroundPosition: `top left`,
         backgroundAttachment: `fixed`,
-      }}
-    >
+      }}>
       <div
         style={{
           display: 'flex',
@@ -33,8 +32,7 @@ export const IndexPageTemplate = ({
           justifyContent: 'space-around',
           alignItems: 'left',
           flexDirection: 'column',
-        }}
-      >
+        }}>
         <h1
           className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
           style={{
@@ -44,8 +42,7 @@ export const IndexPageTemplate = ({
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
-          }}
-        >
+          }}>
           {title}
         </h1>
         <h3
@@ -57,8 +54,7 @@ export const IndexPageTemplate = ({
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
-          }}
-        >
+          }}>
           {subheading}
         </h3>
       </div>
@@ -104,7 +100,7 @@ export const IndexPageTemplate = ({
       </div>
     </section>
   </div>
-)
+);
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -116,10 +112,10 @@ IndexPageTemplate.propTypes = {
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
-}
+};
 
-const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+const IndexPage = ({data}) => {
+  const {frontmatter} = data.markdownRemark;
 
   return (
     <Layout>
@@ -133,8 +129,8 @@ const IndexPage = ({ data }) => {
         intro={frontmatter.intro}
       />
     </Layout>
-  )
-}
+  );
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -142,13 +138,13 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+    markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
       frontmatter {
         title
         image {
@@ -182,4 +178,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

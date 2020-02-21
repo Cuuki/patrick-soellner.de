@@ -1,8 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Website of Patrick Soellner',
-    description:
-      'Blog system and personal portfolio page.',
+    description: 'Blog system and personal portfolio page.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -69,4 +68,4 @@ module.exports = {
     'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
-}
+};
