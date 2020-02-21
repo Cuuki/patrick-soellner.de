@@ -3,11 +3,11 @@ backend:
   repo: Cuuki/patrick-soellner.de
   branch: gatsby-blog
   commit_messages:
-    create: 'Create {{collection}} “{{slug}}”'
-    update: 'Update {{collection}} “{{slug}}”'
-    delete: 'Delete {{collection}} “{{slug}}”'
-    uploadMedia: '[skip ci] Upload “{{path}}”'
-    deleteMedia: '[skip ci] Delete “{{path}}”'
+    create: 'docs(gatsby): create {{collection}} “{{slug}}”'
+    update: 'docs(gatsby): update {{collection}} “{{slug}}”'
+    delete: 'docs(gatsby): delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] docs(gatsby): upload “{{path}}”'
+    deleteMedia: '[skip ci] docs(gatsby): delete “{{path}}”'
 
 media_library:
   name: uploadcare
