@@ -1,2 +1,2 @@
 # patrick-soellner.de
-Wordpress headless setup with Gatsby.js
+Netlify CMS setup with Gatsby.js
