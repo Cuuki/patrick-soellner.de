@@ -9,13 +9,6 @@ backend:
     uploadMedia: '[skip ci] docs(gatsby): upload “{{path}}”'
     deleteMedia: '[skip ci] docs(gatsby): delete “{{path}}”'
 
-media_library:
-  name: uploadcare
-  config:
-    publicKey: 5e3b1b0a9534a243c6f1
-    multiple: true
-    imagesOnly: true
-
 media_folder: static/img
 public_folder: /img
 

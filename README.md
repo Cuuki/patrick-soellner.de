@@ -53,7 +53,7 @@ This uses the new [Netlify Dev](https://www.netlify.com/products/dev/?utm_source
 To test the CMS locally, you'll need run a production build of the site:
 
 ```
-$ npm run build
+$ yarn build
 $ netlify dev # or ntl dev
 ```
 
@@ -94,8 +94,8 @@ yarn remove netlify-cms-media-library-cloudinary
 ```
 $ gatsby new [SITE_DIRECTORY_NAME] https://github.com/netlify-templates/gatsby-starter-netlify-cms/
 $ cd [SITE_DIRECTORY_NAME]
-$ npm run build
-$ npm run serve
+$ yarn build
+$ yarn serve
 ```
 
 ### Setting up the CMS
