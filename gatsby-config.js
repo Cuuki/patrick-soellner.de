@@ -1,9 +1,16 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs',
+    title: 'Patrick Söllner',
+    nickname: 'Cuuki',
+    tagline: `Hi there I'm Patrick! Nice to meet you and welcome to my portfolio page.`,
+    description: `I'm an experienced and passionate web developer specialising in frontend technologies. My personal focus lies on React and E-Commerce.`,
+    author: '@PatrickSllner',
+    social: {
+      github: 'https://github.com/Cuuki',
+      twitter: 'https://twitter.com/PatrickSllner',
+      xing: 'https://www.xing.com/profile/Patrick_Soellner/',
+      linkedIn: 'https://www.linkedin.com/in/patrick-s%C3%B6llner-8360a1184/',
+    },
   },
   plugins: [
     'gatsby-plugin-react-helmet',

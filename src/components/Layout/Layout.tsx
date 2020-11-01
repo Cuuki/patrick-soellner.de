@@ -1,10 +1,9 @@
 /** @jsx jsx */
-/** @jsxFrag React.Fragment */
 import {jsx} from 'theme-ui';
 import React from 'react';
-import {darken} from '@theme-ui/color';
 import {graphql, useStaticQuery} from 'gatsby';
-import Header from '../Header/Header';
+import Header from '../Header';
+import Footer from '../Footer';
 
 const Layout: React.FC = ({children = null}) => {
   const data = useStaticQuery(graphql`
@@ -18,39 +17,39 @@ const Layout: React.FC = ({children = null}) => {
   `);
 
   return (
-    <>
+    <div
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
           mx: 'auto',
           px: 3,
           maxWidth: 960,
+          width: '100%',
+          flex: '1 0 auto',
         }}
       >
-        <main>{children}</main>
-        <footer
+        <main
           sx={{
-            mt: 4,
+            my: 'auto',
+            p: 4,
+            borderRadius: 25,
+            bg: 'muted',
+            boxShadow: theme => `0 0 40px ${theme.colors.muted}`,
           }}
         >
-          {`© ${new Date().getFullYear()}, Built with `}
-          <a
-            href="https://www.gatsbyjs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{
-              color: 'text',
-              textDecoration: 'none',
-              '&:hover': {
-                color: darken('text', 0.1),
-              },
-            }}
-          >
-            Gatsby
-          </a>
-        </footer>
+          {children}
+        </main>
+        <Footer />
       </div>
-    </>
+    </div>
   );
 };
 

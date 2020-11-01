@@ -2,9 +2,9 @@
 import {jsx, useColorMode} from 'theme-ui';
 import React, {useEffect} from 'react';
 import {darken} from '@theme-ui/color';
-import {Lightbulb as LightbulbOutline} from '@emotion-icons/fa-regular';
-import {Lightbulb as LightbulbFilled} from '@emotion-icons/fa-solid';
 import {Link} from 'gatsby';
+import {Home} from '@emotion-icons/fa-solid';
+import ColorModeToggle from '../ColorModeToggle';
 
 const Header: React.FC<{
   siteTitle: string;
@@ -24,7 +24,6 @@ const Header: React.FC<{
       sx={{
         mb: 4,
         color: 'text',
-        bg: 'highlight',
       }}
     >
       <div
@@ -37,50 +36,23 @@ const Header: React.FC<{
           maxWidth: 960,
         }}
       >
-        <h1
+        <Link
+          to="/"
+          title={`Go to "${siteTitle}" home`}
           sx={{
-            m: 0,
+            display: 'inline-flex',
             mr: 'auto',
-          }}
-        >
-          <Link
-            to="/"
-            sx={{
-              color: 'text',
-              textDecoration: 'none',
-              '&:hover': {
-                color: darken('text', 0.1),
-              },
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
-        <button
-          type="button"
-          sx={{
             p: 1,
-            ml: 2,
-            border: 'none',
-            boxShadow: 'none',
             color: 'text',
+            textDecoration: 'none',
             '&:hover': {
               color: darken('text', 0.1),
             },
-            bg: 'transparent',
-            cursor: 'pointer',
           }}
-          onClick={() => {
-            setColorMode(colorMode === 'dark' ? 'light' : 'dark');
-          }}
-          aria-label={`Toggle ${colorMode === 'dark' ? 'light' : 'dark'} mode`}
         >
-          {colorMode === 'dark' ? (
-            <LightbulbOutline size={30} />
-          ) : (
-            <LightbulbFilled size={30} />
-          )}
-        </button>
+          <Home size={30} />
+        </Link>
+        <ColorModeToggle mode={colorMode} handleClick={setColorMode} />
       </div>
     </header>
   );
