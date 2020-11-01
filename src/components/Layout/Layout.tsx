@@ -6,7 +6,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 const Layout: React.FC = ({children = null}) => {
-  const data = useStaticQuery(graphql`
+  const {site} = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -24,7 +24,7 @@ const Layout: React.FC = ({children = null}) => {
         minHeight: '100vh',
       }}
     >
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={site.siteMetadata?.title || `Title`} />
       <div
         sx={{
           display: 'flex',
@@ -39,7 +39,8 @@ const Layout: React.FC = ({children = null}) => {
         <main
           sx={{
             my: 'auto',
-            p: 4,
+            px: 4,
+            py: 5,
             borderRadius: 25,
             bg: 'muted',
             boxShadow: theme => `0 0 40px ${theme.colors.muted}`,

@@ -6,12 +6,12 @@ import theme from '../../gatsby-plugin-theme-ui';
 
 describe('Header', () => {
   it('displays the correct title', () => {
-    const {getByText} = render(
+    const {container} = render(
       <ThemeProvider theme={theme}>
         <Header siteTitle="Gatsby is awesome!" />
       </ThemeProvider>,
     );
 
-    expect(getByText('Gatsby is awesome!')).toBeInTheDocument();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

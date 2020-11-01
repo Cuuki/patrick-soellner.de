@@ -1028,7 +1028,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@emotion-icons/emotion-icon@2.0.3":
+"@emotion-icons/emotion-icon@2.0.3", "@emotion-icons/emotion-icon@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@emotion-icons/emotion-icon/-/emotion-icon-2.0.3.tgz#fa238c965abc62e91d20072ff61011d2044b779a"
   integrity sha512-BYb0y+IMNXN3rePtubBC86QUir1h1ou+khxFz+HWW7rPfeCGJ72J/xyeTxuWcSe93FHt67V/ppHv2/OOBa61mg==

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Patrick Soellner",
   "dependencies": {
+    "@emotion-icons/emotion-icon": "^2.0.3",
     "@emotion-icons/fa-brands": "^2.15.0",
     "@emotion-icons/fa-regular": "^2.15.0",
     "@emotion-icons/fa-solid": "^2.15.0",
