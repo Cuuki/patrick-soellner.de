@@ -26,13 +26,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'patrick-soellner.de',
+        short_name: 'patrick-soellner',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#222639',
+        theme_color: '#222639',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/gatsby-icon.png',
       },
     },
     'gatsby-plugin-theme-ui',
