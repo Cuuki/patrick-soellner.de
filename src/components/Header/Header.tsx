@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import {jsx, useColorMode} from 'theme-ui';
-import React from 'react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import React, {useEffect} from 'react';
 import {darken} from '@theme-ui/color';
 import {Lightbulb as LightbulbOutline} from '@emotion-icons/fa-regular';
 import {Lightbulb as LightbulbFilled} from '@emotion-icons/fa-solid';
@@ -12,6 +10,14 @@ const Header: React.FC<{
   siteTitle: string;
 }> = ({siteTitle = ''}) => {
   const [colorMode, setColorMode] = useColorMode();
+
+  useEffect(() => {
+    const isDarkMode =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    setColorMode(isDarkMode ? 'dark' : 'light');
+  }, [setColorMode]);
 
   return (
     <header
@@ -51,6 +57,7 @@ const Header: React.FC<{
           </Link>
         </h1>
         <button
+          type="button"
           sx={{
             p: 1,
             ml: 2,
@@ -64,13 +71,11 @@ const Header: React.FC<{
             cursor: 'pointer',
           }}
           onClick={() => {
-            setColorMode(colorMode === 'default' ? 'light' : 'default');
+            setColorMode(colorMode === 'dark' ? 'light' : 'dark');
           }}
-          aria-label={`Toggle ${
-            colorMode === 'default' ? 'light' : 'dark'
-          } mode`}
+          aria-label={`Toggle ${colorMode === 'dark' ? 'light' : 'dark'} mode`}
         >
-          {colorMode === 'default' ? (
+          {colorMode === 'dark' ? (
             <LightbulbOutline size={30} />
           ) : (
             <LightbulbFilled size={30} />

@@ -5,9 +5,9 @@ import {graphql, useStaticQuery} from 'gatsby';
 const Seo: React.FC<{
   description?: string;
   lang?: string;
-  meta?: any[];
+  meta?: Record<string, string>[];
   title: string;
-}> = ({description = '', lang = 'en', meta = [], title}) => {
+}> = ({description = '', lang = 'en', meta = [], title = ''}) => {
   const {site} = useStaticQuery(
     graphql`
       query {
@@ -65,7 +65,7 @@ const Seo: React.FC<{
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat((meta as unknown) as [])}
     />
   );
 };

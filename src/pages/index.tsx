@@ -1,11 +1,9 @@
 import React from 'react';
-import {Link} from 'gatsby';
-
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import Seo from '../components/Seo/Seo';
 
-const IndexPage = () => (
+const IndexPage: React.FC = () => (
   <Layout>
     <Seo title="Home" />
     <h1>Hi people</h1>

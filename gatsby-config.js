@@ -30,5 +30,17 @@ module.exports = {
     },
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.ts$|\.tsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: false,
+          failOnError: false,
+        },
+      },
+    },
   ],
 };

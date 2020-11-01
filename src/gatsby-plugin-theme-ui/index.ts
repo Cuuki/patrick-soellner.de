@@ -7,6 +7,7 @@ export default merge(deep, ({
   colors: {
     modes: {
       light: {...swiss.colors} as ColorMode,
+      dark: {...deep.colors} as ColorMode,
     },
   },
   breakpoints: ['40em', '48em', '64em', '80em'],
