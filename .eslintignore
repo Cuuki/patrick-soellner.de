@@ -1,3 +1,4 @@
 .nuxt
 nuxt.d.ts
 .output
+nuxt.config.ts
