@@ -1,3 +1,27 @@
 import { defineNuxtConfig } from 'nuxt3';
 
-export default defineNuxtConfig({});
+export default defineNuxtConfig({
+  meta: {
+    link: [
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap',
+      },
+    ],
+  },
+  css: ['~/assets/css/styles.css'],
+  build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+    },
+  },
+});

@@ -8,7 +8,7 @@ describe('AppCounter', () => {
 
     expect(screen.getByText('Times clicked: 0')).toBeInTheDocument();
 
-    const button = screen.getByText('increment');
+    const button = screen.getByText(/increment/i);
     await userEvent.click(button);
     await userEvent.click(button);
 
