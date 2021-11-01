@@ -1,25 +1,35 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'airbnb-typescript',
-    'airbnb/hooks',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
-  ],
-  plugins: ['@typescript-eslint', 'prettier'],
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    project: './tsconfig.json',
-  },
+  root: true,
   env: {
-    browser: true,
     node: true,
+    browser: true,
   },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
+    '@nuxtjs/eslint-config-typescript',
+    'plugin:nuxt/recommended',
+    'prettier',
+  ],
   rules: {
-    'react/jsx-filename-extension': ['error', {extensions: ['.tsx']}],
-    'react/jsx-props-no-spreading': 'off',
+    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
   },
+  globals: {
+    $nuxt: true,
+  },
+  overrides: [
+    {
+      files: ['*.ts'],
+      extends: [
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+    },
+  ],
 };
