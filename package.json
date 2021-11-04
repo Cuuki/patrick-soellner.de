@@ -33,6 +33,7 @@
     "nuxt3": "latest",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
+    "prettier-plugin-tailwind": "^2.2.12",
     "tailwindcss": "^2.2.19",
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"

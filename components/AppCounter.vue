@@ -11,7 +11,7 @@ const increment = (): void => {
 <template>
   <p>Times clicked: {{ count }}</p>
   <button
-    class="btn bg-white text-gray-900 dark:bg-gray-700 dark:text-white"
+    class="btn text-gray-900 dark:text-white dark:bg-gray-700 bg-white"
     :class="
       count < 2 &&
       'hover:bg-gray-100 focus:ring-gray-300 dark:hover:bg-gray-900 dark:focus:ring-white'
@@ -19,7 +19,7 @@ const increment = (): void => {
     :disabled="count === 2"
     @click="increment"
   >
-    <component :is="PlusCircleIcon" class="w-5 h-5 mr-1" />
+    <component :is="PlusCircleIcon" class="mr-1 w-5 h-5" />
     Increment
   </button>
 </template>

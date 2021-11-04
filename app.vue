@@ -1,14 +1,14 @@
 <template>
-  <main class="flex-grow flex-shrink-0 p-6 bg-white dark:bg-gray-800">
+  <main class="flex-grow flex-shrink-0 p-6 dark:bg-gray-800 bg-white">
     <article
       class="
         prose
         dark:prose-dark
         lg:prose-xl
-        text-gray-900
-        dark:text-white
         container
         mx-auto
+        text-gray-900
+        dark:text-white
       "
     >
       <h1>{{ welcomeText }}</h1>
