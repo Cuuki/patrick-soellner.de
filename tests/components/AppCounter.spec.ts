@@ -1,18 +1,26 @@
+import { createTestingPinia } from '@pinia/testing';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import AppCounter from '~/components/AppCounter.vue';
 
 describe('AppCounter', () => {
   it('increments value on click', async () => {
-    render(AppCounter);
+    render(AppCounter, {
+      global: {
+        plugins: [createTestingPinia()],
+      },
+    });
 
-    expect(screen.getByText('Times clicked: 0')).toBeInTheDocument();
+    const buttonIncrement = screen.getByRole('button', { name: /increment/i });
+    const buttonDecrement = screen.getByRole('button', { name: /decrement/i });
 
-    const button = screen.getByText(/increment/i);
-    await userEvent.click(button);
-    await userEvent.click(button);
+    expect(buttonDecrement).toBeDisabled();
 
-    expect(screen.getByText('Times clicked: 2')).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    for (let i = 0; i <= 5; i++) {
+      await userEvent.click(buttonIncrement);
+    }
+
+    expect(buttonIncrement).toBeDisabled();
+    expect(buttonDecrement).toBeEnabled();
   });
 });

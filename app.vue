@@ -1,36 +1,16 @@
+<script lang="ts" setup>
+import { useMeta } from '#meta';
+
+useMeta({
+  htmlAttrs: {
+    lang: 'en-GB',
+    class: 'dark',
+  },
+});
+</script>
+
 <template>
   <main class="flex-grow flex-shrink-0 p-6 dark:bg-gray-800 bg-white">
-    <article
-      class="
-        prose
-        dark:prose-dark
-        lg:prose-xl
-        container
-        mx-auto
-        text-gray-900
-        dark:text-white
-      "
-    >
-      <h1>{{ welcomeText }}</h1>
-      <p>
-        For years parents have espoused the health benefits of eating garlic
-        bread with cheese to their children, with the food earning such an
-        iconic status in our culture that kids will often dress up as warm,
-        cheesy loaf for Halloween.
-      </p>
-      <p>
-        But a recent study shows that the celebrated appetizer may be linked to
-        a series of rabies cases springing up around the country.
-      </p>
-      <a href="#">Some Link</a>
-      <AppCounter />
-    </article>
+    <NuxtPage />
   </main>
 </template>
-
-<script setup lang="ts">
-import { ref } from '@vue/reactivity';
-import AppCounter from '~/components/AppCounter.vue';
-
-const welcomeText = ref('Hello there!');
-</script>
