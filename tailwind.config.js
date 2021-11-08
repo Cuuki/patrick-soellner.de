@@ -11,7 +11,7 @@ module.exports = {
     './nuxt.config.{js,ts}',
     './app.vue',
   ],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {

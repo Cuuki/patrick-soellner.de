@@ -1,12 +1,15 @@
 <script lang="ts" setup>
 import { useMeta } from '#meta';
+import { useThemeStore } from '~/store/theme';
 
-useMeta({
+const theme = useThemeStore();
+
+useMeta(() => ({
   htmlAttrs: {
     lang: 'en-GB',
-    class: 'dark',
+    class: theme.colorMode,
   },
-});
+}));
 </script>
 
 <template>
