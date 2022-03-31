@@ -5,7 +5,9 @@ import {graphql, useStaticQuery} from 'gatsby';
 import Header from '../Header';
 import Footer from '../Footer';
 
-const Layout: React.FC = ({children = null}) => {
+const Layout: React.FC<{
+  maxWidth?: number;
+}> = ({maxWidth = 960, children = null}) => {
   const {site} = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,14 +26,17 @@ const Layout: React.FC = ({children = null}) => {
         minHeight: '100vh',
       }}
     >
-      <Header siteTitle={site.siteMetadata?.title || `Title`} />
+      <Header
+        siteTitle={site.siteMetadata?.title || `Title`}
+        maxWidth={maxWidth}
+      />
       <div
         sx={{
           display: 'flex',
           flexDirection: 'column',
           mx: 'auto',
           px: 3,
-          maxWidth: 960,
+          maxWidth,
           width: '100%',
           flex: '1 0 auto',
         }}

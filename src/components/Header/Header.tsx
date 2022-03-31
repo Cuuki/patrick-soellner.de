@@ -8,7 +8,8 @@ import ColorModeToggle from '../ColorModeToggle';
 
 const Header: React.FC<{
   siteTitle: string;
-}> = ({siteTitle = ''}) => {
+  maxWidth?: number;
+}> = ({siteTitle = '', maxWidth = 960}) => {
   const [colorMode, setColorMode] = useColorMode();
 
   useEffect(() => {
@@ -20,12 +21,7 @@ const Header: React.FC<{
   }, [setColorMode]);
 
   return (
-    <header
-      sx={{
-        mb: 4,
-        color: 'text',
-      }}
-    >
+    <header sx={{color: 'text'}}>
       <div
         sx={{
           display: 'flex',
@@ -33,12 +29,12 @@ const Header: React.FC<{
           mx: 'auto',
           px: 3,
           py: 4,
-          maxWidth: 960,
+          maxWidth,
         }}
       >
         <Link
           to="/"
-          title={`Go to "${siteTitle}" home`}
+          title={`Go to "${siteTitle}" cv page`}
           sx={{
             display: 'inline-flex',
             mr: 'auto',

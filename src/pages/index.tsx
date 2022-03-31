@@ -5,7 +5,8 @@ import {graphql, useStaticQuery} from 'gatsby';
 import Layout from '../components/Layout';
 import Image from '../components/Image';
 import Seo from '../components/Seo';
-import SocialButton from '../components/SocialButton';
+import PageHeading from '../components/PageHeading';
+import PageFooter from '../components/PageFooter';
 
 const IndexPage: React.FC = () => {
   const {site} = useStaticQuery(graphql`
@@ -26,12 +27,11 @@ const IndexPage: React.FC = () => {
       }
     }
   `);
-  const {title, nickname, tagline, description, social} = site.siteMetadata;
-  console.log(title, nickname, tagline, description, social);
+  const {tagline, description} = site.siteMetadata;
 
   return (
-    <Layout>
-      <Seo title="Home" />
+    <Layout maxWidth={1280}>
+      <Seo title="CV" />
       <div
         sx={{
           maxWidth: 280,
@@ -42,62 +42,105 @@ const IndexPage: React.FC = () => {
         <Image relativePath="portrait.jpg" round bordered />
       </div>
       <article>
-        <h1
-          sx={{
-            textAlign: 'center',
-          }}
-        >
-          {`${title} (${nickname})`}
-        </h1>
+        <PageHeading />
         <div
           sx={{
             mx: 'auto',
             mb: 4,
-            maxWidth: 480,
+            maxWidth: 620,
             width: '100%',
+            textAlign: 'center',
           }}
         >
-          <p>{tagline}</p>
+          <strong>{tagline}</strong>
           <p>{description}</p>
         </div>
-        <footer
+        <hr />
+        <div
           sx={{
             display: 'flex',
-            justifyContent: 'space-evenly',
+            flexWrap: 'wrap',
             mx: 'auto',
-            maxWidth: 480,
-            width: '100%',
+            py: 4,
+            maxWidth: 980,
           }}
         >
-          <SocialButton
-            url={social.xing}
-            type="xing"
-            sx={{
-              mx: 2,
-            }}
-          />
-          <SocialButton
-            url={social.linkedIn}
-            type="linkedIn"
-            sx={{
-              mx: 2,
-            }}
-          />
-          <SocialButton
-            url={social.github}
-            type="github"
-            sx={{
-              mx: 2,
-            }}
-          />
-          <SocialButton
-            url={social.twitter}
-            type="twitter"
-            sx={{
-              mx: 2,
-            }}
-          />
-        </footer>
+          <aside sx={{mb: [4, null], px: 3, width: ['100%', null, '30%']}}>
+            <h2>Profile</h2>
+            <button
+              sx={{
+                background: 'none',
+                color: 'inherit',
+                boxShadow: 'none',
+                appearance: 'none',
+                border: '1px solid currentColor',
+                borderRadius: 6,
+                px: 3,
+                py: 2,
+                cursor: 'pointer',
+              }}
+              type="button"
+            >
+              Reveal personal information
+            </button>
+            <dl>
+              <dt>
+                <strong>Address:</strong>
+              </dt>
+              <dd>
+                <address>******</address>
+              </dd>
+              <dt>
+                <strong>Mobile:</strong>
+              </dt>
+              <dd>******</dd>
+              <dt>
+                <strong>Email:</strong>
+              </dt>
+              <dd>******</dd>
+              <dt>
+                <strong>Birthday:</strong>
+              </dt>
+              <dd>******</dd>
+              <dt>
+                <strong>Languages:</strong>
+              </dt>
+              <dd>German (Native)</dd>
+              <dd>English (Fluid)</dd>
+              <dd>French (Basics)</dd>
+            </dl>
+          </aside>
+          <div sx={{mb: 4, px: 3, width: ['100%', null, '70%']}}>
+            <h2>Experience</h2>
+            <div
+              sx={{
+                display: 'flex',
+                flexWrap: ['wrap', 'nowrap', 'wrap', 'nowrap'],
+                gap: [1, 4, 1, 5],
+              }}
+            >
+              <strong>07/2020 - 12/2020</strong>
+              <div sx={{width: ['100%', 'auto', '100%', 'auto']}}>
+                <h3 sx={{mt: 0}}>ISO Public Services GMBH</h3>
+                <strong>Frontend Developer</strong>
+                <ul>
+                  <li>Frontend Web Development</li>
+                  <li>Angular / Stencil, TypeScript, CSS3 / Sass, TDD</li>
+                  <li>Public administration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div sx={{ml: 'auto', px: 3, width: ['100%', null, '70%']}}>
+            <h2>Skills</h2>
+            <span>(1) - Basics, (2) - Extended, (3) - Experienced</span>
+            <ul>
+              <li>JavaScript (3)</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <PageFooter />
       </article>
     </Layout>
   );
