@@ -21,7 +21,14 @@ const Header: React.FC<{
   }, [setColorMode]);
 
   return (
-    <header sx={{color: 'text'}}>
+    <header
+      sx={{
+        color: 'text',
+        '@media print': {
+          display: 'none',
+        },
+      }}
+    >
       <div
         sx={{
           display: 'flex',
