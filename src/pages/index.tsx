@@ -1,4 +1,5 @@
 /** @jsx jsx */
+/** @jsxFrag React.Fragment */
 import {jsx} from 'theme-ui';
 import React from 'react';
 import {graphql, useStaticQuery} from 'gatsby';
@@ -7,6 +8,10 @@ import Image from '../components/Image';
 import Seo from '../components/Seo';
 import PageHeading from '../components/PageHeading';
 import PageFooter from '../components/PageFooter';
+import ProfileDataList from '../components/ProfileDataList';
+import ProfileDataListItem from '../components/ProfileDataListItem';
+import ExperienceEntry from '../components/ExperienceEntry';
+import SocialButtonList from '../components/SocialButtonList';
 
 const IndexPage: React.FC = () => {
   const {site} = useStaticQuery(graphql`
@@ -17,17 +22,19 @@ const IndexPage: React.FC = () => {
           nickname
           tagline
           description
-          social {
-            github
-            twitter
-            xing
-            linkedIn
-          }
         }
       }
     }
   `);
   const {tagline, description} = site.siteMetadata;
+  const myAge = new Date().getFullYear() - 1995;
+  const cvSectionStyle = {
+    ml: 'auto',
+    pb: 4,
+    px: 3,
+    width: ['100%', null, '70%'],
+    borderLeft: [null, null, '2px dashed currentColor'],
+  };
 
   return (
     <Layout maxWidth={1280}>
@@ -66,77 +73,112 @@ const IndexPage: React.FC = () => {
           }}
         >
           <aside sx={{mb: [4, null], px: 3, width: ['100%', null, '30%']}}>
-            <h2>Profile</h2>
-            <button
+            <h2 sx={{mt: 0}}>Profile</h2>
+            <ProfileDataList>
+              <ProfileDataListItem
+                title="Living in:"
+                items={['Bonn / Cologne area']}
+              />
+              <ProfileDataListItem title="Age:" items={[myAge.toString()]} />
+              <ProfileDataListItem
+                title="Languages:"
+                items={[
+                  'German (Native)',
+                  'English (Fluid)',
+                  'French (Basics)',
+                ]}
+              />
+            </ProfileDataList>
+            <SocialButtonList size={16} />
+            <hr
               sx={{
-                background: 'none',
-                color: 'inherit',
-                boxShadow: 'none',
-                appearance: 'none',
-                border: '1px solid currentColor',
-                borderRadius: 6,
-                px: 3,
-                py: 2,
-                cursor: 'pointer',
+                mt: 4,
+                borderWidth: '2px',
+                borderColor: 'currentColor',
+                borderStyle: 'solid',
               }}
-              type="button"
-            >
-              Reveal personal information
-            </button>
-            <dl>
-              <dt>
-                <strong>Address:</strong>
-              </dt>
-              <dd>
-                <address>******</address>
-              </dd>
-              <dt>
-                <strong>Mobile:</strong>
-              </dt>
-              <dd>******</dd>
-              <dt>
-                <strong>Email:</strong>
-              </dt>
-              <dd>******</dd>
-              <dt>
-                <strong>Birthday:</strong>
-              </dt>
-              <dd>******</dd>
-              <dt>
-                <strong>Languages:</strong>
-              </dt>
-              <dd>German (Native)</dd>
-              <dd>English (Fluid)</dd>
-              <dd>French (Basics)</dd>
-            </dl>
+            />
           </aside>
-          <div sx={{mb: 4, px: 3, width: ['100%', null, '70%']}}>
-            <h2>Experience</h2>
-            <div
-              sx={{
-                display: 'flex',
-                flexWrap: ['wrap', 'nowrap', 'wrap', 'nowrap'],
-                gap: [1, 4, 1, 5],
-              }}
-            >
-              <strong>07/2020 - 12/2020</strong>
-              <div sx={{width: ['100%', 'auto', '100%', 'auto']}}>
-                <h3 sx={{mt: 0}}>ISO Public Services GMBH</h3>
-                <strong>Frontend Developer</strong>
-                <ul>
-                  <li>Frontend Web Development</li>
-                  <li>Angular / Stencil, TypeScript, CSS3 / Sass, TDD</li>
-                  <li>Public administration</li>
-                </ul>
-              </div>
-            </div>
+          <div sx={cvSectionStyle}>
+            <h2 sx={{mt: 0}}>Experience</h2>
+            <ExperienceEntry
+              duration="01/2021 - now"
+              companyName="i22 Digitalagentur GmbH"
+              jobTitle="Senior Frontend Developer"
+              areas={[
+                'Frontend application development',
+                'Tech recruiting support',
+                'Mentoring and training of junior developers',
+                'Frontend and accessibility tech talks',
+                'Vue / Nuxt, TypeScript, CSS3 / Sass, Clean architecture',
+                'E2E testing automation (Cypress)',
+                <strong>Telekom e-commerce platform</strong>,
+              ]}
+            />
+            <ExperienceEntry
+              duration="07/2020 - 12/2020"
+              companyName="ISO Public Services GmbH"
+              jobTitle="Frontend Developer"
+              areas={[
+                'Frontend application development',
+                'Angular / Stencil, TypeScript, CSS3 / Sass, TDD',
+                <strong>Public administration, In-House product development</strong>,
+              ]}
+            />
+            <ExperienceEntry
+              duration="03/2018 - 06/2020"
+              companyName="LottaLeben Media GmbH"
+              jobTitle="Software Developer"
+              areas={[
+                'Fullstack web development (Focus Frontend)',
+                'React, JavaScript / jQuery, CSS3 / Sass, Wordpress',
+                <strong>Tourism, medicine, In-House product development</strong>,
+              ]}
+            />
+            <ExperienceEntry
+              duration="09/2015 - 02/2018"
+              companyName="DROW GmbH"
+              jobTitle="Software Developer"
+              areas={[
+                'Fullstack web development (Focus Frontend)',
+                'HTML5, JavaScript / jQuery, CSS3 / Sass, Wordpress, Shopware',
+                <strong>E-commerce (Shopware, WooCommerce)</strong>,
+              ]}
+            />
+            <ExperienceEntry
+              duration="09/2012 - 08/2015"
+              companyName="Publicis Groupe S.A."
+              jobTitle="Trainee - IT specialist for application development"
+              areas={['Web development']}
+            />
           </div>
-          <div sx={{ml: 'auto', px: 3, width: ['100%', null, '70%']}}>
-            <h2>Skills</h2>
+          <div sx={cvSectionStyle}>
+            <h2 sx={{mt: 0}}>Training</h2>
+            <ExperienceEntry
+              duration="09/2012 - 08/2015"
+              companyName="Publicis Groupe S.A."
+              jobTitle="Vocational school Erlangen"
+              areas={[
+                <>
+                  <strong>Graduation:</strong>
+                  {' '}
+                  IT specialist for application development (IHK)
+                </>
+              ]}
+            />
+          </div>
+          <div sx={cvSectionStyle}>
+            <h2 sx={{mt: 0}}>Skills and qualities</h2>
             <span>(1) - Basics, (2) - Extended, (3) - Experienced</span>
             <ul>
               <li>JavaScript (3)</li>
             </ul>
+          </div>
+          <div sx={cvSectionStyle}>
+            <h2 sx={{mt: 0}}>Projects</h2>
+          </div>
+          <div sx={{...cvSectionStyle, pb: 0}}>
+            <h2 sx={{mt: 0}}>Certificates</h2>
           </div>
         </div>
         <hr />

@@ -4,7 +4,6 @@ module.exports = {
     'airbnb-typescript',
     'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
     'prettier',
     'prettier/@typescript-eslint',
   ],
@@ -21,5 +20,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': ['error', {extensions: ['.tsx']}],
     'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
+    'react/no-array-index-key': 'off',
   },
 };
