@@ -35,6 +35,13 @@ const IndexPage: React.FC = () => {
     width: ['100%', null, '70%'],
     borderLeft: [null, null, '2px dashed currentColor'],
   };
+  const cvLinkStyle = {
+    color: 'text',
+    textDecoration: 'none',
+      '&:hover': {
+      color: 'primary',
+    },
+  };
 
   return (
     <Layout maxWidth={1280}>
@@ -112,7 +119,7 @@ const IndexPage: React.FC = () => {
                 'Frontend and accessibility tech talks',
                 'Vue / Nuxt, TypeScript, CSS3 / Sass, Clean architecture',
                 'E2E testing automation (Cypress)',
-                <strong>Telekom e-commerce platform</strong>,
+                <strong>Telekom E-Commerce platform</strong>,
               ]}
             />
             <ExperienceEntry
@@ -169,16 +176,194 @@ const IndexPage: React.FC = () => {
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{mt: 0}}>Skills and qualities</h2>
-            <span>(1) - Basics, (2) - Extended, (3) - Experienced</span>
-            <ul>
-              <li>JavaScript (3)</li>
-            </ul>
+            <em>(1) - Basics, (2) - Extended knowledge, (3) - Long term experience</em>
+            <div
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: ['1fr', '1fr 1fr'],
+              }}
+            >
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Languages</h3>
+                </dt>
+                <dd>JavaScript (<em>3</em>)</dd>
+                <dd>TypeScript (<em>3</em>)</dd>
+                <dd>PHP (<em>2</em>)</dd>
+                <dd>Java (<em>1</em>)</dd>
+                <dd>CSS3 (<em>3</em>)</dd>
+                <dd>Sass (<em>3</em>)</dd>
+                <dd>HTML5 (<em>3</em>)</dd>
+                <dd>Markdown (<em>3</em>)</dd>
+                <dd>GraphQL (<em>2</em>)</dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Methods</h3>
+                </dt>
+                <dd>Scrum (<em>3</em>)</dd>
+                <dd>Kanban (<em>2</em>)</dd>
+                <dd>Refactoring (<em>3</em>)</dd>
+                <dd>Code Reviews (<em>3</em>)</dd>
+                <dd>Pair Programming (<em>3</em>)</dd>
+                <dd>Mob Programming (<em>3</em>)</dd>
+                <dd>Test Driven Development (<em>2</em>)</dd>
+                <dd>Clean Code (<em>2</em>)</dd>
+                <dd>SOLID (<em>1</em>)</dd>
+                <dd>Object Oriented Programming (<em>2</em>)</dd>
+                <dd>Functional Programming (<em>2</em>)</dd>
+                <dd>Clean Architecture (<em>2</em>)</dd>
+                <dd>Continuous Integration (<em>2</em>)</dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Tools</h3>
+                </dt>
+                <dd>Git (<em>3</em>)</dd>
+                <dd>npm / yarn (<em>2</em>)</dd>
+                <dd>Webpack (<em>2</em>)</dd>
+                <dd>Docker (<em>1</em>)</dd>
+                <dd>Travis CI (<em>1</em>)</dd>
+                <dd>Github Actions (<em>1</em>)</dd>
+                <dd>Gitlab CI (<em>2</em>)</dd>
+                <dd>Storybook (<em>3</em>)</dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Frameworks / Libraries</h3>
+                </dt>
+                <dd>React (<em>3</em>)</dd>
+                <dd>Next.js (<em>2</em>)</dd>
+                <dd>Vue 2 (<em>3</em>)</dd>
+                <dd>Vue 3 (<em>2</em>)</dd>
+                <dd>Nuxt (<em>2</em>)</dd>
+                <dd>Redux / Vuex (<em>3</em>)</dd>
+                <dd>Angular 2 (<em>2</em>)</dd>
+                <dd>Apollo Client (<em>1</em>)</dd>
+                <dd>Node.js (<em>1</em>)</dd>
+                <dd>Jest (<em>3</em>)</dd>
+                <dd>Testing Library (<em>3</em>)</dd>
+                <dd>Cypress (<em>2</em>)</dd>
+                <dd>Bootstrap 4 (<em>3</em>)</dd>
+                <dd>Tailwind CSS (<em>3</em>)</dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Other</h3>
+                </dt>
+                <dd>Shopware (<em>2</em>)</dd>
+                <dd>WooCommerce (<em>2</em>)</dd>
+              </dl>
+            </div>
+            <div
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: ['1fr', '1fr 1fr'],
+              }}
+            >
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Strengths</h3>
+                </dt>
+                <dd>Mentoring</dd>
+                <dd>Knowledge transfer</dd>
+                <dd>Organisation</dd>
+                <dd>Teamwork</dd>
+                <dd>Communication</dd>
+                <dd>Reliability</dd>
+                <dd>Honesty</dd>
+                <dd>Stress resistance</dd>
+                <dd>Attention to detail</dd>
+                <dd>Accessibility</dd>
+                <dd>Semantics</dd>
+                <dd>User driven testing</dd>
+                <dd>User driven development</dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{mt: 0}}>Interests</h3>
+                </dt>
+                <dd>TV shows and movies</dd>
+                <dd>Motorcycles / Harley Davidson</dd>
+                <dd>Music and singing</dd>
+                <dd>Cross-country trekking</dd>
+                <dd>Nature traveling</dd>
+                <dd>Smart Home</dd>
+                <dd>Web technologies</dd>
+              </dl>
+            </div>
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{mt: 0}}>Projects</h2>
+            <h2 sx={{mt: 0}}>Sample projects</h2>
+            <ul>
+              <li>
+                <a
+                  href="https://smarthome.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                >
+                  smarthome.de
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://shop.telekom.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                >
+                  shop.telekom.de
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.lindau.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                >
+                  lindau.de
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.lindau.de/aroundme"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                >
+                  lindau.de/aroundme
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.insel-sylt.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                >
+                  insel-sylt.de
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.canvayo.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                >
+                  canvayo.com
+                </a>
+              </li>
+            </ul>
           </div>
           <div sx={{...cvSectionStyle, pb: 0}}>
             <h2 sx={{mt: 0}}>Certificates</h2>
+            <ul>
+              <li>ISTQB® Certified Tester - Foundation level</li>
+              <li>ITIL® Foundation Certificate in IT Service Management</li>
+            </ul>
           </div>
         </div>
         <hr />
