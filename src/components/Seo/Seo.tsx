@@ -34,6 +34,10 @@ const Seo: React.FC<{
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : ''}
       meta={[
         {
+          name: `format-detection`,
+          content: `telephone=no`,
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
