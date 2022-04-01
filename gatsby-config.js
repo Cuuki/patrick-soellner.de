@@ -1,9 +1,11 @@
+const experienceInYears = new Date().getFullYear() - 2015;
+
 module.exports = {
   siteMetadata: {
     title: 'Patrick Söllner',
-    nickname: 'Cuuki',
-    tagline: `Hi there I'm Patrick! Nice to meet you and welcome to my portfolio page.`,
-    description: `I'm an experienced and passionate web developer specialising in frontend technologies. My personal focus lies on React and E-Commerce.`,
+    nickname: '@Cuuki',
+    tagline: `Hi there, I'm Patrick! Nice to meet you and welcome to my digital CV.`,
+    description: `I'm a passionate web developer with ${experienceInYears} (+3) years of professional experience specialising in frontend technologies. My personal focus lies on Vue / React and E-Commerce.`,
     author: '@PatrickSllner',
     social: {
       github: 'https://github.com/Cuuki',

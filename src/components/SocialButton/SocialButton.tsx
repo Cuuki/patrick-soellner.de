@@ -34,7 +34,8 @@ const SocialIcon: React.FC<SocialIconProps> = ({
 const SocialButton: React.FC<{
   url: string;
   type: 'xing' | 'linkedIn' | 'github' | 'twitter';
-}> = ({url = '', type = 'xing'}) => (
+  size?: number;
+}> = ({url = '', type = 'xing', size = 30}) => (
   <a
     href={url}
     target="_blank"
@@ -48,7 +49,7 @@ const SocialButton: React.FC<{
       },
     }}
   >
-    <SocialIcon type={type} size={30} />
+    <SocialIcon type={type} size={size} />
   </a>
 );
 

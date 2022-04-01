@@ -9,6 +9,9 @@ const Footer: React.FC = () => (
       mt: 4,
       py: 4,
       textAlign: 'right',
+      '@media print': {
+        display: 'none',
+      },
     }}
   >
     {`© ${new Date().getFullYear()}, Built with `}
