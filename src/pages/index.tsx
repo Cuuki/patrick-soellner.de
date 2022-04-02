@@ -24,6 +24,7 @@ const formatYearString = (year: number) => {
       style: 'unit',
       unit: 'month',
       unitDisplay: 'long',
+      minimumFractionDigits: 0,
       maximumFractionDigits: 1,
     });
   }
@@ -32,6 +33,7 @@ const formatYearString = (year: number) => {
     style: 'unit',
     unit: 'year',
     unitDisplay: 'long',
+    minimumFractionDigits: 0,
     maximumFractionDigits: 1,
   });
 }
