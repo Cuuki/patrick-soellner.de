@@ -20,22 +20,25 @@ const calcDiffInYears = (startDateString: string, endDateTimestamp: number = Dat
 }
 const formatYearString = (year: number) => {
   if (year < 1) {
-    return (year * 12).toLocaleString('en-GB', {
-      style: 'unit',
-      unit: 'month',
-      unitDisplay: 'long',
+    const monthString = (year * 12).toLocaleString('en-GB', {
+      style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 1,
     });
+
+    const monthSuffix = monthString === '1' ? 'month' : 'months';
+
+    return `${monthString} ${monthSuffix}`;
   }
 
-  return year.toLocaleString('en-GB', {
-    style: 'unit',
-    unit: 'year',
-    unitDisplay: 'long',
+  const yearString = year.toLocaleString('en-GB', {
+    style: 'decimal',
     minimumFractionDigits: 0,
     maximumFractionDigits: 1,
-  });
+  })
+  const yearSuffix = yearString === '1' ? 'year' : 'years';
+
+  return `${yearString} ${yearSuffix}`;
 }
 
 const DurationText: React.FC<{
