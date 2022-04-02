@@ -253,6 +253,9 @@ const IndexPage: React.FC = () => {
                 </dt>
                 <dd>Shopware (<em>2</em>)</dd>
                 <dd>WooCommerce (<em>2</em>)</dd>
+                <dd>Jira (<em>2</em>)</dd>
+                <dd>Confluence (<em>3</em>)</dd>
+                <dd>Figma (<em>1</em>)</dd>
               </dl>
             </div>
             <div
