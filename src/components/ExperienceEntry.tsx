@@ -4,7 +4,7 @@ import {jsx} from 'theme-ui';
 import React from 'react';
 
 const ExperienceEntry: React.FC<{
-  duration: string;
+  duration: string | JSX.Element;
   companyName: string;
   jobTitle?: string;
   areas: (JSX.Element | string)[];

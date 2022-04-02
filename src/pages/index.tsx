@@ -13,6 +13,50 @@ import ProfileDataListItem from '../components/ProfileDataListItem';
 import ExperienceEntry from '../components/ExperienceEntry';
 import SocialButtonList from '../components/SocialButtonList';
 
+const calcDiffInYears = (startDateString: string, endDateTimestamp: number = Date.now()) => {
+  const yearInMs = (1000 * 60 * 60 * 24 * 365);
+
+  return (endDateTimestamp - Date.parse(startDateString)) / yearInMs;
+}
+const formatYearString = (year: number) => {
+  if (year < 1) {
+    return (year * 12).toLocaleString('en-GB', {
+      style: 'unit',
+      unit: 'month',
+      unitDisplay: 'long',
+      maximumFractionDigits: 1,
+    });
+  }
+
+  return year.toLocaleString('en-GB', {
+    style: 'unit',
+    unit: 'year',
+    unitDisplay: 'long',
+    maximumFractionDigits: 1,
+  });
+}
+
+const DurationText: React.FC<{
+  dateStartIsoString: string;
+  dateEndIsoString?: string;
+}> = ({dateStartIsoString, dateEndIsoString, children}) => {
+  return (
+    <span>
+      {children}
+      {' '}
+      <span sx={{display: ['inline', 'block', 'inline', 'block']}}>
+        =&gt;
+        {' '}
+        {
+          dateEndIsoString
+            ? formatYearString(calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)))
+            : formatYearString(calcDiffInYears(dateStartIsoString))
+        }
+      </span>
+    </span>
+  );
+};
+
 const IndexPage: React.FC = () => {
   const {site} = useStaticQuery(graphql`
     query {
@@ -27,7 +71,7 @@ const IndexPage: React.FC = () => {
     }
   `);
   const {tagline, description} = site.siteMetadata;
-  const myAge = new Date().getFullYear() - 1995;
+  const myAge = Math.round(calcDiffInYears('1995-11-18'));
   const cvSectionStyle = {
     ml: 'auto',
     pb: 4,
@@ -109,7 +153,9 @@ const IndexPage: React.FC = () => {
           <div sx={cvSectionStyle}>
             <h2 sx={{mt: 0}}>Experience</h2>
             <ExperienceEntry
-              duration="01/2021 - now"
+              duration={(
+                <DurationText dateStartIsoString="2021-01-01">01/2021 - now</DurationText>
+              )}
               companyName="i22 Digitalagentur GmbH"
               jobTitle="Senior Frontend Developer"
               areas={[
@@ -123,7 +169,14 @@ const IndexPage: React.FC = () => {
               ]}
             />
             <ExperienceEntry
-              duration="07/2020 - 12/2020"
+              duration={(
+                <DurationText
+                  dateStartIsoString="2020-07-01"
+                  dateEndIsoString="2020-12-31"
+                >
+                  07/2020 - 12/2020
+                </DurationText>
+              )}
               companyName="ISO Public Services GmbH"
               jobTitle="Frontend Developer"
               areas={[
@@ -133,7 +186,14 @@ const IndexPage: React.FC = () => {
               ]}
             />
             <ExperienceEntry
-              duration="03/2018 - 06/2020"
+              duration={(
+                <DurationText
+                  dateStartIsoString="2018-03-01"
+                  dateEndIsoString="2020-06-30"
+                >
+                  03/2018 - 06/2020
+                </DurationText>
+              )}
               companyName="LottaLeben Media GmbH"
               jobTitle="Software Developer"
               areas={[
@@ -143,7 +203,14 @@ const IndexPage: React.FC = () => {
               ]}
             />
             <ExperienceEntry
-              duration="09/2015 - 02/2018"
+              duration={(
+                <DurationText
+                  dateStartIsoString="2015-09-01"
+                  dateEndIsoString="2018-02-28"
+                >
+                  09/2015 - 02/2018
+                </DurationText>
+              )}
               companyName="DROW GmbH"
               jobTitle="Software Developer"
               areas={[
@@ -153,7 +220,14 @@ const IndexPage: React.FC = () => {
               ]}
             />
             <ExperienceEntry
-              duration="09/2012 - 08/2015"
+              duration={(
+                <DurationText
+                  dateStartIsoString="2012-09-01"
+                  dateEndIsoString="2015-08-31"
+                >
+                  09/2012 - 08/2015
+                </DurationText>
+              )}
               companyName="Publicis Groupe S.A."
               jobTitle="Trainee - IT specialist for application development"
               areas={['Web development']}
