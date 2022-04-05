@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["next", "prettier"],
+  extends: ["next", "next/core-web-vitals", "prettier"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],
