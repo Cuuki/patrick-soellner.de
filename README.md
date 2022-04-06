@@ -1,3 +1,9 @@
+# patrick-soellner.de - CV / portfolio monorepo (WIP)
+
+Technology chart: [Whimsical](https://whimsical.com/technology-chart-3TMUgFx3oFt6WG8fpZawFo)
+
+---
+
 # Turborepo starter with NPM
 
 This is an official starter turborepo.
