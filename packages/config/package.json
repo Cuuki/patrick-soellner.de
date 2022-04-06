@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "files": [
-    "eslint-preset.js"
+    "eslint/*",
+    "typescript/*",
+    "tailwind/*",
+    "jest/*"
   ],
   "dependencies": {
     "eslint-config-next": "12.1.4",

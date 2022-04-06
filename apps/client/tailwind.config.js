@@ -1,7 +1,5 @@
 module.exports = {
-  content: [],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  presets: [
+    require('config/tailwind/base.js')
+  ],
 }
