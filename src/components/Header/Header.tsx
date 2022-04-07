@@ -10,7 +10,7 @@ const Header: React.FC<{
   siteTitle: string;
   maxWidth?: number;
 }> = ({siteTitle = '', maxWidth = 960}) => {
-  const [colorMode, setColorMode] = useColorMode();
+  const [colorMode, setColorMode] = useColorMode<'light' | 'dark'>('dark');
 
   useEffect(() => {
     const isDarkMode =
