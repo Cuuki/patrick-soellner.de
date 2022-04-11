@@ -10,9 +10,7 @@
     "graphql": "16.3.0"
   },
   "devDependencies": {
-    "@types/node": "17.0.23",
     "config": "*",
-    "ts-node": "10.7.0",
-    "typescript": "4.6.3"
+    "ts-node": "10.7.0"
   }
 }
