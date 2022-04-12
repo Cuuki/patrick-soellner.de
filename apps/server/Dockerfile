@@ -7,6 +7,7 @@ RUN npm i -g turbo
 # Prune the workspace for the `server` app
 FROM base as pruner
 COPY . .
+RUN yarn set version ./.yarn/releases/yarn-3.2.0.cjs
 RUN turbo prune --scope=server --docker
 
 # Add pruned lockfile and package.json's of the pruned subworkspace
@@ -14,7 +15,6 @@ FROM pruner AS installer
 COPY --from=pruner /out/json/ .
 COPY --from=pruner /out/yarn.lock ./yarn.lock
 # Install only the deps needed to build the target
-RUN yarn set version 3.2.0
 RUN yarn install
 
 # Copy source code of pruned subworkspace and build
