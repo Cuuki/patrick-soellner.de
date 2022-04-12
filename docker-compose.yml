@@ -1,6 +1,8 @@
-version: "3"
+version: "3.9"
 services:
   graphql-server:
-    build: ./apps/server
+    build:
+      context: .
+      dockerfile: ./apps/server/Dockerfile
     ports:
       - "8000:8000"
