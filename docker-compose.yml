@@ -3,6 +3,9 @@ services:
   graphql-server:
     build:
       context: .
+      args:
+        NODE_TAG: 16.14-alpine
+        YARN_VERSION: 3.2.0
       dockerfile: ./apps/server/Dockerfile
     ports:
       - "8000:8000"
