@@ -75,7 +75,7 @@
     "test": "jest"
   },
   "engines": {
-    "node": ">=16.18.0"
+    "node": "16.16"
   },
   "repository": {
     "type": "git",
