@@ -74,6 +74,9 @@
     "clean": "gatsby clean",
     "test": "jest"
   },
+  "engines": {
+    "node": ">=16.18.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Cuuki/patrick-soellner.de"
