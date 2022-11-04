@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "build": "node -v"
+    "build": "rm -rf .next && mkdir .next && touch .next/index.html"
   },
   "devDependencies": {
     "prettier": "latest"
