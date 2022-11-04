@@ -50,17 +50,6 @@ module.exports = {
           failOnError: false,
         },
       },
-    },
-    {
-      resolve: 'gatsby-plugin-pdf',
-      options: {
-        paths: ['/'],
-        outputPath: '/public/exports',
-        pdfOptions: {
-          printBackground: true,
-          preferCSSPageSize: true,
-        }
-      },
-    },
+    }
   ],
 };
