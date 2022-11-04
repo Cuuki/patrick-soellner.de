@@ -1,14 +1,28 @@
 {
   "name": "patrick-soellner.de",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "build": "rm -rf .next && mkdir .next && touch .next/index.html"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.8.4"
   },
   "devDependencies": {
-    "prettier": "latest"
+    "prettier": "latest",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.24",
+    "@types/react-dom": "18.0.8",
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.2"
   },
   "engines": {
     "node": "16.18"
