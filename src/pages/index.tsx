@@ -13,11 +13,14 @@ import ProfileDataListItem from '../components/ProfileDataListItem';
 import ExperienceEntry from '../components/ExperienceEntry';
 import SocialButtonList from '../components/SocialButtonList';
 
-const calcDiffInYears = (startDateString: string, endDateTimestamp: number = Date.now()) => {
-  const yearInMs = (1000 * 60 * 60 * 24 * 365);
+const calcDiffInYears = (
+  startDateString: string,
+  endDateTimestamp: number = Date.now(),
+) => {
+  const yearInMs = 1000 * 60 * 60 * 24 * 365;
 
   return (endDateTimestamp - Date.parse(startDateString)) / yearInMs;
-}
+};
 const formatYearString = (year: number) => {
   if (year < 1) {
     const monthString = (year * 12).toLocaleString('en-GB', {
@@ -35,11 +38,11 @@ const formatYearString = (year: number) => {
     style: 'decimal',
     minimumFractionDigits: 0,
     maximumFractionDigits: 1,
-  })
+  });
   const yearSuffix = yearString === '1' ? 'year' : 'years';
 
   return `${yearString} ${yearSuffix}`;
-}
+};
 
 const DurationText: React.FC<{
   dateStartIsoString: string;
@@ -47,16 +50,14 @@ const DurationText: React.FC<{
 }> = ({dateStartIsoString, dateEndIsoString, children}) => {
   return (
     <span>
-      {children}
-      {' '}
+      {children}{' '}
       <span sx={{display: ['inline', 'block', 'inline', 'block']}}>
-        =&gt;
-        {' '}
-        {
-          dateEndIsoString
-            ? formatYearString(calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)))
-            : formatYearString(calcDiffInYears(dateStartIsoString))
-        }
+        =&gt;{' '}
+        {dateEndIsoString
+          ? formatYearString(
+              calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)),
+            )
+          : formatYearString(calcDiffInYears(dateStartIsoString))}
       </span>
     </span>
   );
@@ -87,7 +88,7 @@ const IndexPage: React.FC = () => {
   const cvLinkStyle = {
     color: 'text',
     textDecoration: 'none',
-      '&:hover': {
+    '&:hover': {
       color: 'primary',
     },
   };
@@ -159,7 +160,25 @@ const IndexPage: React.FC = () => {
             <h2 sx={{mt: 0}}>Experience</h2>
             <ExperienceEntry
               duration={(
-                <DurationText dateStartIsoString="2021-01-01">01/2021 - now</DurationText>
+                <DurationText dateStartIsoString="2022-06-01">
+                  06/2022 - now
+                </DurationText>
+              )}
+              companyName="Breuninger"
+              jobTitle="Software Developer"
+              areas={[
+                'Frontend application development',
+                <strong>Fashion E-Commerce product</strong>,
+              ]}
+            />
+            <ExperienceEntry
+              duration={(
+                <DurationText
+                  dateStartIsoString="2021-01-01"
+                  dateEndIsoString="2022-05-31"
+                >
+                  01/2021 - 05/2022
+                </DurationText>
               )}
               companyName="i22 Digitalagentur GmbH"
               jobTitle="Senior Frontend Developer"
@@ -187,7 +206,9 @@ const IndexPage: React.FC = () => {
               areas={[
                 'Frontend application development',
                 'Angular / Stencil, TypeScript, CSS3 / Sass, TDD',
-                <strong>Public administration, In-House product development</strong>,
+                <strong>
+                  Public administration, In-House product development
+                </strong>,
               ]}
             />
             <ExperienceEntry
@@ -204,7 +225,9 @@ const IndexPage: React.FC = () => {
               areas={[
                 'Fullstack web development (Focus Frontend)',
                 'React, JavaScript / jQuery, CSS3 / Sass, Wordpress',
-                <strong>Tourism, medicine, In-House product development</strong>,
+                <strong>
+                  Tourism, medicine, In-House product development
+                </strong>,
               ]}
             />
             <ExperienceEntry
@@ -246,16 +269,17 @@ const IndexPage: React.FC = () => {
               jobTitle="Vocational school Erlangen"
               areas={[
                 <>
-                  <strong>Graduation:</strong>
-                  {' '}
-                  IT specialist for application development (IHK)
-                </>
+                  <strong>Graduation:</strong> IT specialist for application
+                  development (IHK)
+                </>,
               ]}
             />
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{mt: 0}}>Skills and qualities</h2>
-            <em>(1) - Basics, (2) - Extended knowledge, (3) - Long term experience</em>
+            <em>
+              (1) - Basics, (2) - Extended knowledge, (3) - Long term experience
+            </em>
             <div
               sx={{
                 display: 'grid',
@@ -266,75 +290,173 @@ const IndexPage: React.FC = () => {
                 <dt>
                   <h3 sx={{mt: 0}}>Languages</h3>
                 </dt>
-                <dd>JavaScript (<em>3</em>)</dd>
-                <dd>TypeScript (<em>3</em>)</dd>
-                <dd>PHP (<em>2</em>)</dd>
-                <dd>Java (<em>1</em>)</dd>
-                <dd>CSS3 (<em>3</em>)</dd>
-                <dd>Sass (<em>3</em>)</dd>
-                <dd>HTML5 (<em>3</em>)</dd>
-                <dd>Markdown (<em>3</em>)</dd>
-                <dd>GraphQL (<em>2</em>)</dd>
+                <dd>
+                  JavaScript (<em>3</em>)
+                </dd>
+                <dd>
+                  TypeScript (<em>3</em>)
+                </dd>
+                <dd>
+                  PHP (<em>2</em>)
+                </dd>
+                <dd>
+                  Java (<em>1</em>)
+                </dd>
+                <dd>
+                  CSS3 (<em>3</em>)
+                </dd>
+                <dd>
+                  Sass (<em>3</em>)
+                </dd>
+                <dd>
+                  HTML5 (<em>3</em>)
+                </dd>
+                <dd>
+                  Markdown (<em>3</em>)
+                </dd>
+                <dd>
+                  GraphQL (<em>2</em>)
+                </dd>
               </dl>
               <dl>
                 <dt>
                   <h3 sx={{mt: 0}}>Methods</h3>
                 </dt>
-                <dd>Scrum (<em>3</em>)</dd>
-                <dd>Kanban (<em>2</em>)</dd>
-                <dd>Refactoring (<em>3</em>)</dd>
-                <dd>Code Reviews (<em>3</em>)</dd>
-                <dd>Pair Programming (<em>3</em>)</dd>
-                <dd>Mob Programming (<em>3</em>)</dd>
-                <dd>Test Driven Development (<em>2</em>)</dd>
-                <dd>Clean Code (<em>2</em>)</dd>
-                <dd>SOLID (<em>1</em>)</dd>
-                <dd>Object Oriented Programming (<em>2</em>)</dd>
-                <dd>Functional Programming (<em>2</em>)</dd>
-                <dd>Clean Architecture (<em>2</em>)</dd>
-                <dd>Continuous Integration (<em>2</em>)</dd>
+                <dd>
+                  Scrum (<em>3</em>)
+                </dd>
+                <dd>
+                  Kanban (<em>2</em>)
+                </dd>
+                <dd>
+                  Refactoring (<em>3</em>)
+                </dd>
+                <dd>
+                  Code Reviews (<em>3</em>)
+                </dd>
+                <dd>
+                  Pair Programming (<em>3</em>)
+                </dd>
+                <dd>
+                  Mob Programming (<em>3</em>)
+                </dd>
+                <dd>
+                  Test Driven Development (<em>2</em>)
+                </dd>
+                <dd>
+                  Clean Code (<em>2</em>)
+                </dd>
+                <dd>
+                  SOLID (<em>1</em>)
+                </dd>
+                <dd>
+                  Object Oriented Programming (<em>2</em>)
+                </dd>
+                <dd>
+                  Functional Programming (<em>2</em>)
+                </dd>
+                <dd>
+                  Clean Architecture (<em>2</em>)
+                </dd>
+                <dd>
+                  Continuous Integration (<em>2</em>)
+                </dd>
               </dl>
               <dl>
                 <dt>
                   <h3 sx={{mt: 0}}>Tools</h3>
                 </dt>
-                <dd>Git (<em>3</em>)</dd>
-                <dd>npm / yarn (<em>2</em>)</dd>
-                <dd>Webpack (<em>2</em>)</dd>
-                <dd>Docker (<em>1</em>)</dd>
-                <dd>Travis CI (<em>1</em>)</dd>
-                <dd>Github Actions (<em>1</em>)</dd>
-                <dd>Gitlab CI (<em>2</em>)</dd>
-                <dd>Storybook (<em>3</em>)</dd>
+                <dd>
+                  Git (<em>3</em>)
+                </dd>
+                <dd>
+                  npm / yarn (<em>2</em>)
+                </dd>
+                <dd>
+                  Webpack (<em>2</em>)
+                </dd>
+                <dd>
+                  Docker (<em>1</em>)
+                </dd>
+                <dd>
+                  Travis CI (<em>1</em>)
+                </dd>
+                <dd>
+                  Github Actions (<em>1</em>)
+                </dd>
+                <dd>
+                  Gitlab CI (<em>2</em>)
+                </dd>
+                <dd>
+                  Storybook (<em>3</em>)
+                </dd>
               </dl>
               <dl>
                 <dt>
                   <h3 sx={{mt: 0}}>Frameworks / Libraries</h3>
                 </dt>
-                <dd>React (<em>3</em>)</dd>
-                <dd>Next.js (<em>2</em>)</dd>
-                <dd>Vue 2 (<em>3</em>)</dd>
-                <dd>Vue 3 (<em>2</em>)</dd>
-                <dd>Nuxt (<em>2</em>)</dd>
-                <dd>Redux / Vuex (<em>3</em>)</dd>
-                <dd>Angular 2 (<em>2</em>)</dd>
-                <dd>Apollo Client (<em>1</em>)</dd>
-                <dd>Node.js (<em>1</em>)</dd>
-                <dd>Jest (<em>3</em>)</dd>
-                <dd>Testing Library (<em>3</em>)</dd>
-                <dd>Cypress (<em>2</em>)</dd>
-                <dd>Bootstrap 4 (<em>3</em>)</dd>
-                <dd>Tailwind CSS (<em>3</em>)</dd>
+                <dd>
+                  React (<em>3</em>)
+                </dd>
+                <dd>
+                  Next.js (<em>2</em>)
+                </dd>
+                <dd>
+                  Vue 2 (<em>3</em>)
+                </dd>
+                <dd>
+                  Vue 3 (<em>2</em>)
+                </dd>
+                <dd>
+                  Nuxt (<em>2</em>)
+                </dd>
+                <dd>
+                  Redux / Vuex (<em>3</em>)
+                </dd>
+                <dd>
+                  Angular 2 (<em>2</em>)
+                </dd>
+                <dd>
+                  Apollo Client (<em>1</em>)
+                </dd>
+                <dd>
+                  Node.js (<em>1</em>)
+                </dd>
+                <dd>
+                  Jest (<em>3</em>)
+                </dd>
+                <dd>
+                  Testing Library (<em>3</em>)
+                </dd>
+                <dd>
+                  Cypress (<em>2</em>)
+                </dd>
+                <dd>
+                  Bootstrap 4 (<em>3</em>)
+                </dd>
+                <dd>
+                  Tailwind CSS (<em>3</em>)
+                </dd>
               </dl>
               <dl>
                 <dt>
                   <h3 sx={{mt: 0}}>Other</h3>
                 </dt>
-                <dd>Shopware (<em>2</em>)</dd>
-                <dd>WooCommerce (<em>2</em>)</dd>
-                <dd>Jira (<em>2</em>)</dd>
-                <dd>Confluence (<em>3</em>)</dd>
-                <dd>Figma (<em>1</em>)</dd>
+                <dd>
+                  Shopware (<em>2</em>)
+                </dd>
+                <dd>
+                  WooCommerce (<em>2</em>)
+                </dd>
+                <dd>
+                  Jira (<em>2</em>)
+                </dd>
+                <dd>
+                  Confluence (<em>3</em>)
+                </dd>
+                <dd>
+                  Figma (<em>1</em>)
+                </dd>
               </dl>
             </div>
             <div
