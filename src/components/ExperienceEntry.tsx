@@ -1,6 +1,6 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
 
 const ExperienceEntry: React.FC<{
@@ -8,7 +8,7 @@ const ExperienceEntry: React.FC<{
   companyName: string;
   jobTitle?: string;
   areas: (JSX.Element | string)[];
-}> = ({duration, companyName, jobTitle, areas}) => (
+}> = ({ duration, companyName, jobTitle, areas }) => (
   <>
     <div
       sx={{
@@ -18,14 +18,14 @@ const ExperienceEntry: React.FC<{
         gap: [1, 4, 1, 4],
       }}
     >
-      <strong sx={{width: ['100%', '30%', '100%', '30%']}}>{duration}</strong>
-      <div sx={{width: ['100%', '70%', '100%', '70%']}}>
-        <h3 sx={{mt: 0}}>{companyName}</h3>
+      <strong sx={{ width: ['100%', '30%', '100%', '30%'] }}>{duration}</strong>
+      <div sx={{ width: ['100%', '70%', '100%', '70%'] }}>
+        <h3 sx={{ mt: 0 }}>{companyName}</h3>
         {!!jobTitle && <strong>{jobTitle}</strong>}
         <ul>
-          {areas.map((area, index) =>
+          {areas.map((area, index) => (
             <li key={`area-${index}`}>{area}</li>
-          )}
+          ))}
         </ul>
       </div>
     </div>
@@ -33,7 +33,7 @@ const ExperienceEntry: React.FC<{
       sx={{
         mb: 3,
         borderWidth: '2px',
-        borderColor: 'currentColor',
+        borderColor: 'accent',
         borderStyle: 'solid',
       }}
     />

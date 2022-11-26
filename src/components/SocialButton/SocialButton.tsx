@@ -1,10 +1,9 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {darken} from '@theme-ui/color';
-import {Github, LinkedinIn, Twitter, Xing} from '@emotion-icons/fa-brands';
-import {EmotionIconProps} from '@emotion-icons/emotion-icon';
+import { Github, LinkedinIn, Twitter, Xing } from '@emotion-icons/fa-brands';
+import { EmotionIconProps } from '@emotion-icons/emotion-icon';
 
 const titleMap = {
   xing: 'Xing',
@@ -35,7 +34,7 @@ const SocialButton: React.FC<{
   url: string;
   type: 'xing' | 'linkedIn' | 'github' | 'twitter';
   size?: number;
-}> = ({url = '', type = 'xing', size = 30}) => (
+}> = ({ url = '', type = 'xing', size = 30 }) => (
   <a
     href={url}
     target="_blank"
@@ -43,9 +42,9 @@ const SocialButton: React.FC<{
     title={`Go to "${titleMap[type]}"`}
     sx={{
       p: 1,
-      color: 'text',
+      color: 'accent',
       '&:hover': {
-        color: darken('text', 0.1),
+        color: 'accentActive',
       },
     }}
   >

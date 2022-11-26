@@ -18,10 +18,11 @@ module.exports = {
     node: true,
   },
   rules: {
-    'react/jsx-filename-extension': ['error', {extensions: ['.tsx']}],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
     'react/no-array-index-key': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-wrap-multilines': ['error', { prop: 'ignore' }],
   },
 };

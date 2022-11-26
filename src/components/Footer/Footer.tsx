@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {darken} from '@theme-ui/color';
+import { darken } from '@theme-ui/color';
 
 const Footer: React.FC = () => (
   <footer

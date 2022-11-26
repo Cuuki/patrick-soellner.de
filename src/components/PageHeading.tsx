@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const PageHeading: React.FC = () => {
-  const {site} = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -14,7 +14,7 @@ const PageHeading: React.FC = () => {
       }
     }
   `);
-  const {title, nickname} = site.siteMetadata;
+  const { title, nickname } = site.siteMetadata;
 
   return (
     <h1

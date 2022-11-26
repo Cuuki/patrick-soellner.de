@@ -1,14 +1,14 @@
 import React from 'react';
-import {Helmet} from 'react-helmet';
-import {graphql, useStaticQuery} from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const Seo: React.FC<{
   description?: string;
   lang?: string;
   meta?: Record<string, string>[];
   title: string;
-}> = ({description = '', lang = 'en', meta = [], title = ''}) => {
-  const {site} = useStaticQuery(
+}> = ({ description = '', lang = 'en', meta = [], title = '' }) => {
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {

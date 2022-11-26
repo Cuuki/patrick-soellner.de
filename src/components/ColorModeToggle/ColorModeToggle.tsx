@@ -1,14 +1,13 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {darken} from '@theme-ui/color';
-import {Lightbulb as LightbulbOutline} from '@emotion-icons/fa-regular';
-import {Lightbulb as LightbulbFilled} from '@emotion-icons/fa-solid';
+import { Lightbulb as LightbulbOutline } from '@emotion-icons/fa-regular';
+import { Lightbulb as LightbulbFilled } from '@emotion-icons/fa-solid';
 
 const ColorModeToggle: React.FC<{
   mode: string;
   handleClick: (mode: string) => void;
-}> = ({mode = 'default', handleClick = () => {}}) => (
+}> = ({ mode = 'default', handleClick = () => {} }) => (
   <button
     type="button"
     sx={{
@@ -16,9 +15,9 @@ const ColorModeToggle: React.FC<{
       ml: 2,
       border: 'none',
       boxShadow: 'none',
-      color: 'text',
+      color: 'accent',
       '&:hover': {
-        color: darken('text', 0.1),
+        color: 'accentActive',
       },
       bg: 'transparent',
       cursor: 'pointer',
@@ -26,7 +25,8 @@ const ColorModeToggle: React.FC<{
     onClick={() => {
       handleClick(mode === 'dark' ? 'light' : 'dark');
     }}
-    aria-label={`Toggle ${mode === 'dark' ? 'light' : 'dark'} mode`}
+    title={`Activate ${mode === 'dark' ? 'light' : 'dark'} mode`}
+    aria-label={`Activate ${mode === 'dark' ? 'light' : 'dark'} mode`}
   >
     {mode === 'dark' ? (
       <LightbulbOutline size={30} />

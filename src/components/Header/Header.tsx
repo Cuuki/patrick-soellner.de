@@ -1,15 +1,14 @@
 /** @jsx jsx */
-import {jsx, useColorMode} from 'theme-ui';
-import React, {useEffect} from 'react';
-import {darken} from '@theme-ui/color';
-import {Link} from 'gatsby';
-import {Home} from '@emotion-icons/fa-solid';
+import { jsx, useColorMode } from 'theme-ui';
+import React, { useEffect } from 'react';
+import { Link } from 'gatsby';
+import { Home } from '@emotion-icons/fa-solid';
 import ColorModeToggle from '../ColorModeToggle';
 
 const Header: React.FC<{
   siteTitle: string;
   maxWidth?: number;
-}> = ({siteTitle = '', maxWidth = 960}) => {
+}> = ({ siteTitle = '', maxWidth = 960 }) => {
   const [colorMode, setColorMode] = useColorMode<'light' | 'dark'>('dark');
 
   useEffect(() => {
@@ -46,10 +45,10 @@ const Header: React.FC<{
             display: 'inline-flex',
             mr: 'auto',
             p: 1,
-            color: 'text',
             textDecoration: 'none',
+            color: 'accent',
             '&:hover': {
-              color: darken('text', 0.1),
+              color: 'accentActive',
             },
           }}
         >

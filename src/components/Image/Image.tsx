@@ -1,15 +1,25 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
+
+type FluidImage = {
+  node: {
+    childImageSharp: {
+      fluid: {
+        originalName: string;
+      };
+    };
+  };
+};
 
 const ImageNotFound: React.FC = () => <div>Picture not found</div>;
 const Image: React.FC<{
   relativePath: string;
   round?: boolean;
   bordered?: boolean;
-}> = ({relativePath = '', round = false, bordered = false}) => {
+}> = ({ relativePath = '', round = false, bordered = false }) => {
   const data = useStaticQuery(graphql`
     query {
       images: allFile {
@@ -33,11 +43,11 @@ const Image: React.FC<{
 
   const fluidImage = data.images.edges
     .filter(
-      (edge: Record<string, any>) =>
+      (edge: FluidImage) =>
         edge.node.childImageSharp.fluid.originalName === relativePath,
     )
-    .reduce((acc: Record<string, any>, edge: Record<string, any>) => {
-      const {originalName, ...fluidObj} = edge.node.childImageSharp.fluid;
+    .reduce((acc: FluidImage, edge: FluidImage) => {
+      const { originalName, ...fluidObj } = edge.node.childImageSharp.fluid;
 
       return fluidObj;
     }, {});
@@ -51,7 +61,7 @@ const Image: React.FC<{
       fluid={fluidImage}
       sx={{
         borderRadius: round ? '100%' : 0,
-        ...(bordered && {border: '0.625rem solid currentColor'}),
+        ...(bordered && { border: '0.625rem solid currentColor' }),
       }}
     />
   );

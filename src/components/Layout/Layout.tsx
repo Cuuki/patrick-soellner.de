@@ -1,14 +1,14 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Header from '../Header';
 import Footer from '../Footer';
 
 const Layout: React.FC<{
   maxWidth?: number;
-}> = ({maxWidth = 960, children = null}) => {
-  const {site} = useStaticQuery(graphql`
+}> = ({ maxWidth = 960, children = null }) => {
+  const { site } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -48,7 +48,7 @@ const Layout: React.FC<{
             py: 5,
             borderRadius: 25,
             bg: 'muted',
-            boxShadow: theme => `0 0 40px ${theme.colors.muted}`,
+            boxShadow: (theme) => `0 0 40px ${theme.colors.muted}`,
           }}
         >
           {children}

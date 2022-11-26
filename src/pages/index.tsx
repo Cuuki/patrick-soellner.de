@@ -1,8 +1,9 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+import { calcDiffInYears } from '../utils/date';
 import Layout from '../components/Layout';
 import Image from '../components/Image';
 import Seo from '../components/Seo';
@@ -11,60 +12,11 @@ import PageFooter from '../components/PageFooter';
 import ProfileDataList from '../components/ProfileDataList';
 import ProfileDataListItem from '../components/ProfileDataListItem';
 import ExperienceEntry from '../components/ExperienceEntry';
+import DurationText from '../components/DurationText';
 import SocialButtonList from '../components/SocialButtonList';
 
-const calcDiffInYears = (
-  startDateString: string,
-  endDateTimestamp: number = Date.now(),
-) => {
-  const yearInMs = 1000 * 60 * 60 * 24 * 365;
-
-  return (endDateTimestamp - Date.parse(startDateString)) / yearInMs;
-};
-const formatYearString = (year: number) => {
-  if (year < 1) {
-    const monthString = Math.floor(year * 12).toLocaleString('en-GB', {
-      style: 'decimal',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 1,
-    });
-
-    const monthSuffix = monthString === '1' ? 'month' : 'months';
-
-    return `${monthString} ${monthSuffix}`;
-  }
-
-  const yearString = year.toLocaleString('en-GB', {
-    style: 'decimal',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 1,
-  });
-  const yearSuffix = yearString === '1' ? 'year' : 'years';
-
-  return `${yearString} ${yearSuffix}`;
-};
-
-const DurationText: React.FC<{
-  dateStartIsoString: string;
-  dateEndIsoString?: string;
-}> = ({dateStartIsoString, dateEndIsoString, children}) => {
-  return (
-    <span>
-      {children}{' '}
-      <span sx={{display: ['inline', 'block', 'inline', 'block']}}>
-        =&gt;{' '}
-        {dateEndIsoString
-          ? formatYearString(
-              calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)),
-            )
-          : formatYearString(calcDiffInYears(dateStartIsoString))}
-      </span>
-    </span>
-  );
-};
-
 const IndexPage: React.FC = () => {
-  const {site} = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -76,7 +28,7 @@ const IndexPage: React.FC = () => {
       }
     }
   `);
-  const {tagline, description} = site.siteMetadata;
+  const { tagline, description } = site.siteMetadata;
   const myAge = Math.round(calcDiffInYears('1995-11-18'));
   const cvSectionStyle = {
     ml: 'auto',
@@ -119,7 +71,11 @@ const IndexPage: React.FC = () => {
           <strong>{tagline}</strong>
           <p>{description}</p>
         </div>
-        <hr />
+        <hr
+          sx={{
+            borderColor: 'accent',
+          }}
+        />
         <div
           sx={{
             display: 'flex',
@@ -129,8 +85,8 @@ const IndexPage: React.FC = () => {
             maxWidth: 980,
           }}
         >
-          <aside sx={{mb: [4, null], px: 3, width: ['100%', null, '30%']}}>
-            <h2 sx={{mt: 0}}>Profile</h2>
+          <aside sx={{ mb: [4, null], px: 3, width: ['100%', null, '30%'] }}>
+            <h2 sx={{ mt: 0 }}>Profile</h2>
             <ProfileDataList>
               <ProfileDataListItem
                 title="Living in:"
@@ -151,126 +107,126 @@ const IndexPage: React.FC = () => {
               sx={{
                 mt: 4,
                 borderWidth: '2px',
-                borderColor: 'currentColor',
+                borderColor: 'accent',
                 borderStyle: 'solid',
               }}
             />
           </aside>
           <div sx={cvSectionStyle}>
-            <h2 sx={{mt: 0}}>Experience</h2>
+            <h2 sx={{ mt: 0 }}>Experience</h2>
             <ExperienceEntry
-              duration={(
+              duration={
                 <DurationText
                   dateStartIsoString="2022-06-01"
                   dateEndIsoString="2022-12-13"
                 >
                   06/2022 - 12/2022
                 </DurationText>
-              )}
+              }
               companyName="Breuninger"
               jobTitle="Software Developer"
               areas={[
+                <strong>Fashion E-Commerce product</strong>,
                 'Frontend application development',
                 'Build system based on Vite and Node to generate self-contained components',
                 'Campaign & Content modules built with Web Components, Storybook and Go Templates',
                 'Support to continually improve the Breuninger Design System',
                 'TypeScript, Web Components, Tailwind, Go Templates / Hugo SSG, Self-Contained Systems',
                 'E2E testing automation (Testcafe, Playwright)',
-                <strong>Fashion E-Commerce product</strong>,
               ]}
             />
             <ExperienceEntry
-              duration={(
+              duration={
                 <DurationText
                   dateStartIsoString="2021-01-01"
                   dateEndIsoString="2022-05-31"
                 >
                   01/2021 - 05/2022
                 </DurationText>
-              )}
+              }
               companyName="i22 Digitalagentur GmbH"
               jobTitle="Senior Frontend Developer"
               areas={[
+                <strong>Telekom E-Commerce platform</strong>,
                 'Frontend application development',
                 'Tech recruiting support',
                 'Mentoring and training of junior developers',
                 'Frontend and accessibility tech talks',
                 'Vue / Nuxt, TypeScript, CSS3 / Sass, Clean architecture',
                 'E2E testing automation (Cypress)',
-                <strong>Telekom E-Commerce platform</strong>,
               ]}
             />
             <ExperienceEntry
-              duration={(
+              duration={
                 <DurationText
                   dateStartIsoString="2020-07-01"
                   dateEndIsoString="2020-12-31"
                 >
                   07/2020 - 12/2020
                 </DurationText>
-              )}
+              }
               companyName="ISO Public Services GmbH"
               jobTitle="Frontend Developer"
               areas={[
-                'Frontend application development',
-                'Angular / Stencil, TypeScript, CSS3 / Sass, TDD',
                 <strong>
                   Public administration, In-House product development
                 </strong>,
+                'Frontend application development',
+                'Angular / Stencil, TypeScript, CSS3 / Sass, TDD',
               ]}
             />
             <ExperienceEntry
-              duration={(
+              duration={
                 <DurationText
                   dateStartIsoString="2018-03-01"
                   dateEndIsoString="2020-06-30"
                 >
                   03/2018 - 06/2020
                 </DurationText>
-              )}
+              }
               companyName="LottaLeben Media GmbH"
               jobTitle="Software Developer"
               areas={[
-                'Fullstack web development (Focus Frontend)',
-                'React, JavaScript / jQuery, CSS3 / Sass, Wordpress',
                 <strong>
                   Tourism, medicine, In-House product development
                 </strong>,
+                'Fullstack web development (Focus Frontend)',
+                'React, JavaScript / jQuery, CSS3 / Sass, Wordpress',
               ]}
             />
             <ExperienceEntry
-              duration={(
+              duration={
                 <DurationText
                   dateStartIsoString="2015-09-01"
                   dateEndIsoString="2018-02-28"
                 >
                   09/2015 - 02/2018
                 </DurationText>
-              )}
+              }
               companyName="DROW GmbH"
               jobTitle="Software Developer"
               areas={[
+                <strong>E-commerce (Shopware, WooCommerce)</strong>,
                 'Fullstack web development (Focus Frontend)',
                 'HTML5, JavaScript / jQuery, CSS3 / Sass, Wordpress, Shopware',
-                <strong>E-commerce (Shopware, WooCommerce)</strong>,
               ]}
             />
             <ExperienceEntry
-              duration={(
+              duration={
                 <DurationText
                   dateStartIsoString="2012-09-01"
                   dateEndIsoString="2015-08-31"
                 >
                   09/2012 - 08/2015
                 </DurationText>
-              )}
+              }
               companyName="Publicis Groupe S.A."
               jobTitle="Trainee - IT specialist for application development"
               areas={['Web development']}
             />
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{mt: 0}}>Training</h2>
+            <h2 sx={{ mt: 0 }}>Training</h2>
             <ExperienceEntry
               duration="09/2012 - 08/2015"
               companyName="Publicis Groupe S.A."
@@ -284,7 +240,7 @@ const IndexPage: React.FC = () => {
             />
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{mt: 0}}>Skills and qualities</h2>
+            <h2 sx={{ mt: 0 }}>Skills and qualities</h2>
             <em>
               (1) - Basics, (2) - Extended knowledge, (3) - Long term experience
             </em>
@@ -296,7 +252,7 @@ const IndexPage: React.FC = () => {
             >
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Languages</h3>
+                  <h3 sx={{ mt: 0 }}>Languages</h3>
                 </dt>
                 <dd>
                   JavaScript (<em>3</em>)
@@ -328,7 +284,7 @@ const IndexPage: React.FC = () => {
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Methods</h3>
+                  <h3 sx={{ mt: 0 }}>Methods</h3>
                 </dt>
                 <dd>
                   Scrum (<em>3</em>)
@@ -372,7 +328,7 @@ const IndexPage: React.FC = () => {
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Tools</h3>
+                  <h3 sx={{ mt: 0 }}>Tools</h3>
                 </dt>
                 <dd>
                   Git (<em>3</em>)
@@ -401,7 +357,7 @@ const IndexPage: React.FC = () => {
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Frameworks / Libraries</h3>
+                  <h3 sx={{ mt: 0 }}>Frameworks / Libraries</h3>
                 </dt>
                 <dd>
                   React (<em>3</em>)
@@ -448,7 +404,7 @@ const IndexPage: React.FC = () => {
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Other</h3>
+                  <h3 sx={{ mt: 0 }}>Other</h3>
                 </dt>
                 <dd>
                   Shopware (<em>2</em>)
@@ -475,7 +431,7 @@ const IndexPage: React.FC = () => {
             >
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Strengths</h3>
+                  <h3 sx={{ mt: 0 }}>Strengths</h3>
                 </dt>
                 <dd>Mentoring</dd>
                 <dd>Knowledge transfer</dd>
@@ -493,7 +449,7 @@ const IndexPage: React.FC = () => {
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{mt: 0}}>Interests</h3>
+                  <h3 sx={{ mt: 0 }}>Interests</h3>
                 </dt>
                 <dd>TV shows and movies</dd>
                 <dd>Motorcycles / Harley Davidson</dd>
@@ -506,7 +462,7 @@ const IndexPage: React.FC = () => {
             </div>
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{mt: 0}}>Sample projects</h2>
+            <h2 sx={{ mt: 0 }}>Sample projects</h2>
             <ul>
               <li>
                 <a
@@ -570,15 +526,19 @@ const IndexPage: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div sx={{...cvSectionStyle, pb: 0}}>
-            <h2 sx={{mt: 0}}>Certificates</h2>
+          <div sx={{ ...cvSectionStyle, pb: 0 }}>
+            <h2 sx={{ mt: 0 }}>Certificates</h2>
             <ul>
               <li>ISTQB® Certified Tester - Foundation level</li>
               <li>ITIL® Foundation Certificate in IT Service Management</li>
             </ul>
           </div>
         </div>
-        <hr />
+        <hr
+          sx={{
+            borderColor: 'accent',
+          }}
+        />
         <PageFooter />
       </article>
     </Layout>

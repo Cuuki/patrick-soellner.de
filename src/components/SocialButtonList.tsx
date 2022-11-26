@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import {jsx} from 'theme-ui';
+import { jsx } from 'theme-ui';
 import React from 'react';
-import {graphql, useStaticQuery} from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import SocialButton from './SocialButton';
 
-const SocialButtonList: React.FC<{size?: number}> = ({size = 30}) => {
-  const {site} = useStaticQuery(graphql`
+const SocialButtonList: React.FC<{ size?: number }> = ({ size = 30 }) => {
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -19,7 +19,7 @@ const SocialButtonList: React.FC<{size?: number}> = ({size = 30}) => {
       }
     }
   `);
-  const {social} = site.siteMetadata;
+  const { social } = site.siteMetadata;
 
   return (
     <div
