@@ -113,7 +113,7 @@ const IndexPage: React.FC = () => {
             mb: 4,
             maxWidth: 620,
             width: '100%',
-            textAlign: 'justify',
+            textAlign: ['left', 'justify'],
           }}
         >
           <strong>{tagline}</strong>
