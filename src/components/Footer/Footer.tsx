@@ -29,6 +29,21 @@ const Footer: React.FC = () => (
     >
       Gatsby
     </a>
+    {' and deployed on '}
+    <a
+      href="https://vercel.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{
+        color: 'text',
+        textDecoration: 'none',
+        '&:hover': {
+          color: darken('text', 0.1),
+        },
+      }}
+    >
+      Vercel
+    </a>
   </footer>
 );
 
