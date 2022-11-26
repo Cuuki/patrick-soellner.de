@@ -113,7 +113,7 @@ const IndexPage: React.FC = () => {
             mb: 4,
             maxWidth: 620,
             width: '100%',
-            textAlign: 'center',
+            textAlign: 'left',
           }}
         >
           <strong>{tagline}</strong>
@@ -160,14 +160,22 @@ const IndexPage: React.FC = () => {
             <h2 sx={{mt: 0}}>Experience</h2>
             <ExperienceEntry
               duration={(
-                <DurationText dateStartIsoString="2022-06-01">
-                  06/2022 - now
+                <DurationText
+                  dateStartIsoString="2022-06-01"
+                  dateEndIsoString="2022-12-13"
+                >
+                  06/2022 - 12/2022
                 </DurationText>
               )}
               companyName="Breuninger"
               jobTitle="Software Developer"
               areas={[
                 'Frontend application development',
+                'Build system based on Vite and Node to generate self-contained components',
+                'Campaign & Content modules built with Web Components, Storybook and Go Templates',
+                'Support to continually improve the Breuninger Design System',
+                'TypeScript, Web Components, Tailwind, Go Templates / Hugo SSG, Self-Contained Systems',
+                'E2E testing automation (Testcafe, Playwright)',
                 <strong>Fashion E-Commerce product</strong>,
               ]}
             />
