@@ -33,7 +33,7 @@ const IndexPage: React.FC = () => {
   const cvSectionStyle = {
     ml: 'auto',
     pb: 4,
-    px: 3,
+    pl: [0, 0, 3],
     width: ['100%', null, '70%'],
     borderLeft: [null, null, '2px dashed currentColor'],
   };
@@ -85,7 +85,7 @@ const IndexPage: React.FC = () => {
             maxWidth: 980,
           }}
         >
-          <aside sx={{ mb: [4, null], px: 3, width: ['100%', null, '30%'] }}>
+          <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
             <h2 sx={{ mt: 0 }}>Profile</h2>
             <ProfileDataList>
               <ProfileDataListItem
