@@ -23,7 +23,7 @@ const calcDiffInYears = (
 };
 const formatYearString = (year: number) => {
   if (year < 1) {
-    const monthString = (year * 12).toLocaleString('en-GB', {
+    const monthString = Math.floor(year * 12).toLocaleString('en-GB', {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 1,
