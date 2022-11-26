@@ -264,6 +264,9 @@ const IndexPage: React.FC = () => {
                   PHP (<em>2</em>)
                 </dd>
                 <dd>
+                  Go (<em>1</em>)
+                </dd>
+                <dd>
                   Java (<em>1</em>)
                 </dd>
                 <dd>
@@ -323,6 +326,9 @@ const IndexPage: React.FC = () => {
                   Clean Architecture (<em>2</em>)
                 </dd>
                 <dd>
+                  Self-contained Systems (<em>2</em>)
+                </dd>
+                <dd>
                   Continuous Integration (<em>2</em>)
                 </dd>
               </dl>
@@ -335,6 +341,9 @@ const IndexPage: React.FC = () => {
                 </dd>
                 <dd>
                   npm / yarn (<em>2</em>)
+                </dd>
+                <dd>
+                  Vite (<em>3</em>)
                 </dd>
                 <dd>
                   Webpack (<em>2</em>)
@@ -381,10 +390,13 @@ const IndexPage: React.FC = () => {
                   Angular 2 (<em>2</em>)
                 </dd>
                 <dd>
+                  LIT (<em>2</em>)
+                </dd>
+                <dd>
                   Apollo Client (<em>1</em>)
                 </dd>
                 <dd>
-                  Node.js (<em>1</em>)
+                  Node.js (<em>2</em>)
                 </dd>
                 <dd>
                   Jest (<em>3</em>)
@@ -396,10 +408,16 @@ const IndexPage: React.FC = () => {
                   Cypress (<em>2</em>)
                 </dd>
                 <dd>
-                  Bootstrap 4 (<em>3</em>)
+                  Testcafe (<em>2</em>)
+                </dd>
+                <dd>
+                  Playwright (<em>1</em>)
                 </dd>
                 <dd>
                   Tailwind CSS (<em>3</em>)
+                </dd>
+                <dd>
+                  Bootstrap 4 (<em>3</em>)
                 </dd>
               </dl>
               <dl>
