@@ -43,7 +43,7 @@ export default function Home({
   metadata,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout header={<Header siteTitle={metadata.title} />} maxWidth={1280}>
+    <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="CV" metadata={metadata} />
 
       <div
