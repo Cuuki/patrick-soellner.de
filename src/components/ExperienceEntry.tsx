@@ -5,6 +5,7 @@ type ExperienceEntryProps = {
   duration: string | ReactElement;
   companyName: string;
   jobTitle?: string;
+  // @TODO: figure out why this cases JSX elements in array to throw key prop eslint error
   areas: (ReactElement | string)[];
 };
 
