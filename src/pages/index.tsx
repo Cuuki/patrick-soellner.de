@@ -340,7 +340,7 @@ const IndexPage: React.FC = () => {
                   Git (<em>3</em>)
                 </dd>
                 <dd>
-                  npm / yarn (<em>2</em>)
+                  npm / yarn / pnpm (<em>2</em>)
                 </dd>
                 <dd>
                   Vite (<em>3</em>)

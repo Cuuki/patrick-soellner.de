@@ -19,6 +19,7 @@
     "gatsby-plugin-manifest": "^2.4.37",
     "gatsby-plugin-offline": "^3.2.38",
     "gatsby-plugin-pdf": "0.0.1",
+    "gatsby-plugin-pnpm": "^1.2.10",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-plugin-theme-ui": "^0.3.0",
@@ -66,6 +67,7 @@
   ],
   "license": "0BSD",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "NODE_ICU_DATA=node_modules/full-icu gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -77,6 +79,7 @@
   "engines": {
     "node": "16.18"
   },
+  "packageManager": "pnpm@7.17.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Cuuki/patrick-soellner.de"
