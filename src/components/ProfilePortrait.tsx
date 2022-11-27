@@ -12,6 +12,12 @@ export const ProfilePortrait = () => (
       overflow: 'hidden',
     }}
   >
-    <Image src="/portrait.jpg" alt="Portrait picture of Patrick Söllner" width={260} height={260} />
+    <Image
+      src="/portrait.jpg"
+      alt="Portrait picture of Patrick Söllner"
+      priority={true}
+      width={260}
+      height={260}
+    />
   </div>
 );

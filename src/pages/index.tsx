@@ -114,7 +114,9 @@ export default function Home({
               companyName="Breuninger"
               jobTitle="Software Developer"
               areas={[
-                <strong>Fashion E-Commerce product</strong>,
+                <>
+                  <strong>Fashion E-Commerce product</strong>
+                </>,
                 'Frontend application development',
                 'Build system based on Vite and Node to generate self-contained components',
                 'Campaign & Content modules built with Web Components, Storybook and Go Templates',
@@ -132,7 +134,9 @@ export default function Home({
               companyName="i22 Digitalagentur GmbH"
               jobTitle="Senior Frontend Developer"
               areas={[
-                <strong>Telekom E-Commerce platform</strong>,
+                <>
+                  <strong>Telekom E-Commerce platform</strong>
+                </>,
                 'Frontend application development',
                 'Tech recruiting support',
                 'Mentoring and training of junior developers',
@@ -150,7 +154,9 @@ export default function Home({
               companyName="ISO Public Services GmbH"
               jobTitle="Frontend Developer"
               areas={[
-                <strong>Public administration, In-House product development</strong>,
+                <>
+                  <strong>Public administration, In-House product development</strong>
+                </>,
                 'Frontend application development',
                 'Angular / Stencil, TypeScript, CSS3 / Sass, TDD',
               ]}
@@ -164,7 +170,9 @@ export default function Home({
               companyName="LottaLeben Media GmbH"
               jobTitle="Software Developer"
               areas={[
-                <strong>Tourism, medicine, In-House product development</strong>,
+                <>
+                  <strong>Tourism, medicine, In-House product development</strong>
+                </>,
                 'Fullstack web development (Focus Frontend)',
                 'React, JavaScript / jQuery, CSS3 / Sass, Wordpress',
               ]}
