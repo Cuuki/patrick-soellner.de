@@ -18,6 +18,7 @@
     "emotion-icons": "^3.27.0",
     "full-icu": "^1.5.0",
     "next": "^13.0.5",
+    "next-pwa": "^5.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanitize.css": "^13.0.0",

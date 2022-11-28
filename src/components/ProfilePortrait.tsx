@@ -13,7 +13,7 @@ export const ProfilePortrait = () => (
     }}
   >
     <Image
-      src="/portrait.jpg"
+      src="/images/portrait.jpg"
       alt="Portrait picture of Patrick Söllner"
       priority={true}
       width={260}
