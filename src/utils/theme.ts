@@ -1,4 +1,4 @@
-import type { ColorMode, Theme } from 'theme-ui';
+import type { Theme } from 'theme-ui';
 import { merge } from 'theme-ui';
 import { deep, swiss } from '@theme-ui/presets';
 
@@ -12,14 +12,12 @@ const theme: Theme = {
     modes: {
       dark: {
         ...deep.colors,
-        accent: '#f59e0b',
-        accentActive: '#b45309',
-      } as ColorMode,
+        primary: '#f59e0b',
+      },
       light: {
         ...swiss.colors,
-        accent: '#1d4ed8',
-        accentActive: '#1e3a8a',
-      } as ColorMode,
+        primary: '#1d4ed8',
+      },
     },
   },
   breakpoints: ['40em', '48em', '64em', '80em'],

@@ -5,8 +5,9 @@ type ExperienceEntryProps = {
   duration: string | ReactElement;
   companyName: string;
   jobTitle?: string;
-  // @TODO: figure out why this cases JSX elements in array to throw key prop eslint error
+  // @TODO: figure out why this causes JSX elements in array to throw key prop eslint error
   areas: (ReactElement | string)[];
+  hasSeparator?: boolean;
 };
 
 export const ExperienceEntry = ({
@@ -14,6 +15,7 @@ export const ExperienceEntry = ({
   companyName,
   jobTitle,
   areas,
+  hasSeparator = true,
 }: ExperienceEntryProps) => (
   <>
     <div
@@ -35,13 +37,15 @@ export const ExperienceEntry = ({
         </ul>
       </div>
     </div>
-    <hr
-      sx={{
-        mb: 3,
-        borderWidth: '2px',
-        borderColor: 'accent',
-        borderStyle: 'solid',
-      }}
-    />
+    {hasSeparator && (
+      <hr
+        sx={{
+          mb: 3,
+          borderWidth: '1px',
+          borderColor: 'primary',
+          borderStyle: 'solid',
+        }}
+      />
+    )}
   </>
 );

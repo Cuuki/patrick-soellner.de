@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import type { ThemeUICSSObject } from 'theme-ui';
 import type { EmotionIconProps } from 'emotion-icons/types';
+import { darken } from '@theme-ui/color';
 import { Github, LinkedinIn, Twitter, Xing } from 'emotion-icons/fa-brands';
 
 const SOCIAL_TITLE_MAPPING = {
@@ -46,9 +47,9 @@ export const SocialButton = ({
     sx={{
       ...sx,
       'p': 1,
-      'color': 'accent',
+      'color': 'primary',
       '&:hover': {
-        color: 'accentActive',
+        color: darken('primary', 0.1),
       },
     }}
   >

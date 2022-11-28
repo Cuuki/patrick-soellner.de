@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useColorMode } from 'theme-ui';
+import { darken } from '@theme-ui/color';
 import { Lightbulb as LightbulbOutline } from 'emotion-icons/fa-regular';
 import { Lightbulb as LightbulbFilled } from 'emotion-icons/fa-solid';
 
@@ -14,9 +15,9 @@ export const ColorModeToggle = () => {
         'ml': 2,
         'border': 'none',
         'boxShadow': 'none',
-        'color': 'accent',
+        'color': 'primary',
         '&:hover': {
-          color: 'accentActive',
+          color: darken('primary', 0.1),
         },
         'bg': 'transparent',
         'cursor': 'pointer',

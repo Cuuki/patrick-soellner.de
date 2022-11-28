@@ -71,7 +71,9 @@ export default function Home({
         </div>
         <hr
           sx={{
-            borderColor: 'accent',
+            borderWidth: '2px',
+            borderColor: 'primary',
+            borderStyle: 'solid',
           }}
         />
         <div
@@ -98,7 +100,7 @@ export default function Home({
               sx={{
                 mt: 4,
                 borderWidth: '2px',
-                borderColor: 'accent',
+                borderColor: 'primary',
                 borderStyle: 'solid',
               }}
             />
@@ -215,6 +217,15 @@ export default function Home({
                   <strong>Graduation:</strong> IT specialist for application development (IHK)
                 </>,
               ]}
+              hasSeparator={false}
+            />
+            <hr
+              sx={{
+                mt: 4,
+                borderWidth: '2px',
+                borderColor: 'primary',
+                borderStyle: 'solid',
+              }}
             />
           </div>
           <div sx={cvSectionStyle}>
@@ -454,6 +465,14 @@ export default function Home({
                 <dd>Web technologies</dd>
               </dl>
             </div>
+            <hr
+              sx={{
+                mt: 4,
+                borderWidth: '2px',
+                borderColor: 'primary',
+                borderStyle: 'solid',
+              }}
+            />
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>Sample projects</h2>
@@ -499,6 +518,14 @@ export default function Home({
                 </a>
               </li>
             </ul>
+            <hr
+              sx={{
+                mt: 4,
+                borderWidth: '2px',
+                borderColor: 'primary',
+                borderStyle: 'solid',
+              }}
+            />
           </div>
           <div sx={{ ...cvSectionStyle, pb: 0 }}>
             <h2 sx={{ mt: 0 }}>Certificates</h2>
@@ -510,7 +537,9 @@ export default function Home({
         </div>
         <hr
           sx={{
-            borderColor: 'accent',
+            borderWidth: '2px',
+            borderColor: 'primary',
+            borderStyle: 'solid',
           }}
         />
         <PageFooter socialData={social} />

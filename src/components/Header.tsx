@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import Link from 'next/link';
 import { Home } from 'emotion-icons/fa-solid';
+import { darken } from '@theme-ui/color';
 import { ColorModeToggle } from './ColorModeToggle';
 
 export type HeaderProps = {
@@ -8,43 +9,43 @@ export type HeaderProps = {
   maxWidth?: number;
 };
 
-export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) =>  (
-    <header
+export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => (
+  <header
+    sx={{
+      'color': 'text',
+      '@media print': {
+        display: 'none',
+      },
+    }}
+  >
+    <div
       sx={{
-        'color': 'text',
-        '@media print': {
-          display: 'none',
-        },
+        display: 'flex',
+        alignItems: 'center',
+        mx: 'auto',
+        px: 3,
+        py: 4,
+        maxWidth,
       }}
     >
-      <div
+      <Link
+        href="/"
+        title={`Go to "${siteTitle}" cv page`}
+        locale="en"
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          mx: 'auto',
-          px: 3,
-          py: 4,
-          maxWidth,
+          'display': 'inline-flex',
+          'mr': 'auto',
+          'p': 1,
+          'textDecoration': 'none',
+          'color': 'primary',
+          '&:hover': {
+            color: darken('primary', 0.1),
+          },
         }}
       >
-        <Link
-          href="/"
-          title={`Go to "${siteTitle}" cv page`}
-          locale="en"
-          sx={{
-            'display': 'inline-flex',
-            'mr': 'auto',
-            'p': 1,
-            'textDecoration': 'none',
-            'color': 'accent',
-            '&:hover': {
-              color: 'accentActive',
-            },
-          }}
-        >
-          <Home size={30} />
-        </Link>
-        <ColorModeToggle />
-      </div>
-    </header>
-  );
+        <Home size={30} />
+      </Link>
+      <ColorModeToggle />
+    </div>
+  </header>
+);
