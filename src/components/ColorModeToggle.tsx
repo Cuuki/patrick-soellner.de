@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+import React from 'react';
 import { useColorMode } from 'theme-ui';
 import { darken } from '@theme-ui/color';
 import { Lightbulb as LightbulbOutline } from 'emotion-icons/fa-regular';
@@ -6,6 +7,13 @@ import { Lightbulb as LightbulbFilled } from 'emotion-icons/fa-solid';
 
 export const ColorModeToggle = () => {
   const [colorMode, setColorMode] = useColorMode<'light' | 'dark'>();
+
+  React.useEffect(() => {
+    const isDarkMode =
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    setColorMode(isDarkMode ? 'dark' : 'light');
+  }, [setColorMode]);
 
   return (
     <button
