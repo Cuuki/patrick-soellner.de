@@ -26,8 +26,8 @@ export const Footer = () => (
   >
     <div>
       {`© ${new Date().getFullYear()}, Built with `}
-      <a href="https://www.gatsbyjs.com" target="_blank" rel="noopener noreferrer" sx={linkStyle}>
-        Gatsby
+      <a href="https://www.nextjs.org" target="_blank" rel="noopener noreferrer" sx={linkStyle}>
+        Next.js
       </a>
       {' and deployed on '}
       <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" sx={linkStyle}>
