@@ -24,8 +24,8 @@ export const ColorModeToggle = () => {
       onClick={() => {
         setColorMode((prevColorMode) => (prevColorMode === 'dark' ? 'light' : 'dark'));
       }}
-      title={`Turn ${colorMode === 'dark' ? 'off' : 'on'} the lights`}
-      aria-label={`Turn ${colorMode === 'dark' ? 'off' : 'on'} the lights`}
+      title={`Turn ${colorMode === 'dark' ? 'on' : 'off'} the lights`}
+      aria-label={`Turn ${colorMode === 'dark' ? 'on' : 'off'} the lights`}
     >
       {colorMode === 'dark' ? <LightbulbOutline size={30} /> : <LightbulbFilled size={30} />}
     </button>
