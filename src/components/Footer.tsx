@@ -14,7 +14,7 @@ export const Footer = () => (
   >
     {`© ${new Date().getFullYear()}, Built with `}
     <a
-      href="https://www.gatsbyjs.com"
+      href="https://nextjs.org"
       target="_blank"
       rel="noopener noreferrer"
       sx={{
@@ -25,7 +25,7 @@ export const Footer = () => (
         },
       }}
     >
-      Gatsby
+      Next.js
     </a>
     {' and deployed on '}
     <a
