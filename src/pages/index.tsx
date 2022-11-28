@@ -113,7 +113,7 @@ export default function Home({
                   06/2022 - 12/2022
                 </DurationText>
               }
-              companyName="Breuninger"
+              companyName="E. Breuninger GmbH & Co."
               jobTitle="Software Developer"
               areas={[
                 <>
