@@ -22,10 +22,10 @@ export const ColorModeToggle = () => {
         'cursor': 'pointer',
       }}
       onClick={() => {
-        setColorMode(colorMode === 'dark' ? 'light' : 'dark');
+        setColorMode((prevColorMode) => (prevColorMode === 'dark' ? 'light' : 'dark'));
       }}
-      title={`Activate ${colorMode === 'dark' ? 'light' : 'dark'} mode`}
-      aria-label={`Activate ${colorMode === 'dark' ? 'light' : 'dark'} mode`}
+      title={`Turn ${colorMode === 'dark' ? 'off' : 'on'} the lights`}
+      aria-label={`Turn ${colorMode === 'dark' ? 'off' : 'on'} the lights`}
     >
       {colorMode === 'dark' ? <LightbulbOutline size={30} /> : <LightbulbFilled size={30} />}
     </button>

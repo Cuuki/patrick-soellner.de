@@ -30,6 +30,7 @@ export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) =>  (
         <Link
           href="/"
           title={`Go to "${siteTitle}" cv page`}
+          locale="en"
           sx={{
             'display': 'inline-flex',
             'mr': 'auto',

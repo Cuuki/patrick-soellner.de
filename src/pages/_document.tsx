@@ -14,7 +14,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <NextHtml lang="en">
+      <NextHtml>
         <NextHead />
         <body>
           <InitializeColorMode />
