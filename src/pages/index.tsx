@@ -88,14 +88,34 @@ export default function Home({
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
             <h2 sx={{ mt: 0 }}>Profile</h2>
             <ProfileDataList>
-              <ProfileDataListItem title="Living in:" items={['Bonn / Cologne area']} />
-              <ProfileDataListItem title="Age:" items={[myAge.toString()]} />
+              <ProfileDataListItem
+                title="Living in:"
+                items={[
+                  <>
+                    <address>
+                      Am Südhang 11
+                      <br /> 53809 Ruppichteroth
+                    </address>
+                  </>,
+                ]}
+              />
+              <ProfileDataListItem title="Phone:" items={['+49 151 68836502']} />
+              <ProfileDataListItem title="Mail:" items={['mail@patrick-soellner.de']} />
+              <ProfileDataListItem title="Born:" items={['18th November 1995']} />
               <ProfileDataListItem
                 title="Languages:"
                 items={['German (Native)', 'English (Fluid)', 'French (Basics)']}
               />
             </ProfileDataList>
-            <SocialButtonList socialData={social} size={16} />
+            <div
+              sx={{
+                '@media print': {
+                  display: 'none',
+                },
+              }}
+            >
+              <SocialButtonList socialData={social} size={16} />
+            </div>
             <hr
               sx={{
                 mt: 4,
@@ -233,8 +253,11 @@ export default function Home({
             <em>(1) - Basics, (2) - Extended knowledge, (3) - Long term experience</em>
             <div
               sx={{
-                display: 'grid',
-                gridTemplateColumns: ['1fr', '1fr 1fr'],
+                'display': 'grid',
+                'gridTemplateColumns': ['1fr', '1fr 1fr'],
+                '@media print': {
+                  gridTemplateColumns: '1fr 1fr',
+                },
               }}
             >
               <dl>
@@ -432,6 +455,9 @@ export default function Home({
               sx={{
                 display: 'grid',
                 gridTemplateColumns: ['1fr', '1fr 1fr'],
+                '@media print': {
+                  gridTemplateColumns: '1fr 1fr',
+                },
               }}
             >
               <dl>
