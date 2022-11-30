@@ -5,8 +5,6 @@ import { deep, swiss } from '@theme-ui/presets';
 const theme: Theme = {
   config: {
     useColorSchemeMediaQuery: false,
-    initialColorModeName: 'dark',
-    useLocalStorage: false,
   },
   colors: {
     modes: {
