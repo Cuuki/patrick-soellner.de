@@ -137,7 +137,7 @@ export default function Home({
               areas={[
                 'Frontend application development',
                 'Creation of a build system based on Vite and Node to generate self-contained components',
-                'Development of Campaign & Content modules built with Web Components, Storybook and Go Templates',
+                'Development of campaign pages & content modules built with Web Components, Storybook and Go Templates',
                 'Support to continually improve the Breuninger Design System',
                 'E2E testing automation for content modules',
               ]}
