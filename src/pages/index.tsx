@@ -136,16 +136,16 @@ export default function Home({
               description="Replacement of the existing content & campaign architecture within the Breuninger fashion e-commerce product. Development of React based UI extensions for the new headless content management system."
               areas={[
                 'Frontend application development',
-                'Build system based on Vite and Node to generate self-contained components',
-                'Campaign & Content modules built with Web Components, Storybook and Go Templates',
+                'Creation of a build system based on Vite and Node to generate self-contained components',
+                'Development of Campaign & Content modules built with Web Components, Storybook and Go Templates',
                 'Support to continually improve the Breuninger Design System',
-                'TypeScript, Web Components, Tailwind, Go Templates / Hugo SSG, Self-Contained Systems',
-                'E2E testing automation (Testcafe, Playwright)',
+                'E2E testing automation for content modules',
               ]}
               technologies={[
                 'TypeScript',
                 'Web Components',
                 'Tailwind',
+                'Storybook',
                 'Go templates',
                 'Hugo',
                 'Self-contained systems',
