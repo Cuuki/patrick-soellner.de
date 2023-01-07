@@ -292,7 +292,7 @@ export default function Home({
               }
               companyName="DROW GmbH"
               jobTitle="Software Developer"
-              description={'Multiple E-commerce projects built with Shopware & WooCommerce.'}
+              description={'Multiple e-commerce projects built with Shopware & WooCommerce.'}
               areas={[
                 'Fullstack web development (Focus Frontend)',
                 'Technical project management',
