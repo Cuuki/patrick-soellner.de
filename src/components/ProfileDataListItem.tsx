@@ -12,7 +12,14 @@ export const ProfileDataListItem = ({ title, items }: ProfileDataListItemProps) 
       <strong>{title}</strong>
     </dt>
     {items.map((item, index) => (
-      <dd key={`item-${index}`}>{item}</dd>
+      <dd
+        key={`item-${index}`}
+        sx={{
+          mb: items.length - 1 > index ? 0 : 1,
+        }}
+      >
+        {item}
+      </dd>
     ))}
   </>
 );

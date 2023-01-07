@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { darken } from '@theme-ui/color';
 import pageConfig from '../data/page.config';
 import { calcDiffInYears } from '../utils/date';
 import { PageHead } from '../components/PageHead';
@@ -37,7 +38,6 @@ const cvLinkStyle = {
 };
 
 export default function Home({
-  tagline,
   nickname,
   social,
   metadata,
@@ -56,7 +56,7 @@ export default function Home({
         <ProfilePortrait />
       </div>
       <article>
-        <PageHeading title={metadata.title} nickname={nickname} />
+        <PageHeading title={metadata.title} nickname={nickname} githubUrl={social.github} />
         <div
           sx={{
             mx: 'auto',
@@ -66,7 +66,6 @@ export default function Home({
             textAlign: ['left', 'justify'],
           }}
         >
-          <strong>{tagline}</strong>
           <p>{metadata.description}</p>
         </div>
         <hr
@@ -82,7 +81,7 @@ export default function Home({
             flexWrap: 'wrap',
             mx: 'auto',
             py: 4,
-            maxWidth: 980,
+            maxWidth: 1024,
           }}
         >
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
@@ -91,12 +90,11 @@ export default function Home({
               <ProfileDataListItem
                 title="Living in:"
                 items={[
-                  <>
-                    <address>
-                      Am Südhang 11
-                      <br /> 53809 Ruppichteroth
-                    </address>
-                  </>,
+                  <address key="address">
+                    Am Südhang 11
+                    <br /> 53809 Ruppichteroth
+                    <br /> Germany
+                  </address>,
                 ]}
               />
               <ProfileDataListItem title="Phone:" items={['+49 151 68836502']} />
@@ -135,16 +133,27 @@ export default function Home({
               }
               companyName="E. Breuninger GmbH & Co."
               jobTitle="Software Developer"
+              description="Replacement of the existing content & campaign architecture within the Breuninger fashion e-commerce product. Development of React based UI extensions for the new headless content management system."
               areas={[
-                <>
-                  <strong>Fashion E-Commerce product</strong>
-                </>,
                 'Frontend application development',
                 'Build system based on Vite and Node to generate self-contained components',
                 'Campaign & Content modules built with Web Components, Storybook and Go Templates',
                 'Support to continually improve the Breuninger Design System',
                 'TypeScript, Web Components, Tailwind, Go Templates / Hugo SSG, Self-Contained Systems',
                 'E2E testing automation (Testcafe, Playwright)',
+              ]}
+              technologies={[
+                'TypeScript',
+                'Web Components',
+                'Tailwind',
+                'Go templates',
+                'Hugo',
+                'Self-contained systems',
+                'Node',
+                'Vite',
+                'Testcafe',
+                'Playwright',
+                'React',
               ]}
             />
             <ExperienceEntry
@@ -155,16 +164,45 @@ export default function Home({
               }
               companyName="i22 Digitalagentur GmbH"
               jobTitle="Senior Frontend Developer"
+              description={
+                'Development of many projects inside the Telekom e-commerce multi-client platform within the i22 shop product team.'
+              }
               areas={[
-                <>
-                  <strong>Telekom E-Commerce platform</strong>
-                </>,
                 'Frontend application development',
+                'E2E testing automation as a service',
                 'Tech recruiting support',
                 'Mentoring and training of junior developers',
-                'Frontend and accessibility tech talks',
-                'Vue / Nuxt, TypeScript, CSS3 / Sass, Clean architecture',
-                'E2E testing automation (Cypress)',
+                'Company wide frontend and accessibility tech talks',
+                'Company wide accessibility working group initiative',
+              ]}
+              technologies={[
+                'Vue',
+                'Nuxt',
+                'TypeScript',
+                'CSS3',
+                'Sass',
+                'Clean architecture',
+                'Cypress',
+              ]}
+              projects={[
+                <a
+                  href="https://smarthome.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                  key={0}
+                >
+                  smarthome.de
+                </a>,
+                <a
+                  href="https://shop.telekom.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                  key={1}
+                >
+                  shop.telekom.de
+                </a>,
               ]}
             />
             <ExperienceEntry
@@ -175,12 +213,20 @@ export default function Home({
               }
               companyName="ISO Public Services GmbH"
               jobTitle="Frontend Developer"
+              description={
+                'Development of an internal tool to streamline the employee profile generation process. In-house product development.'
+              }
               areas={[
-                <>
-                  <strong>Public administration, In-House product development</strong>
-                </>,
                 'Frontend application development',
-                'Angular / Stencil, TypeScript, CSS3 / Sass, TDD',
+                'Leadership, technical planning and coordination of frontend for a new product',
+              ]}
+              technologies={[
+                'Angular',
+                'Stencil',
+                'TypeScript',
+                'CSS3',
+                'Sass',
+                'Test-driven development',
               ]}
             />
             <ExperienceEntry
@@ -191,12 +237,51 @@ export default function Home({
               }
               companyName="LottaLeben Media GmbH"
               jobTitle="Software Developer"
+              description={
+                'Multiple projects in tourism & medicine as well as the development of a Wordpress based website builder as a product.'
+              }
               areas={[
-                <>
-                  <strong>Tourism, medicine, In-House product development</strong>
-                </>,
                 'Fullstack web development (Focus Frontend)',
-                'React, JavaScript / jQuery, CSS3 / Sass, Wordpress',
+                'Coordination and communication with brasil-based development team',
+              ]}
+              technologies={['React', 'JavaScript', 'jQuery', 'CSS3', 'Sass', 'Wordpress']}
+              projects={[
+                <a
+                  href="https://www.lindau.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                  key={0}
+                >
+                  lindau.de
+                </a>,
+                <a
+                  href="https://www.lindau.de/aroundme"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                  key={1}
+                >
+                  lindau.de/aroundme
+                </a>,
+                <a
+                  href="https://www.insel-sylt.de"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                  key={2}
+                >
+                  insel-sylt.de
+                </a>,
+                <a
+                  href="https://www.canvayo.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  sx={cvLinkStyle}
+                  key={3}
+                >
+                  canvayo.com
+                </a>,
               ]}
             />
             <ExperienceEntry
@@ -207,12 +292,20 @@ export default function Home({
               }
               companyName="DROW GmbH"
               jobTitle="Software Developer"
+              description={'Multiple E-commerce projects built with Shopware & WooCommerce.'}
               areas={[
-                <>
-                  <strong>E-commerce (Shopware, WooCommerce)</strong>
-                </>,
                 'Fullstack web development (Focus Frontend)',
-                'HTML5, JavaScript / jQuery, CSS3 / Sass, Wordpress, Shopware',
+                'Technical project management',
+                'Technical customer support',
+              ]}
+              technologies={[
+                'HTML5',
+                'JavaScript',
+                'jQuery',
+                'CSS3',
+                'Sass',
+                'Wordpress',
+                'Shopware',
               ]}
             />
             <ExperienceEntry
@@ -230,11 +323,25 @@ export default function Home({
             <h2 sx={{ mt: 0 }}>Training</h2>
             <ExperienceEntry
               duration="09/2012 - 08/2015"
-              companyName="Publicis Groupe S.A."
-              jobTitle="Vocational school Erlangen"
+              companyName="Vocational school in Erlangen, Germany"
               areas={[
                 <>
-                  <strong>Graduation:</strong> IT specialist for application development (IHK)
+                  IT specialist for application development (
+                  <a
+                    href="https://www.ihk-nuernberg.de/"
+                    target="_blank"
+                    rel="noreferrer"
+                    sx={{
+                      'color': 'text',
+                      'textDecoration': 'none',
+                      '&:hover': {
+                        color: darken('text', 0.1),
+                      },
+                    }}
+                  >
+                    IHK
+                  </a>{' '}
+                  certified graduation)
                 </>,
               ]}
               hasSeparator={false}
@@ -250,7 +357,7 @@ export default function Home({
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>Skills and qualities</h2>
-            <em>(1) - Basics, (2) - Extended knowledge, (3) - Long term experience</em>
+            <em>(1) - Basic knowledge, (2) - In-depth knowledge, (3) - Specialized knowledge</em>
             <div
               sx={{
                 'display': 'grid',
@@ -318,7 +425,7 @@ export default function Home({
                   Mob Programming (<em>3</em>)
                 </dd>
                 <dd>
-                  Test Driven Development (<em>2</em>)
+                  Test-driven Development (<em>2</em>)
                 </dd>
                 <dd>
                   Clean Code (<em>2</em>)
@@ -453,8 +560,8 @@ export default function Home({
             </div>
             <div
               sx={{
-                display: 'grid',
-                gridTemplateColumns: ['1fr', '1fr 1fr'],
+                'display': 'grid',
+                'gridTemplateColumns': ['1fr', '1fr 1fr'],
                 '@media print': {
                   gridTemplateColumns: '1fr 1fr',
                 },
@@ -491,59 +598,6 @@ export default function Home({
                 <dd>Web technologies</dd>
               </dl>
             </div>
-            <hr
-              sx={{
-                mt: 4,
-                borderWidth: '2px',
-                borderColor: 'primary',
-                borderStyle: 'solid',
-              }}
-            />
-          </div>
-          <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Sample projects</h2>
-            <ul>
-              <li>
-                <a href="https://smarthome.de" target="_blank" rel="noreferrer" sx={cvLinkStyle}>
-                  smarthome.de
-                </a>
-              </li>
-              <li>
-                <a href="https://shop.telekom.de" target="_blank" rel="noreferrer" sx={cvLinkStyle}>
-                  shop.telekom.de
-                </a>
-              </li>
-              <li>
-                <a href="https://www.lindau.de" target="_blank" rel="noreferrer" sx={cvLinkStyle}>
-                  lindau.de
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.lindau.de/aroundme"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                >
-                  lindau.de/aroundme
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.insel-sylt.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                >
-                  insel-sylt.de
-                </a>
-              </li>
-              <li>
-                <a href="https://www.canvayo.com" target="_blank" rel="noreferrer" sx={cvLinkStyle}>
-                  canvayo.com
-                </a>
-              </li>
-            </ul>
             <hr
               sx={{
                 mt: 4,

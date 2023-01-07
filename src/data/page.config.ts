@@ -8,7 +8,6 @@ const pageConfig = {
     twitterAuthor: '@PatrickSllner',
   },
   nickname: '@Cuuki',
-  tagline: `Hi there, I'm Patrick! Nice to meet you and welcome to my digital CV.`,
   social: {
     github: 'https://github.com/Cuuki',
     twitter: 'https://twitter.com/PatrickSllner',
