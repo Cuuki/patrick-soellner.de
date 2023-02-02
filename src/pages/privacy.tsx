@@ -6,11 +6,11 @@ import { Layout } from '../components/Layout';
 import { PageHead } from '../components/PageHead';
 import { Header } from '../components/Header';
 
-export const getStaticProps: GetStaticProps<typeof pageConfig> = async () => {
-  return {
-    props: pageConfig,
-  };
-};
+export const getStaticProps: GetStaticProps<{
+  pageConfig: typeof pageConfig['de' | 'en'];
+}> = async ({ locale = 'en' }) => ({
+  props: { pageConfig: pageConfig[locale as 'de' | 'en'] || pageConfig['en'] },
+});
 
 const linkStyle = {
   'color': 'text',
@@ -20,12 +20,14 @@ const linkStyle = {
   },
 };
 
-export default function PrivacyPage({ metadata }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function PrivacyPage({
+  pageConfig: { metadata },
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="Datenschutzerklärung" metadata={metadata} />
 
-      <h1>Datenschutz&shy;erkl&auml;rung</h1>
+      <h1>Datenschutz&shy;erkl&auml;rung (DE)</h1>
       <h2>1. Datenschutz auf einen Blick</h2>
       <h3>Allgemeine Hinweise</h3>
       <p>

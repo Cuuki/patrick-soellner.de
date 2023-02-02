@@ -3,49 +3,50 @@ import Link from 'next/link';
 import { Home } from 'emotion-icons/fa-solid';
 import { darken } from '@theme-ui/color';
 import { ColorModeToggle } from './ColorModeToggle';
+import { LocaleToggle } from './LocaleToggle';
 
 export type HeaderProps = {
   siteTitle: string;
   maxWidth?: number;
 };
 
-export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => (
-  <header
-    sx={{
-      'color': 'text',
-      '@media print': {
-        display: 'none',
-      },
-    }}
-  >
-    <div
+const linkStyle = {
+  'display': 'inline-flex',
+  'mr': 'auto',
+  'p': 1,
+  'textDecoration': 'none',
+  'color': 'primary',
+  '&:hover': {
+    color: darken('primary', 0.1),
+  },
+};
+
+export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => {
+  return (
+    <header
       sx={{
-        display: 'flex',
-        alignItems: 'center',
-        mx: 'auto',
-        px: 3,
-        py: 4,
-        maxWidth,
+        'color': 'text',
+        '@media print': {
+          display: 'none',
+        },
       }}
     >
-      <Link
-        href="/"
-        title={`Go to "${siteTitle}" cv page`}
-        locale="en"
+      <div
         sx={{
-          'display': 'inline-flex',
-          'mr': 'auto',
-          'p': 1,
-          'textDecoration': 'none',
-          'color': 'primary',
-          '&:hover': {
-            color: darken('primary', 0.1),
-          },
+          display: 'flex',
+          alignItems: 'center',
+          mx: 'auto',
+          px: 3,
+          py: 4,
+          maxWidth,
         }}
       >
-        <Home size={30} />
-      </Link>
-      <ColorModeToggle />
-    </div>
-  </header>
-);
+        <Link href="/" title={`Go to "${siteTitle}" cv page`} sx={linkStyle}>
+          <Home size={30} />
+        </Link>
+        <LocaleToggle />
+        <ColorModeToggle />
+      </div>
+    </header>
+  );
+};

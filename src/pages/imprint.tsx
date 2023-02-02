@@ -6,11 +6,11 @@ import { Layout } from '../components/Layout';
 import { PageHead } from '../components/PageHead';
 import { Header } from '../components/Header';
 
-export const getStaticProps: GetStaticProps<typeof pageConfig> = async () => {
-  return {
-    props: pageConfig,
-  };
-};
+export const getStaticProps: GetStaticProps<{
+  pageConfig: typeof pageConfig['de' | 'en'];
+}> = async ({ locale = 'en' }) => ({
+  props: { pageConfig: pageConfig[locale as 'de' | 'en'] || pageConfig['en'] },
+});
 
 const linkStyle = {
   'color': 'text',
@@ -20,12 +20,14 @@ const linkStyle = {
   },
 };
 
-export default function ImprintPage({ metadata }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function ImprintPage({
+  pageConfig: { metadata },
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="Impressum" metadata={metadata} />
 
-      <h1>Impressum</h1>
+      <h1>Impressum (DE)</h1>
 
       <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
       <p>

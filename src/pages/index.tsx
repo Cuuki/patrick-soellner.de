@@ -2,7 +2,7 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { darken } from '@theme-ui/color';
 import pageConfig from '../data/page.config';
-import { calcDiffInYears } from '../utils/date';
+import profileDataConfig from '../data/profile-data.config';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
@@ -15,13 +15,20 @@ import { PageFooter } from '../components/PageFooter';
 import { ProfileDataList } from '../components/ProfileDataList';
 import { DurationText } from '../components/DurationText';
 
-export const getStaticProps: GetStaticProps<typeof pageConfig> = async () => {
+export const getStaticProps: GetStaticProps<{
+  pageConfig: typeof pageConfig['de' | 'en'];
+  profileDataConfig: typeof profileDataConfig['de' | 'en'];
+}> = async ({ locale = 'en' }) => {
+  const l = (locale as 'de' | 'en') || 'en';
+
   return {
-    props: pageConfig,
+    props: {
+      pageConfig: pageConfig[l],
+      profileDataConfig: profileDataConfig[l],
+    },
   };
 };
 
-const myAge = Math.round(calcDiffInYears('1995-11-18'));
 const cvSectionStyle = {
   ml: 'auto',
   pb: 4,
@@ -38,9 +45,8 @@ const cvLinkStyle = {
 };
 
 export default function Home({
-  nickname,
-  social,
-  metadata,
+  pageConfig: { nickname, social, metadata },
+  profileDataConfig,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
@@ -88,18 +94,12 @@ export default function Home({
             <h2 sx={{ mt: 0 }}>Profile</h2>
             <ProfileDataList>
               <ProfileDataListItem
-                title="Living in:"
-                items={[
-                  <address key="address">
-                    Am Südhang 11
-                    <br /> 53809 Ruppichteroth
-                    <br /> Germany
-                  </address>,
-                ]}
+                title={profileDataConfig.address.title}
+                items={profileDataConfig.address.items}
               />
               <ProfileDataListItem title="Phone:" items={['+49 151 68836502']} />
               <ProfileDataListItem title="Mail:" items={['mail@patrick-soellner.de']} />
-              <ProfileDataListItem title="Born:" items={['18th November 1995']} />
+              <ProfileDataListItem title="Born:" items={['18.11.1995']} />
               <ProfileDataListItem
                 title="Languages:"
                 items={['German (Native)', 'English (Fluid)', 'French (Basics)']}
