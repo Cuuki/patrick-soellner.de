@@ -3,7 +3,7 @@ import { SocialButtonList } from './SocialButtonList';
 import pageConfig from '../data/page.config';
 
 type PageFooterProps = {
-  socialData: typeof pageConfig.social;
+  socialData: typeof pageConfig['en' | 'de']['social'];
 };
 
 export const PageFooter = ({ socialData }: PageFooterProps) => (

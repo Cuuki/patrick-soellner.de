@@ -5,7 +5,7 @@ import { useThemeUI } from 'theme-ui';
 
 type HeadProps = {
   pageTitle: string;
-  metadata: typeof pageConfig.metadata;
+  metadata: typeof pageConfig['en' | 'de']['metadata'];
 };
 
 export const PageHead = ({ pageTitle, metadata }: HeadProps) => {

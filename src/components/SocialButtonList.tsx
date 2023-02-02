@@ -2,7 +2,7 @@
 import { SocialButton } from './SocialButton';
 import pageConfig from '../data/page.config';
 
-type SocialButtonListProps = { socialData: typeof pageConfig.social; size?: number };
+type SocialButtonListProps = { socialData: typeof pageConfig['en' | 'de']['social']; size?: number };
 
 export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProps) => {
   return (
