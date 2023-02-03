@@ -1,7 +1,9 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
 import { Clock } from 'emotion-icons/fa-solid';
-import { formatYearString, calcDiffInYears } from '../utils/date';
+import { calcDiffInYears, formatYearString } from '../utils/date';
+import { useRouter } from 'next/router';
+import type { Locale } from '../types/i18n';
 
 type DurationTextProps = {
   dateStartIsoString: string;
@@ -14,6 +16,9 @@ export const DurationText = ({
   dateEndIsoString,
   children,
 }: DurationTextProps) => {
+  const router = useRouter();
+  const locale = router.locale as Locale;
+
   return (
     <span
       sx={{
@@ -38,8 +43,11 @@ export const DurationText = ({
           }}
         />{' '}
         {dateEndIsoString
-          ? formatYearString(calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)))
-          : formatYearString(calcDiffInYears(dateStartIsoString))}
+          ? formatYearString(
+              calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)),
+              locale,
+            )
+          : formatYearString(calcDiffInYears(dateStartIsoString), locale)}
       </span>
     </span>
   );
