@@ -15,7 +15,7 @@ export const formatYearString = (year: number): string => {
       maximumFractionDigits: 1,
     });
 
-    const monthSuffix = monthString === '1' ? 'month' : 'months';
+    const monthSuffix = monthString === '1' ? 'Monat' : 'Monate';
 
     return `${monthString} ${monthSuffix}`;
   }
@@ -25,7 +25,7 @@ export const formatYearString = (year: number): string => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 1,
   });
-  const yearSuffix = yearString === '1' ? 'year' : 'years';
+  const yearSuffix = yearString === '1' ? 'Jahr' : 'Jahre';
 
   return `${yearString} ${yearSuffix}`;
 };

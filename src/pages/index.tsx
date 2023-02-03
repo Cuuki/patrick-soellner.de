@@ -91,18 +91,18 @@ export default function Home({
           }}
         >
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
-            <h2 sx={{ mt: 0 }}>Profile</h2>
+            <h2 sx={{ mt: 0 }}>Profil</h2>
             <ProfileDataList>
               <ProfileDataListItem
                 title={profileDataConfig.address.title}
                 items={profileDataConfig.address.items}
               />
-              <ProfileDataListItem title="Phone:" items={['+49 151 68836502']} />
-              <ProfileDataListItem title="Mail:" items={['mail@patrick-soellner.de']} />
-              <ProfileDataListItem title="Born:" items={['18.11.1995']} />
+              <ProfileDataListItem title="Mobil:" items={['+49 151 68836502']} />
+              <ProfileDataListItem title="E-Mail:" items={['patrick@newmonday.co']} />
+              <ProfileDataListItem title="Geboren am:" items={['18.11.1995']} />
               <ProfileDataListItem
-                title="Languages:"
-                items={['German (Native)', 'English (Fluid)', 'French (Basics)']}
+                title="Sprachen:"
+                items={['Deutsch (Muttersprache)', 'Englisch (Fließend)', 'Französisch (Grundkenntnisse)']}
               />
             </ProfileDataList>
             <div
@@ -124,7 +124,7 @@ export default function Home({
             />
           </aside>
           <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Experience</h2>
+            <h2 sx={{ mt: 0 }}>Erfahrung</h2>
             <ExperienceEntry
               duration={
                 <DurationText dateStartIsoString="2022-06-01" dateEndIsoString="2022-12-13">
@@ -133,13 +133,13 @@ export default function Home({
               }
               companyName="E. Breuninger GmbH & Co."
               jobTitle="Software Developer"
-              description="Replacement of the existing content & campaign architecture within the Breuninger fashion e-commerce product. Development of React based UI extensions for the new headless content management system."
+              description="Ablösung der bestehenden Content & Campaign Architektur innerhalb des Breuninger Fashion E-Commerce Produktes. Entwicklung von React-basierten UI-Erweiterungen für das neue Headless-Content-Management-System."
               areas={[
-                'Frontend application development',
-                'Creation of a build system based on Vite and Node to generate self-contained components',
-                'Development of campaign pages & content modules built with Web Components, Storybook and Go Templates',
-                'Support to continually improve the Breuninger Design System',
-                'E2E testing automation for content modules',
+                'Entwicklung von Frontend-Anwendungen',
+                'Erstellung eines Build-Systems auf Basis von Vite und Node zur Generierung von Self-Contained Components',
+                'Entwicklung von Kampagnenseiten und Content Modulen, die mit Web Components, Storybook und Go Templates erstellt wurden',
+                'Unterstützung bei der kontinuierlichen Verbesserung des Breuninger Design Systems',
+                'E2E-Testautomatisierung für Content Module',
               ]}
               technologies={[
                 'TypeScript',
@@ -165,15 +165,15 @@ export default function Home({
               companyName="i22 Digitalagentur GmbH"
               jobTitle="Senior Frontend Developer"
               description={
-                'Development of many projects inside the Telekom e-commerce multi-client platform within the i22 shop product team.'
+                'Entwicklung vieler Projekte innerhalb der Telekom E-Commerce Multi-Client Plattform im i22 Shop-Produktteam.'
               }
               areas={[
-                'Frontend application development',
-                'E2E testing automation as a service',
-                'Tech recruiting support',
-                'Mentoring and training of junior developers',
-                'Company wide frontend and accessibility tech talks',
-                'Company wide accessibility working group initiative',
+                'Entwicklung von Frontend-Anwendungen',
+                'E2E-Testautomatisierung als Service',
+                'Unterstützung im Tech-Recruiting',
+                'Mentoring und Training von Junior Entwicklern',
+                'Unternehmensweite Tech Talks über Frontend und Barrierefreiheit',
+                'Unternehmensweite Initiative "Accessibility working group"',
               ]}
               technologies={[
                 'Vue',
@@ -214,11 +214,11 @@ export default function Home({
               companyName="ISO Public Services GmbH"
               jobTitle="Frontend Developer"
               description={
-                'Development of an internal tool to streamline the employee profile generation process. In-house product development.'
+                'Entwicklung eines internen Tools zur vereinfachten Erstellung von Mitarbeiterprofilen. In-house Produktentwicklung.'
               }
               areas={[
-                'Frontend application development',
-                'Leadership, technical planning and coordination of frontend for a new product',
+                'Entwicklung von Frontend-Anwendungen',
+                'Leadership, technische Planung und Koordination des Frontends für ein neues intern entwickeltes Produkt',
               ]}
               technologies={[
                 'Angular',
@@ -238,11 +238,11 @@ export default function Home({
               companyName="LottaLeben Media GmbH"
               jobTitle="Software Developer"
               description={
-                'Multiple projects in tourism & medicine as well as the development of a Wordpress based website builder as a product.'
+                'Mehrere Projekte in Tourismus & Medizin sowie die Entwicklung eines WordPress-basierten Website-Builders als Produkt.'
               }
               areas={[
-                'Fullstack web development (Focus Frontend)',
-                'Coordination and communication with brasil-based development team',
+                'Fullstack Webentwicklung (Fokus Frontend)',
+                'Koordination und Kommunikation mit dem brasilianischen Entwicklungsteam',
               ]}
               technologies={['React', 'JavaScript', 'jQuery', 'CSS3', 'Sass', 'Wordpress']}
               projects={[
@@ -292,11 +292,11 @@ export default function Home({
               }
               companyName="DROW GmbH"
               jobTitle="Software Developer"
-              description={'Multiple e-commerce projects built with Shopware & WooCommerce.'}
+              description={'Mehrere E-Commerce-Projekte, die mit Shopware & WooCommerce erstellt wurden.'}
               areas={[
-                'Fullstack web development (Focus Frontend)',
-                'Technical project management',
-                'Technical customer support',
+                'Fullstack Webentwicklung (Fokus Frontend)',
+                'Technisches Projektmanagement',
+                'Technische Kundenbetreuung',
               ]}
               technologies={[
                 'HTML5',
@@ -315,18 +315,18 @@ export default function Home({
                 </DurationText>
               }
               companyName="Publicis Groupe S.A."
-              jobTitle="Trainee - IT specialist for application development"
-              areas={['Web development']}
+              jobTitle="Ausbildung zum Fachinformatiker für Anwendungsentwicklung"
+              areas={['Webentwicklung']}
             />
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Training</h2>
+            <h2 sx={{ mt: 0 }}>Ausbildung</h2>
             <ExperienceEntry
               duration="09/2012 - 08/2015"
-              companyName="Vocational school in Erlangen, Germany"
+              companyName="Staatliche Berufsschule Erlangen, Deutschland"
               areas={[
                 <>
-                  IT specialist for application development (
+                  Fachinformatiker für Anwendungsentwicklung (
                   <a
                     href="https://www.ihk-nuernberg.de/"
                     target="_blank"
@@ -341,7 +341,7 @@ export default function Home({
                   >
                     IHK
                   </a>{' '}
-                  certified graduation)
+                  zertifizierter Abschluss)
                 </>,
               ]}
               hasSeparator={false}
@@ -356,8 +356,8 @@ export default function Home({
             />
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Skills and qualities</h2>
-            <em>(1) - Basic knowledge, (2) - In-depth knowledge, (3) - Specialized knowledge</em>
+            <h2 sx={{ mt: 0 }}>Fähigkeiten und Eigenschaften</h2>
+            <em>(1) - Grundwissen, (2) - Vertiefte Kenntnisse, (3) - Fachkenntnisse</em>
             <div
               sx={{
                 'display': 'grid',
@@ -369,7 +369,7 @@ export default function Home({
             >
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Languages</h3>
+                  <h3 sx={{ mt: 0 }}>Sprachen & Notationen</h3>
                 </dt>
                 <dd>
                   JavaScript (<em>3</em>)
@@ -404,7 +404,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Methods</h3>
+                  <h3 sx={{ mt: 0 }}>Methoden</h3>
                 </dt>
                 <dd>
                   Scrum (<em>3</em>)
@@ -539,7 +539,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Other</h3>
+                  <h3 sx={{ mt: 0 }}>Sonstiges</h3>
                 </dt>
                 <dd>
                   Shopware (<em>2</em>)
@@ -569,33 +569,33 @@ export default function Home({
             >
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Strengths</h3>
+                  <h3 sx={{ mt: 0 }}>Stärken</h3>
                 </dt>
                 <dd>Mentoring</dd>
-                <dd>Knowledge transfer</dd>
+                <dd>Wissenstransfer</dd>
                 <dd>Organisation</dd>
                 <dd>Teamwork</dd>
-                <dd>Communication</dd>
-                <dd>Reliability</dd>
-                <dd>Honesty</dd>
-                <dd>Stress resistance</dd>
-                <dd>Attention to detail</dd>
-                <dd>Accessibility</dd>
-                <dd>Semantics</dd>
+                <dd>Kommunikation</dd>
+                <dd>Verlässlichkeit</dd>
+                <dd>Ehrlichkeit</dd>
+                <dd>Stressresistenz</dd>
+                <dd>Detailtreue</dd>
+                <dd>Barrierefreiheit</dd>
+                <dd>Semantik</dd>
                 <dd>User driven testing</dd>
                 <dd>User driven development</dd>
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Interests</h3>
+                  <h3 sx={{ mt: 0 }}>Interessen</h3>
                 </dt>
-                <dd>TV shows and movies</dd>
-                <dd>Motorcycles / Harley Davidson</dd>
-                <dd>Music and singing</dd>
-                <dd>Cross-country trekking</dd>
-                <dd>Nature traveling</dd>
+                <dd>Serien und Filme</dd>
+                <dd>Motorräder / Harley Davidson</dd>
+                <dd>Musik und Gesang</dd>
+                <dd>Cross-country Trekking</dd>
+                <dd>Reisen in der Natur</dd>
                 <dd>Smart Home</dd>
-                <dd>Web technologies</dd>
+                <dd>Web Technologien</dd>
               </dl>
             </div>
             <hr
@@ -608,7 +608,7 @@ export default function Home({
             />
           </div>
           <div sx={{ ...cvSectionStyle, pb: 0 }}>
-            <h2 sx={{ mt: 0 }}>Certificates</h2>
+            <h2 sx={{ mt: 0 }}>Zertifikate</h2>
             <ul>
               <li>ISTQB® Certified Tester - Foundation level</li>
               <li>ITIL® Foundation Certificate in IT Service Management</li>

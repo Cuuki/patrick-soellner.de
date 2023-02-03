@@ -37,19 +37,19 @@ export const ExperienceEntry = ({
         <h3 sx={{ mt: 0 }}>
           {!!jobTitle && (
             <>
-              <strong>{jobTitle}</strong> at
+              <strong>{jobTitle}</strong> bei
             </>
           )}{' '}
           {companyName}
         </h3>
         {!!description && (
           <div>
-            <h4 sx={{ mb: 1 }}>Description:</h4>
+            <h4 sx={{ mb: 1 }}>Beschreibung:</h4>
             <p sx={{ mt: 0 }}>{description}</p>
           </div>
         )}
         <div>
-          <h4 sx={{ mb: 1 }}>Areas:</h4>
+          <h4 sx={{ mb: 1 }}>Fachgebiete:</h4>
           <ul sx={{ mt: 0 }}>
             {areas.map((area, index) => (
               <li key={`area-${index}`}>{area}</li>
@@ -58,7 +58,7 @@ export const ExperienceEntry = ({
         </div>
         {technologies.length > 0 && (
           <div>
-            <h4 sx={{ mb: 1 }}>Technologies:</h4>
+            <h4 sx={{ mb: 1 }}>Technologien:</h4>
             <ul
               sx={{
                 mt: 0,
@@ -74,7 +74,7 @@ export const ExperienceEntry = ({
         )}
         {projects.length > 0 && (
           <div>
-            <h4 sx={{ mb: 1 }}>Public projects:</h4>
+            <h4 sx={{ mb: 1 }}>Öffentliche Projekte:</h4>
             <ul sx={{ mt: 0 }}>
               {projects.map((project, index) => (
                 <li key={`project-${index}`}>{project}</li>
