@@ -1,34 +1,11 @@
-// const address = {
-//   de: {
-//     items: ['Am Südhang 11', '53809 Ruppichteroth', 'Deutschland'],
-//   },
-//   en: {
-//     items: ['Am Südhang 11', '53809 Ruppichteroth', 'Germany'],
-//   },
-// } satisfies I18nRecord;
-
-// const profileData = {
-//   address,
-// } satisfies Record<string, I18nRecord>
+import type { I18nContent } from '../types/i18n';
 
 const profileData = {
   addressItems: ['Am Südhang 11', '53809 Ruppichteroth', 'Germany'],
-  phone: {
-    title: 'Phone:',
-    items: ['+49 151 68836502'],
-  },
-  mail: {
-    title: 'Mail:',
-    items: ['mail@patrick-soellner.de'],
-  },
-  birthday: {
-    title: 'Date of birth:',
-    items: ['18.11.1995'],
-  },
-  languages: {
-    title: 'Languages:',
-    items: ['German (Native)', 'English (Fluid)', 'French (Basics)'],
-  },
+  phoneItems: ['+49 151 68836502'],
+  mailItems: ['mail@patrick-soellner.de'],
+  birthdayItems: ['18.11.1995'],
+  languagesItems: ['German (Native)', 'English (Fluid)', 'French (Basics)'],
 };
 
 const profileDataConfig = {
@@ -36,23 +13,12 @@ const profileDataConfig = {
   de: {
     ...profileData,
     addressItems: ['Am Südhang 11', '53809 Ruppichteroth', 'Deutschland'],
-    phone: {
-      ...profileData.phone,
-      title: 'Mobile:',
-    },
-    mail: {
-      ...profileData.mail,
-      title: 'E-Mail:',
-    },
-    birthday: {
-      ...profileData.birthday,
-      title: 'Geboren am:',
-    },
-    languages: {
-      title: 'Sprachen:',
-      items: ['Deutsch (Muttersprache)', 'Englisch (Fließend)', 'Französisch (Grundkenntnisse)'],
-    },
+    languagesItems: [
+      'Deutsch (Muttersprache)',
+      'Englisch (Fließend)',
+      'Französisch (Grundkenntnisse)',
+    ],
   },
-};
+} satisfies I18nContent<typeof profileData>;
 
 export default profileDataConfig;

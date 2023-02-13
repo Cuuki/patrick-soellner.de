@@ -1,3 +1,5 @@
+import type { I18nContent } from '../types/i18n';
+
 const experienceInYears = new Date().getFullYear() - 2015;
 
 const metadata = {
@@ -14,20 +16,23 @@ const social = {
   linkedIn: 'https://www.linkedin.com/in/patrick-s%C3%B6llner-8360a1184/',
 };
 
+const page = {
+  metadata,
+  nickname,
+  social,
+};
+
 const pageConfig = {
   de: {
+    ...page,
     metadata: {
-      ...metadata,
+      ...page.metadata,
       description: `Ich bin leidenschaftlicher Webentwickler mit rund ${experienceInYears} Jahren Berufserfahrung, spezialisiert auf Frontend-Technologien. Mein persönlicher Schwerpunkt liegt im E-Commerce mit Vue/React und ich setze mich für Barrierefreiheit im Web ein. Kontinuierlich den Status quo zu hinterfragen, offen für neue Perspektiven zu sein und so viel wie möglich zu lernen, treibt mich täglich an.`,
     },
-    nickname,
-    social,
   },
   en: {
-    metadata,
-    nickname,
-    social,
+    ...page,
   },
-};
+} satisfies I18nContent<typeof page>;
 
 export default pageConfig;

@@ -4,6 +4,7 @@ import { darken } from '@theme-ui/color';
 import type { I18nRecord, Locale } from '../types/i18n';
 import pageConfig from '../data/page.config';
 import profileDataConfig from '../data/profile-data.config';
+import { withI18n } from '../utils/i18n';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
@@ -15,7 +16,6 @@ import { PageHeading } from '../components/PageHeading';
 import { PageFooter } from '../components/PageFooter';
 import { ProfileDataList } from '../components/ProfileDataList';
 import { DurationText } from '../components/DurationText';
-import { withI18n } from '../utils/i18n';
 
 const cvSectionStyle = {
   ml: 'auto',
@@ -36,10 +36,18 @@ const i18n = {
   de: {
     profileHeading: 'Profil',
     profileAddressTitle: 'Anschrift',
+    profilePhoneTitle: 'Mobil:',
+    profileMailTitle: 'E-Mail:',
+    profileBirthdayTitle: 'Geboren am:',
+    profileLanguagesTitle: 'Sprachen:',
   },
   en: {
     profileHeading: 'Profile',
     profileAddressTitle: 'Living in',
+    profilePhoneTitle: 'Phone:',
+    profileMailTitle: 'Mail:',
+    profileBirthdayTitle: 'Date of birth:',
+    profileLanguagesTitle: 'Languages:',
   },
 } satisfies I18nRecord;
 
@@ -61,14 +69,17 @@ export const getStaticProps: GetStaticProps<{
 
 export default function Home({
   locale,
-  pageConfig: { nickname, social, metadata },
+  pageConfig,
   profileDataConfig,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const t = withI18n(i18n, locale);
 
   return (
-    <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
-      <PageHead pageTitle="CV" metadata={metadata} />
+    <Layout
+      header={<Header siteTitle={pageConfig.metadata.title} maxWidth={1280} />}
+      maxWidth={1280}
+    >
+      <PageHead pageTitle="CV" metadata={pageConfig.metadata} />
 
       <div
         sx={{
@@ -80,7 +91,11 @@ export default function Home({
         <ProfilePortrait />
       </div>
       <article>
-        <PageHeading title={metadata.title} nickname={nickname} githubUrl={social.github} />
+        <PageHeading
+          title={pageConfig.metadata.title}
+          nickname={pageConfig.nickname}
+          githubUrl={pageConfig.social.github}
+        />
         <div
           sx={{
             mx: 'auto',
@@ -90,7 +105,7 @@ export default function Home({
             textAlign: ['left', 'justify'],
           }}
         >
-          <p>{metadata.description}</p>
+          <p>{pageConfig.metadata.description}</p>
         </div>
         <hr
           sx={{
@@ -116,20 +131,20 @@ export default function Home({
                 items={profileDataConfig.addressItems}
               />
               <ProfileDataListItem
-                title={profileDataConfig.phone.title}
-                items={profileDataConfig.phone.items}
+                title={t('profilePhoneTitle')}
+                items={profileDataConfig.phoneItems}
               />
               <ProfileDataListItem
-                title={profileDataConfig.mail.title}
-                items={profileDataConfig.mail.items}
+                title={t('profileMailTitle')}
+                items={profileDataConfig.mailItems}
               />
               <ProfileDataListItem
-                title={profileDataConfig.birthday.title}
-                items={profileDataConfig.birthday.items}
+                title={t('profileBirthdayTitle')}
+                items={profileDataConfig.birthdayItems}
               />
               <ProfileDataListItem
-                title={profileDataConfig.languages.title}
-                items={profileDataConfig.languages.items}
+                title={t('profileLanguagesTitle')}
+                items={profileDataConfig.languagesItems}
               />
             </ProfileDataList>
             <div
@@ -139,7 +154,7 @@ export default function Home({
                 },
               }}
             >
-              <SocialButtonList socialData={social} size={16} />
+              <SocialButtonList socialData={pageConfig.social} size={16} />
             </div>
             <hr
               sx={{
@@ -651,7 +666,7 @@ export default function Home({
             borderStyle: 'solid',
           }}
         />
-        <PageFooter socialData={social} />
+        <PageFooter socialData={pageConfig.social} />
       </article>
     </Layout>
   );
