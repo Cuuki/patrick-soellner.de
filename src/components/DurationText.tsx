@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
 import { Clock } from 'emotion-icons/fa-solid';
-import { calcDiffInYears, formatYearString } from '../utils/date';
+import { calcDiffInYears, formatDurationString } from '../utils/date';
 import { useRouter } from 'next/router';
 import type { Locale } from '../types/i18n';
 
@@ -43,11 +43,11 @@ export const DurationText = ({
           }}
         />{' '}
         {dateEndIsoString
-          ? formatYearString(
+          ? formatDurationString(
               calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)),
               locale,
             )
-          : formatYearString(calcDiffInYears(dateStartIsoString), locale)}
+          : formatDurationString(calcDiffInYears(dateStartIsoString), locale)}
       </span>
     </span>
   );

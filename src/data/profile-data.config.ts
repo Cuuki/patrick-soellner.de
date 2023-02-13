@@ -1,8 +1,18 @@
+// const address = {
+//   de: {
+//     items: ['Am Südhang 11', '53809 Ruppichteroth', 'Deutschland'],
+//   },
+//   en: {
+//     items: ['Am Südhang 11', '53809 Ruppichteroth', 'Germany'],
+//   },
+// } satisfies I18nRecord;
+
+// const profileData = {
+//   address,
+// } satisfies Record<string, I18nRecord>
+
 const profileData = {
-  address: {
-    title: 'Living in:',
-    items: ['Am Südhang 11', '53809 Ruppichteroth', 'Germany'],
-  },
+  addressItems: ['Am Südhang 11', '53809 Ruppichteroth', 'Germany'],
   phone: {
     title: 'Phone:',
     items: ['+49 151 68836502'],
@@ -25,9 +35,22 @@ const profileDataConfig = {
   en: profileData,
   de: {
     ...profileData,
-    address: {
-      title: 'Anschrift:',
-      items: ['Am Südhang 11', '53809 Ruppichteroth', 'Deutschland'],
+    addressItems: ['Am Südhang 11', '53809 Ruppichteroth', 'Deutschland'],
+    phone: {
+      ...profileData.phone,
+      title: 'Mobile:',
+    },
+    mail: {
+      ...profileData.mail,
+      title: 'E-Mail:',
+    },
+    birthday: {
+      ...profileData.birthday,
+      title: 'Geboren am:',
+    },
+    languages: {
+      title: 'Sprachen:',
+      items: ['Deutsch (Muttersprache)', 'Englisch (Fließend)', 'Französisch (Grundkenntnisse)'],
     },
   },
 };

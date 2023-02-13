@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { darken } from '@theme-ui/color';
+import type { I18nRecord, Locale } from '../types/i18n';
 import pageConfig from '../data/page.config';
 import profileDataConfig from '../data/profile-data.config';
 import { PageHead } from '../components/PageHead';
@@ -14,20 +15,7 @@ import { PageHeading } from '../components/PageHeading';
 import { PageFooter } from '../components/PageFooter';
 import { ProfileDataList } from '../components/ProfileDataList';
 import { DurationText } from '../components/DurationText';
-
-export const getStaticProps: GetStaticProps<{
-  pageConfig: typeof pageConfig['de' | 'en'];
-  profileDataConfig: typeof profileDataConfig['de' | 'en'];
-}> = async ({ locale = 'en' }) => {
-  const l = (locale as 'de' | 'en') || 'en';
-
-  return {
-    props: {
-      pageConfig: pageConfig[l],
-      profileDataConfig: profileDataConfig[l],
-    },
-  };
-};
+import { withI18n } from '../utils/i18n';
 
 const cvSectionStyle = {
   ml: 'auto',
@@ -44,10 +32,40 @@ const cvLinkStyle = {
   },
 };
 
+const i18n = {
+  de: {
+    profileHeading: 'Profil',
+    profileAddressTitle: 'Anschrift',
+  },
+  en: {
+    profileHeading: 'Profile',
+    profileAddressTitle: 'Living in',
+  },
+} satisfies I18nRecord;
+
+export const getStaticProps: GetStaticProps<{
+  locale: Locale;
+  pageConfig: typeof pageConfig[Locale];
+  profileDataConfig: typeof profileDataConfig[Locale];
+}> = async ({ locale = 'en' }) => {
+  const l = locale as Locale;
+
+  return {
+    props: {
+      locale: l,
+      pageConfig: pageConfig[l],
+      profileDataConfig: profileDataConfig[l],
+    },
+  };
+};
+
 export default function Home({
+  locale,
   pageConfig: { nickname, social, metadata },
   profileDataConfig,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const t = withI18n(i18n, locale);
+
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="CV" metadata={metadata} />
@@ -91,18 +109,27 @@ export default function Home({
           }}
         >
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
-            <h2 sx={{ mt: 0 }}>Profil</h2>
+            <h2 sx={{ mt: 0 }}>{t('profileHeading')}</h2>
             <ProfileDataList>
               <ProfileDataListItem
-                title={profileDataConfig.address.title}
-                items={profileDataConfig.address.items}
+                title={t('profileAddressTitle')}
+                items={profileDataConfig.addressItems}
               />
-              <ProfileDataListItem title="Mobil:" items={['+49 151 68836502']} />
-              <ProfileDataListItem title="E-Mail:" items={['patrick@newmonday.co']} />
-              <ProfileDataListItem title="Geboren am:" items={['18.11.1995']} />
               <ProfileDataListItem
-                title="Sprachen:"
-                items={['Deutsch (Muttersprache)', 'Englisch (Fließend)', 'Französisch (Grundkenntnisse)']}
+                title={profileDataConfig.phone.title}
+                items={profileDataConfig.phone.items}
+              />
+              <ProfileDataListItem
+                title={profileDataConfig.mail.title}
+                items={profileDataConfig.mail.items}
+              />
+              <ProfileDataListItem
+                title={profileDataConfig.birthday.title}
+                items={profileDataConfig.birthday.items}
+              />
+              <ProfileDataListItem
+                title={profileDataConfig.languages.title}
+                items={profileDataConfig.languages.items}
               />
             </ProfileDataList>
             <div
@@ -292,7 +319,9 @@ export default function Home({
               }
               companyName="DROW GmbH"
               jobTitle="Software Developer"
-              description={'Mehrere E-Commerce-Projekte, die mit Shopware & WooCommerce erstellt wurden.'}
+              description={
+                'Mehrere E-Commerce-Projekte, die mit Shopware & WooCommerce erstellt wurden.'
+              }
               areas={[
                 'Fullstack Webentwicklung (Fokus Frontend)',
                 'Technisches Projektmanagement',

@@ -1,17 +1,18 @@
 import type { Locale, I18nRecord } from '../types/i18n';
+import { withI18n } from './i18n';
 
 const i18n = {
   de: {
-    month: 'Monat',
-    months: 'Monate',
-    year: 'Jahr',
-    years: 'Jahre',
+    monthText: 'Monat',
+    monthsText: 'Monate',
+    yearText: 'Jahr',
+    yearsText: 'Jahre',
   },
   en: {
-    month: 'Month',
-    months: 'Months',
-    year: 'Year',
-    years: 'Years',
+    monthText: 'month',
+    monthsText: 'months',
+    yearText: 'year',
+    yearsText: 'years',
   },
 } satisfies I18nRecord;
 
@@ -24,25 +25,28 @@ export const calcDiffInYears = (
   return (endDateTimestamp - Date.parse(startDateString)) / yearInMs;
 };
 
-export const formatYearString = (year: number, locale: Locale = 'en'): string => {
-  if (year < 1) {
-    const monthString = Math.floor(year * 12).toLocaleString('en-GB', {
+export const formatDurationString = (years: number, locale: Locale = 'en'): string => {
+  const t = withI18n(i18n, locale);
+
+  if (years < 1) {
+    const yearsInFullMonths = Math.floor(years * 12);
+    const monthString = yearsInFullMonths.toLocaleString(locale, {
       style: 'decimal',
       minimumFractionDigits: 0,
       maximumFractionDigits: 1,
     });
 
-    const monthSuffix = monthString === '1' ? i18n[locale].month : i18n[locale].months;
+    const monthSuffix = monthString === '1' ? t('monthText') : t('monthsText');
 
     return `${monthString} ${monthSuffix}`;
   }
 
-  const yearString = year.toLocaleString('en-GB', {
+  const yearString = years.toLocaleString(locale, {
     style: 'decimal',
     minimumFractionDigits: 0,
     maximumFractionDigits: 1,
   });
-  const yearSuffix = yearString === '1' ? i18n[locale].year : i18n[locale].years;
+  const yearSuffix = yearString === '1' ? t('yearText') : t('yearsText');
 
   return `${yearString} ${yearSuffix}`;
 };

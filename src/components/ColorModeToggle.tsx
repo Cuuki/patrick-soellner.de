@@ -1,11 +1,11 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import { useRouter } from 'next/router';
 import { useColorMode } from 'theme-ui';
 import { darken } from '@theme-ui/color';
 import { Lightbulb as LightbulbOutline } from 'emotion-icons/fa-regular';
 import { Lightbulb as LightbulbFilled } from 'emotion-icons/fa-solid';
-import type { Locale, I18nRecord } from '../types/i18n';
+import type { I18nRecord } from '../types/i18n';
+import useI18n from '../utils/hooks/useI18n';
 
 type Mode = 'light' | 'dark';
 
@@ -19,8 +19,7 @@ const i18n = {
 } satisfies I18nRecord;
 
 export const ColorModeToggle = () => {
-  const router = useRouter();
-  const locale = router.locale as Locale;
+  const { t } = useI18n(i18n);
   const [colorMode, setColorMode] = useColorMode<Mode>();
 
   React.useEffect(() => {
@@ -48,8 +47,8 @@ export const ColorModeToggle = () => {
       onClick={() => {
         setColorMode((prevColorMode) => (prevColorMode === 'dark' ? 'light' : 'dark'));
       }}
-      title={i18n[locale].buttonText(colorMode)}
-      aria-label={i18n[locale].buttonText(colorMode)}
+      title={t('buttonText')(colorMode)}
+      aria-label={t('buttonText')(colorMode)}
     >
       {colorMode === 'dark' ? <LightbulbOutline size={30} /> : <LightbulbFilled size={30} />}
     </button>
