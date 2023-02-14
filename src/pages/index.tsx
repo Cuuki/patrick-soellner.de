@@ -35,19 +35,47 @@ const cvLinkStyle = {
 const i18n = {
   de: {
     profileHeading: 'Profil',
-    profileAddressTitle: 'Anschrift',
+    profileAddressTitle: 'Anschrift:',
     profilePhoneTitle: 'Mobil:',
     profileMailTitle: 'E-Mail:',
     profileBirthdayTitle: 'Geboren am:',
     profileLanguagesTitle: 'Sprachen:',
+    experienceHeading: 'Erfahrung',
+    trainingHeading: 'Ausbildung',
+    skillsHeading: 'Fähigkeiten und Eigenschaften',
+    skillsLanguagesTitle: 'Sprachen & Notationen',
+    skillsMethodsTitle: 'Methoden',
+    skillsToolsTitle: 'Tools',
+    skillsFrameworksTitle: 'Frameworks / Libraries',
+    skillsOtherTitle: 'Sonstiges',
+    skillsStrengthsTitle: 'Stärken',
+    skillsInterestsTitle: 'Interessen',
+    skillsRatingBasicText: 'Grundwissen',
+    skillsRatingExtendedText: 'Vertiefte Kenntnisse',
+    skillsRatingExpertText: 'Fachkenntnisse',
+    certificatesHeading: 'Zertifikate',
   },
   en: {
     profileHeading: 'Profile',
-    profileAddressTitle: 'Living in',
+    profileAddressTitle: 'Living in:',
     profilePhoneTitle: 'Phone:',
     profileMailTitle: 'Mail:',
     profileBirthdayTitle: 'Date of birth:',
     profileLanguagesTitle: 'Languages:',
+    experienceHeading: 'Experience',
+    trainingHeading: 'Training',
+    skillsHeading: 'Skills and qualities',
+    skillsLanguagesTitle: 'Languages',
+    skillsMethodsTitle: 'Methods',
+    skillsToolsTitle: 'Tools',
+    skillsFrameworksTitle: 'Frameworks / Libraries',
+    skillsOtherTitle: 'Other',
+    skillsStrengthsTitle: 'Strengths',
+    skillsInterestsTitle: 'Interests',
+    skillsRatingBasicText: 'Basic knowledge',
+    skillsRatingExtendedText: 'In-depth knowledge',
+    skillsRatingExpertText: 'Specialized knowledge',
+    certificatesHeading: 'Certificates',
   },
 } satisfies I18nRecord;
 
@@ -166,7 +194,7 @@ export default function Home({
             />
           </aside>
           <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Erfahrung</h2>
+            <h2 sx={{ mt: 0 }}>{t('experienceHeading')}</h2>
             <ExperienceEntry
               duration={
                 <DurationText dateStartIsoString="2022-06-01" dateEndIsoString="2022-12-13">
@@ -364,7 +392,7 @@ export default function Home({
             />
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Ausbildung</h2>
+            <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
             <ExperienceEntry
               duration="09/2012 - 08/2015"
               companyName="Staatliche Berufsschule Erlangen, Deutschland"
@@ -400,8 +428,11 @@ export default function Home({
             />
           </div>
           <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>Fähigkeiten und Eigenschaften</h2>
-            <em>(1) - Grundwissen, (2) - Vertiefte Kenntnisse, (3) - Fachkenntnisse</em>
+            <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
+            <em>
+              (1) - {t('skillsRatingBasicText')}, (2) - {t('skillsRatingExtendedText')}, (3) -{' '}
+              {t('skillsRatingExpertText')}
+            </em>
             <div
               sx={{
                 'display': 'grid',
@@ -413,7 +444,7 @@ export default function Home({
             >
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Sprachen & Notationen</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsLanguagesTitle')}</h3>
                 </dt>
                 <dd>
                   JavaScript (<em>3</em>)
@@ -448,7 +479,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Methoden</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>
                 </dt>
                 <dd>
                   Scrum (<em>3</em>)
@@ -495,7 +526,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Tools</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>
                 </dt>
                 <dd>
                   Git (<em>3</em>)
@@ -527,7 +558,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Frameworks / Libraries</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>
                 </dt>
                 <dd>
                   React (<em>3</em>)
@@ -583,7 +614,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Sonstiges</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsOtherTitle')}</h3>
                 </dt>
                 <dd>
                   Shopware (<em>2</em>)
@@ -613,7 +644,7 @@ export default function Home({
             >
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Stärken</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsStrengthsTitle')}</h3>
                 </dt>
                 <dd>Mentoring</dd>
                 <dd>Wissenstransfer</dd>
@@ -631,7 +662,7 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>Interessen</h3>
+                  <h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>
                 </dt>
                 <dd>Serien und Filme</dd>
                 <dd>Motorräder / Harley Davidson</dd>
@@ -652,7 +683,7 @@ export default function Home({
             />
           </div>
           <div sx={{ ...cvSectionStyle, pb: 0 }}>
-            <h2 sx={{ mt: 0 }}>Zertifikate</h2>
+            <h2 sx={{ mt: 0 }}>{t('certificatesHeading')}</h2>
             <ul>
               <li>ISTQB® Certified Tester - Foundation level</li>
               <li>ITIL® Foundation Certificate in IT Service Management</li>
