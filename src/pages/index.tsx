@@ -1,11 +1,12 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { I18nRecord, Locale } from '../types/i18n';
-import { darken } from '@theme-ui/color';
 import pageDataI18n from '../data/page.config';
 import profileDataI18n from '../data/profile.config';
 import experienceDataI18n from '../data/experience.config';
+import trainingDataI18n from '../data/training.config';
 import { withI18n } from '../utils/i18n';
+import { markdownLinkToHtml } from '../utils/markdown';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
@@ -42,6 +43,7 @@ const i18n = {
     profileBirthdayTitle: 'Geboren am:',
     profileLanguagesTitle: 'Sprachen:',
     experienceHeading: 'Erfahrung',
+    experienceDurationNowText: 'jetzt',
     trainingHeading: 'Ausbildung',
     skillsHeading: 'Fähigkeiten und Eigenschaften',
     skillsLanguagesTitle: 'Sprachen & Notationen',
@@ -64,6 +66,7 @@ const i18n = {
     profileBirthdayTitle: 'Date of birth:',
     profileLanguagesTitle: 'Languages:',
     experienceHeading: 'Experience',
+    experienceDurationNowText: 'now',
     trainingHeading: 'Training',
     skillsHeading: 'Skills and qualities',
     skillsLanguagesTitle: 'Languages',
@@ -85,6 +88,7 @@ export const getStaticProps: GetStaticProps<{
   pageData: typeof pageDataI18n[Locale];
   profileData: typeof profileDataI18n[Locale];
   experienceData: typeof experienceDataI18n[Locale];
+  trainingData: typeof trainingDataI18n[Locale];
 }> = async ({ locale = 'en' }) => {
   const l = locale as Locale;
 
@@ -94,6 +98,7 @@ export const getStaticProps: GetStaticProps<{
       pageData: pageDataI18n[l],
       profileData: profileDataI18n[l],
       experienceData: experienceDataI18n[l],
+      trainingData: trainingDataI18n[l],
     },
   };
 };
@@ -103,6 +108,7 @@ export default function Home({
   pageData,
   profileData,
   experienceData,
+  trainingData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const t = withI18n(i18n, locale);
 
@@ -202,7 +208,7 @@ export default function Home({
                     >
                       <span>
                         {experienceEntry.duration.startDisplay} -{' '}
-                        {experienceEntry.duration.endDisplay}
+                        {experienceEntry.duration.endDisplay || t('experienceDurationNowText')}
                       </span>
                     </DurationText>
                   }
@@ -230,31 +236,27 @@ export default function Home({
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
-            <ExperienceEntry
-              duration="09/2012 - 08/2015"
-              companyName="Staatliche Berufsschule Erlangen, Deutschland"
-              areas={[
-                <>
-                  Fachinformatiker für Anwendungsentwicklung (
-                  <a
-                    href="https://www.ihk-nuernberg.de/"
-                    target="_blank"
-                    rel="noreferrer"
-                    sx={{
-                      'color': 'text',
-                      'textDecoration': 'none',
-                      '&:hover': {
-                        color: darken('text', 0.1),
-                      },
-                    }}
-                  >
-                    IHK
-                  </a>{' '}
-                  zertifizierter Abschluss)
-                </>,
-              ]}
-              hasSeparator={false}
-            />
+            {trainingData.map((training, index) => {
+              return (
+                <ExperienceEntry
+                  key={index}
+                  duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
+                  companyName={training.school}
+                  areas={training.focus.map((focus, index) => {
+                    return (
+                      <div
+                        key={index}
+                        sx={{ '> a': cvLinkStyle }}
+                        dangerouslySetInnerHTML={{
+                          __html: markdownLinkToHtml(focus),
+                        }}
+                      />
+                    );
+                  })}
+                  hasSeparator={false}
+                />
+              );
+            })}
             <hr
               sx={{
                 mt: 4,
