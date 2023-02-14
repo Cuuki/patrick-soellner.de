@@ -1,8 +1,9 @@
 /** @jsxImportSource theme-ui */
+import type { Locale } from '../types/i18n';
 import { SocialButton } from './SocialButton';
-import pageConfig from '../data/page.config';
+import pageDataI18n from '../data/page.config';
 
-type SocialButtonListProps = { socialData: typeof pageConfig['en' | 'de']['social']; size?: number };
+type SocialButtonListProps = { socialData: typeof pageDataI18n[Locale]['social']; size?: number };
 
 export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProps) => {
   return (

@@ -1,9 +1,10 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { darken } from '@theme-ui/color';
 import type { I18nRecord, Locale } from '../types/i18n';
-import pageConfig from '../data/page.config';
-import profileDataConfig from '../data/profile-data.config';
+import { darken } from '@theme-ui/color';
+import pageDataI18n from '../data/page.config';
+import profileDataI18n from '../data/profile.config';
+import experienceDataI18n from '../data/experience.config';
 import { withI18n } from '../utils/i18n';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
@@ -81,33 +82,33 @@ const i18n = {
 
 export const getStaticProps: GetStaticProps<{
   locale: Locale;
-  pageConfig: typeof pageConfig[Locale];
-  profileDataConfig: typeof profileDataConfig[Locale];
+  pageData: typeof pageDataI18n[Locale];
+  profileData: typeof profileDataI18n[Locale];
+  experienceData: typeof experienceDataI18n[Locale];
 }> = async ({ locale = 'en' }) => {
   const l = locale as Locale;
 
   return {
     props: {
       locale: l,
-      pageConfig: pageConfig[l],
-      profileDataConfig: profileDataConfig[l],
+      pageData: pageDataI18n[l],
+      profileData: profileDataI18n[l],
+      experienceData: experienceDataI18n[l],
     },
   };
 };
 
 export default function Home({
   locale,
-  pageConfig,
-  profileDataConfig,
+  pageData,
+  profileData,
+  experienceData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const t = withI18n(i18n, locale);
 
   return (
-    <Layout
-      header={<Header siteTitle={pageConfig.metadata.title} maxWidth={1280} />}
-      maxWidth={1280}
-    >
-      <PageHead pageTitle="CV" metadata={pageConfig.metadata} />
+    <Layout header={<Header siteTitle={pageData.metadata.title} maxWidth={1280} />} maxWidth={1280}>
+      <PageHead pageTitle="CV" metadata={pageData.metadata} />
 
       <div
         sx={{
@@ -120,9 +121,9 @@ export default function Home({
       </div>
       <article>
         <PageHeading
-          title={pageConfig.metadata.title}
-          nickname={pageConfig.nickname}
-          githubUrl={pageConfig.social.github}
+          title={pageData.metadata.title}
+          nickname={pageData.nickname}
+          githubUrl={pageData.social.github}
         />
         <div
           sx={{
@@ -133,7 +134,7 @@ export default function Home({
             textAlign: ['left', 'justify'],
           }}
         >
-          <p>{pageConfig.metadata.description}</p>
+          <p>{pageData.metadata.description}</p>
         </div>
         <hr
           sx={{
@@ -156,23 +157,17 @@ export default function Home({
             <ProfileDataList>
               <ProfileDataListItem
                 title={t('profileAddressTitle')}
-                items={profileDataConfig.addressItems}
+                items={profileData.addressItems}
               />
-              <ProfileDataListItem
-                title={t('profilePhoneTitle')}
-                items={profileDataConfig.phoneItems}
-              />
-              <ProfileDataListItem
-                title={t('profileMailTitle')}
-                items={profileDataConfig.mailItems}
-              />
+              <ProfileDataListItem title={t('profilePhoneTitle')} items={profileData.phoneItems} />
+              <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
               <ProfileDataListItem
                 title={t('profileBirthdayTitle')}
-                items={profileDataConfig.birthdayItems}
+                items={profileData.birthdayItems}
               />
               <ProfileDataListItem
                 title={t('profileLanguagesTitle')}
-                items={profileDataConfig.languagesItems}
+                items={profileData.languagesItems}
               />
             </ProfileDataList>
             <div
@@ -182,7 +177,7 @@ export default function Home({
                 },
               }}
             >
-              <SocialButtonList socialData={pageConfig.social} size={16} />
+              <SocialButtonList socialData={pageData.social} size={16} />
             </div>
             <hr
               sx={{
@@ -195,201 +190,43 @@ export default function Home({
           </aside>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('experienceHeading')}</h2>
-            <ExperienceEntry
-              duration={
-                <DurationText dateStartIsoString="2022-06-01" dateEndIsoString="2022-12-13">
-                  06/2022 - 12/2022
-                </DurationText>
-              }
-              companyName="E. Breuninger GmbH & Co."
-              jobTitle="Software Developer"
-              description="Ablösung der bestehenden Content & Campaign Architektur innerhalb des Breuninger Fashion E-Commerce Produktes. Entwicklung von React-basierten UI-Erweiterungen für das neue Headless-Content-Management-System."
-              areas={[
-                'Entwicklung von Frontend-Anwendungen',
-                'Erstellung eines Build-Systems auf Basis von Vite und Node zur Generierung von Self-Contained Components',
-                'Entwicklung von Kampagnenseiten und Content Modulen, die mit Web Components, Storybook und Go Templates erstellt wurden',
-                'Unterstützung bei der kontinuierlichen Verbesserung des Breuninger Design Systems',
-                'E2E-Testautomatisierung für Content Module',
-              ]}
-              technologies={[
-                'TypeScript',
-                'Web Components',
-                'Tailwind',
-                'Storybook',
-                'Go templates',
-                'Hugo',
-                'Self-contained systems',
-                'Node',
-                'Vite',
-                'Testcafe',
-                'Playwright',
-                'React',
-              ]}
-            />
-            <ExperienceEntry
-              duration={
-                <DurationText dateStartIsoString="2021-01-01" dateEndIsoString="2022-05-31">
-                  01/2021 - 05/2022
-                </DurationText>
-              }
-              companyName="i22 Digitalagentur GmbH"
-              jobTitle="Senior Frontend Developer"
-              description={
-                'Entwicklung vieler Projekte innerhalb der Telekom E-Commerce Multi-Client Plattform im i22 Shop-Produktteam.'
-              }
-              areas={[
-                'Entwicklung von Frontend-Anwendungen',
-                'E2E-Testautomatisierung als Service',
-                'Unterstützung im Tech-Recruiting',
-                'Mentoring und Training von Junior Entwicklern',
-                'Unternehmensweite Tech Talks über Frontend und Barrierefreiheit',
-                'Unternehmensweite Initiative "Accessibility working group"',
-              ]}
-              technologies={[
-                'Vue',
-                'Nuxt',
-                'TypeScript',
-                'CSS3',
-                'Sass',
-                'Clean architecture',
-                'Cypress',
-              ]}
-              projects={[
-                <a
-                  href="https://smarthome.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                  key={0}
-                >
-                  smarthome.de
-                </a>,
-                <a
-                  href="https://shop.telekom.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                  key={1}
-                >
-                  shop.telekom.de
-                </a>,
-              ]}
-            />
-            <ExperienceEntry
-              duration={
-                <DurationText dateStartIsoString="2020-07-01" dateEndIsoString="2020-12-31">
-                  07/2020 - 12/2020
-                </DurationText>
-              }
-              companyName="ISO Public Services GmbH"
-              jobTitle="Frontend Developer"
-              description={
-                'Entwicklung eines internen Tools zur vereinfachten Erstellung von Mitarbeiterprofilen. In-house Produktentwicklung.'
-              }
-              areas={[
-                'Entwicklung von Frontend-Anwendungen',
-                'Leadership, technische Planung und Koordination des Frontends für ein neues intern entwickeltes Produkt',
-              ]}
-              technologies={[
-                'Angular',
-                'Stencil',
-                'TypeScript',
-                'CSS3',
-                'Sass',
-                'Test-driven development',
-              ]}
-            />
-            <ExperienceEntry
-              duration={
-                <DurationText dateStartIsoString="2018-03-01" dateEndIsoString="2020-06-30">
-                  03/2018 - 06/2020
-                </DurationText>
-              }
-              companyName="LottaLeben Media GmbH"
-              jobTitle="Software Developer"
-              description={
-                'Mehrere Projekte in Tourismus & Medizin sowie die Entwicklung eines WordPress-basierten Website-Builders als Produkt.'
-              }
-              areas={[
-                'Fullstack Webentwicklung (Fokus Frontend)',
-                'Koordination und Kommunikation mit dem brasilianischen Entwicklungsteam',
-              ]}
-              technologies={['React', 'JavaScript', 'jQuery', 'CSS3', 'Sass', 'Wordpress']}
-              projects={[
-                <a
-                  href="https://www.lindau.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                  key={0}
-                >
-                  lindau.de
-                </a>,
-                <a
-                  href="https://www.lindau.de/aroundme"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                  key={1}
-                >
-                  lindau.de/aroundme
-                </a>,
-                <a
-                  href="https://www.insel-sylt.de"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                  key={2}
-                >
-                  insel-sylt.de
-                </a>,
-                <a
-                  href="https://www.canvayo.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  sx={cvLinkStyle}
-                  key={3}
-                >
-                  canvayo.com
-                </a>,
-              ]}
-            />
-            <ExperienceEntry
-              duration={
-                <DurationText dateStartIsoString="2015-09-01" dateEndIsoString="2018-02-28">
-                  09/2015 - 02/2018
-                </DurationText>
-              }
-              companyName="DROW GmbH"
-              jobTitle="Software Developer"
-              description={
-                'Mehrere E-Commerce-Projekte, die mit Shopware & WooCommerce erstellt wurden.'
-              }
-              areas={[
-                'Fullstack Webentwicklung (Fokus Frontend)',
-                'Technisches Projektmanagement',
-                'Technische Kundenbetreuung',
-              ]}
-              technologies={[
-                'HTML5',
-                'JavaScript',
-                'jQuery',
-                'CSS3',
-                'Sass',
-                'Wordpress',
-                'Shopware',
-              ]}
-            />
-            <ExperienceEntry
-              duration={
-                <DurationText dateStartIsoString="2012-09-01" dateEndIsoString="2015-08-31">
-                  09/2012 - 08/2015
-                </DurationText>
-              }
-              companyName="Publicis Groupe S.A."
-              jobTitle="Ausbildung zum Fachinformatiker für Anwendungsentwicklung"
-              areas={['Webentwicklung']}
-            />
+
+            {experienceData.map((experienceEntry, index) => {
+              return (
+                <ExperienceEntry
+                  key={index}
+                  duration={
+                    <DurationText
+                      dateStartIsoString={experienceEntry.duration.startDate}
+                      dateEndIsoString={experienceEntry.duration.endDate}
+                    >
+                      <span>
+                        {experienceEntry.duration.startDisplay} -{' '}
+                        {experienceEntry.duration.endDisplay}
+                      </span>
+                    </DurationText>
+                  }
+                  companyName={experienceEntry.company}
+                  jobTitle={experienceEntry.jobTitle}
+                  description={experienceEntry.description}
+                  areas={experienceEntry.areas}
+                  technologies={experienceEntry.technologies}
+                  projects={(experienceEntry.projects || []).map((project, index) => {
+                    return (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        sx={cvLinkStyle}
+                        key={index}
+                      >
+                        {project.text}
+                      </a>
+                    );
+                  })}
+                />
+              );
+            })}
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
@@ -697,7 +534,7 @@ export default function Home({
             borderStyle: 'solid',
           }}
         />
-        <PageFooter socialData={pageConfig.social} />
+        <PageFooter socialData={pageData.social} />
       </article>
     </Layout>
   );

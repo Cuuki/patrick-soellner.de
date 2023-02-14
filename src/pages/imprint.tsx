@@ -1,15 +1,16 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { Locale } from '../types/i18n';
 import { darken } from '@theme-ui/color';
-import pageConfig from '../data/page.config';
+import pageDataI18n from '../data/page.config';
 import { Layout } from '../components/Layout';
 import { PageHead } from '../components/PageHead';
 import { Header } from '../components/Header';
 
 export const getStaticProps: GetStaticProps<{
-  pageConfig: typeof pageConfig['de' | 'en'];
+  pageData: typeof pageDataI18n[Locale];
 }> = async ({ locale = 'en' }) => ({
-  props: { pageConfig: pageConfig[locale as 'de' | 'en'] || pageConfig['en'] },
+  props: { pageData: pageDataI18n[locale as Locale] },
 });
 
 const linkStyle = {
@@ -21,7 +22,7 @@ const linkStyle = {
 };
 
 export default function ImprintPage({
-  pageConfig: { metadata },
+  pageData: { metadata },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>

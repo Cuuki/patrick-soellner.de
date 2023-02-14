@@ -1,6 +1,6 @@
-import type { I18nContent } from '../types/i18n';
+import type { I18nData } from '../types/i18n';
 
-const profileData = {
+const profile = {
   addressItems: ['Am Südhang 11', '53809 Ruppichteroth', 'Germany'],
   phoneItems: ['+49 151 68836502'],
   mailItems: ['mail@patrick-soellner.de'],
@@ -8,10 +8,10 @@ const profileData = {
   languagesItems: ['German (Native)', 'English (Fluid)', 'French (Basics)'],
 };
 
-const profileDataConfig = {
-  en: profileData,
+const profileDataI18n = {
+  en: profile,
   de: {
-    ...profileData,
+    ...profile,
     addressItems: ['Am Südhang 11', '53809 Ruppichteroth', 'Deutschland'],
     languagesItems: [
       'Deutsch (Muttersprache)',
@@ -19,6 +19,6 @@ const profileDataConfig = {
       'Französisch (Grundkenntnisse)',
     ],
   },
-} satisfies I18nContent<typeof profileData>;
+} satisfies I18nData<typeof profile>;
 
-export default profileDataConfig;
+export default profileDataI18n;

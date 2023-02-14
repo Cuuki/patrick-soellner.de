@@ -1,11 +1,12 @@
+import type { Locale } from '../types/i18n';
 import NextHead from 'next/head';
 import React from 'react';
-import pageConfig from '../data/page.config';
+import pageDataI18n from '../data/page.config';
 import { useThemeUI } from 'theme-ui';
 
 type HeadProps = {
   pageTitle: string;
-  metadata: typeof pageConfig['en' | 'de']['metadata'];
+  metadata: typeof pageDataI18n[Locale]['metadata'];
 };
 
 export const PageHead = ({ pageTitle, metadata }: HeadProps) => {

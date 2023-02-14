@@ -16,9 +16,16 @@ const i18n = {
   },
 } satisfies I18nRecord;
 
+const getEndOfMonthTimestamp = () => {
+  const today = new Date();
+  const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+  return endOfMonth.getTime();
+};
+
 export const calcDiffInYears = (
   startDateString: string,
-  endDateTimestamp: number = Date.now(),
+  endDateTimestamp: number = getEndOfMonthTimestamp(),
 ): number => {
   const yearInMs = 1000 * 60 * 60 * 24 * 365;
 
@@ -29,7 +36,10 @@ export const formatDurationString = (years: number, locale: Locale = 'en'): stri
   const t = withI18n(i18n, locale);
 
   if (years < 1) {
-    const yearsInFullMonths = Math.floor(years * 12);
+    const yearsInMonths = years * 12;
+    const yearsInFullMonths =
+      yearsInMonths < 1 ? Math.ceil(yearsInMonths) : Math.floor(yearsInMonths);
+
     const monthString = yearsInFullMonths.toLocaleString(locale, {
       style: 'decimal',
       minimumFractionDigits: 0,
