@@ -37,8 +37,6 @@ const cvLinkStyle = {
 const i18n = {
   de: {
     profileHeading: 'Profil',
-    profileAddressTitle: 'Anschrift:',
-    profilePhoneTitle: 'Mobil:',
     profileMailTitle: 'E-Mail:',
     profileBirthdayTitle: 'Geboren am:',
     profileLanguagesTitle: 'Sprachen:',
@@ -60,8 +58,6 @@ const i18n = {
   },
   en: {
     profileHeading: 'Profile',
-    profileAddressTitle: 'Living in:',
-    profilePhoneTitle: 'Phone:',
     profileMailTitle: 'Mail:',
     profileBirthdayTitle: 'Date of birth:',
     profileLanguagesTitle: 'Languages:',
@@ -161,11 +157,6 @@ export default function Home({
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
             <h2 sx={{ mt: 0 }}>{t('profileHeading')}</h2>
             <ProfileDataList>
-              <ProfileDataListItem
-                title={t('profileAddressTitle')}
-                items={profileData.addressItems}
-              />
-              <ProfileDataListItem title={t('profilePhoneTitle')} items={profileData.phoneItems} />
               <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
               <ProfileDataListItem
                 title={t('profileBirthdayTitle')}
@@ -292,13 +283,7 @@ export default function Home({
                   TypeScript (<em>3</em>)
                 </dd>
                 <dd>
-                  PHP (<em>2</em>)
-                </dd>
-                <dd>
                   Go (<em>1</em>)
-                </dd>
-                <dd>
-                  Java (<em>1</em>)
                 </dd>
                 <dd>
                   CSS3 (<em>3</em>)
@@ -371,19 +356,19 @@ export default function Home({
                   Git (<em>3</em>)
                 </dd>
                 <dd>
-                  npm / yarn / pnpm (<em>2</em>)
+                  npm (<em>3</em>)
+                </dd>
+                <dd>
+                  yarn / pnpm (<em>2</em>)
                 </dd>
                 <dd>
                   Vite (<em>3</em>)
                 </dd>
                 <dd>
-                  Webpack (<em>2</em>)
-                </dd>
-                <dd>
                   Docker (<em>1</em>)
                 </dd>
                 <dd>
-                  Travis CI (<em>1</em>)
+                  AWS (<em>1</em>)
                 </dd>
                 <dd>
                   Github Actions (<em>1</em>)
@@ -406,10 +391,7 @@ export default function Home({
                   Next.js (<em>2</em>)
                 </dd>
                 <dd>
-                  Vue 2 (<em>3</em>)
-                </dd>
-                <dd>
-                  Vue 3 (<em>2</em>)
+                  Vue.js (<em>3</em>)
                 </dd>
                 <dd>
                   Nuxt (<em>2</em>)
@@ -418,10 +400,7 @@ export default function Home({
                   Redux / Vuex (<em>3</em>)
                 </dd>
                 <dd>
-                  Angular 2 (<em>2</em>)
-                </dd>
-                <dd>
-                  LIT (<em>2</em>)
+                  Lit / Web Components (<em>2</em>)
                 </dd>
                 <dd>
                   Apollo Client (<em>1</em>)
@@ -436,7 +415,7 @@ export default function Home({
                   Testing Library (<em>3</em>)
                 </dd>
                 <dd>
-                  Cypress (<em>2</em>)
+                  Cypress (<em>3</em>)
                 </dd>
                 <dd>
                   Testcafe (<em>2</em>)
@@ -462,13 +441,13 @@ export default function Home({
                   WooCommerce (<em>2</em>)
                 </dd>
                 <dd>
-                  Jira (<em>2</em>)
+                  Jira (<em>3</em>)
                 </dd>
                 <dd>
                   Confluence (<em>3</em>)
                 </dd>
                 <dd>
-                  Figma (<em>1</em>)
+                  Figma (<em>2</em>)
                 </dd>
               </dl>
             </div>
