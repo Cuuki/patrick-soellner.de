@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { I18nRecord, Locale } from '../types/i18n';
+import { useThemeUI } from 'theme-ui';
 import pageDataI18n from '../data/page.config';
 import profileDataI18n from '../data/profile.config';
 import experienceDataI18n from '../data/experience.config';
@@ -36,6 +37,7 @@ const cvLinkStyle = {
 
 const i18n = {
   de: {
+    topSkillsHeading: 'Tech Stack',
     profileHeading: 'Profil',
     profileMailTitle: 'E-Mail:',
     profileBirthdayTitle: 'Geboren am:',
@@ -45,18 +47,18 @@ const i18n = {
     trainingHeading: 'Ausbildung',
     skillsHeading: 'Fähigkeiten und Eigenschaften',
     skillsLanguagesTitle: 'Sprachen & Notationen',
-    skillsMethodsTitle: 'Methoden',
+    skillsMethodsTitle: 'Methoden / Vorgehensmodelle',
     skillsToolsTitle: 'Tools',
     skillsFrameworksTitle: 'Frameworks / Libraries',
-    skillsOtherTitle: 'Sonstiges',
     skillsStrengthsTitle: 'Stärken',
     skillsInterestsTitle: 'Interessen',
     skillsRatingBasicText: 'Grundwissen',
     skillsRatingExtendedText: 'Vertiefte Kenntnisse',
-    skillsRatingExpertText: 'Fachkenntnisse',
+    skillsRatingExpertText: 'Spezialwissen',
     certificatesHeading: 'Zertifikate',
   },
   en: {
+    topSkillsHeading: 'Tech Stack',
     profileHeading: 'Profile',
     profileMailTitle: 'Mail:',
     profileBirthdayTitle: 'Date of birth:',
@@ -66,10 +68,9 @@ const i18n = {
     trainingHeading: 'Training',
     skillsHeading: 'Skills and qualities',
     skillsLanguagesTitle: 'Languages',
-    skillsMethodsTitle: 'Methods',
+    skillsMethodsTitle: 'Methods / Strategies',
     skillsToolsTitle: 'Tools',
     skillsFrameworksTitle: 'Frameworks / Libraries',
-    skillsOtherTitle: 'Other',
     skillsStrengthsTitle: 'Strengths',
     skillsInterestsTitle: 'Interests',
     skillsRatingBasicText: 'Basic knowledge',
@@ -106,6 +107,7 @@ export default function Home({
   experienceData,
   trainingData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { theme } = useThemeUI();
   const t = withI18n(i18n, locale);
 
   return (
@@ -155,7 +157,67 @@ export default function Home({
           }}
         >
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
-            <h2 sx={{ mt: 0 }}>{t('profileHeading')}</h2>
+            <h2 sx={{ mt: 0 }}>{t('topSkillsHeading')}</h2>
+            {/* TODO: extract into component with skills from data (with topSkill=true) and auto grouping */}
+            <progress
+              id="progressBarExpert"
+              max={3}
+              value={3}
+              sx={{ width: '100%', accentColor: theme.colors?.primary }}
+            >
+              {t('skillsRatingExpertText')}
+            </progress>
+            <ul aria-describedby="progressBarExpert">
+              <li>React</li>
+              <li>Vue.js</li>
+              <li>TypeScript</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Tailwind CSS</li>
+              <li>Sass</li>
+              <li>Storybook</li>
+              <li>Jest</li>
+              <li>Testing Library</li>
+            </ul>
+
+            <progress
+              id="progressBarExtended"
+              max={3}
+              value={2}
+              sx={{ width: '100%', accentColor: theme.colors?.primary }}
+            >
+              {t('skillsRatingExtendedText')}
+            </progress>
+            <ul aria-describedby="progressBarExtended">
+              <li>Next.js</li>
+              <li>Redux</li>
+              <li>Styled Components</li>
+              <li>Cypress</li>
+            </ul>
+
+            <progress
+              id="progressBarBasic"
+              max={3}
+              value={1}
+              sx={{ width: '100%', accentColor: theme.colors?.primary }}
+            >
+              {t('skillsRatingBasicText')}
+            </progress>
+            <ul aria-describedby="progressBarBasic">
+              <li>Playwright</li>
+              <li>Docker</li>
+            </ul>
+
+            <hr
+              sx={{
+                mt: 4,
+                borderWidth: '1px',
+                borderColor: 'primary',
+                borderStyle: 'solid',
+              }}
+            />
+            <h2 sx={{ mt: 4 }}>{t('profileHeading')}</h2>
             <ProfileDataList>
               <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
               <ProfileDataListItem
@@ -258,6 +320,7 @@ export default function Home({
             />
           </div>
           <div sx={cvSectionStyle}>
+            {/* TODO: extract into component with skills from data and auto grouping */}
             <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
             <em>
               (1) - {t('skillsRatingBasicText')}, (2) - {t('skillsRatingExtendedText')}, (3) -{' '}
@@ -303,95 +366,19 @@ export default function Home({
               </dl>
               <dl>
                 <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>
-                </dt>
-                <dd>
-                  Scrum (<em>3</em>)
-                </dd>
-                <dd>
-                  Kanban (<em>2</em>)
-                </dd>
-                <dd>
-                  Refactoring (<em>3</em>)
-                </dd>
-                <dd>
-                  Code Reviews (<em>3</em>)
-                </dd>
-                <dd>
-                  Pair Programming (<em>3</em>)
-                </dd>
-                <dd>
-                  Mob Programming (<em>3</em>)
-                </dd>
-                <dd>
-                  Test-driven Development (<em>2</em>)
-                </dd>
-                <dd>
-                  Clean Code (<em>2</em>)
-                </dd>
-                <dd>
-                  SOLID (<em>1</em>)
-                </dd>
-                <dd>
-                  Object Oriented Programming (<em>2</em>)
-                </dd>
-                <dd>
-                  Functional Programming (<em>2</em>)
-                </dd>
-                <dd>
-                  Clean Architecture (<em>2</em>)
-                </dd>
-                <dd>
-                  Self-contained Systems (<em>2</em>)
-                </dd>
-                <dd>
-                  Continuous Integration (<em>2</em>)
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>
-                </dt>
-                <dd>
-                  Git (<em>3</em>)
-                </dd>
-                <dd>
-                  npm (<em>3</em>)
-                </dd>
-                <dd>
-                  yarn / pnpm (<em>2</em>)
-                </dd>
-                <dd>
-                  Vite (<em>3</em>)
-                </dd>
-                <dd>
-                  Docker (<em>1</em>)
-                </dd>
-                <dd>
-                  AWS (<em>1</em>)
-                </dd>
-                <dd>
-                  Github Actions (<em>1</em>)
-                </dd>
-                <dd>
-                  Gitlab CI (<em>2</em>)
-                </dd>
-                <dd>
-                  Storybook (<em>3</em>)
-                </dd>
-              </dl>
-              <dl>
-                <dt>
                   <h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>
                 </dt>
                 <dd>
                   React (<em>3</em>)
                 </dd>
                 <dd>
-                  Next.js (<em>2</em>)
+                  Vue.js (<em>3</em>)
                 </dd>
                 <dd>
-                  Vue.js (<em>3</em>)
+                  Web Components / Lit (<em>2</em>)
+                </dd>
+                <dd>
+                  Next.js (<em>2</em>)
                 </dd>
                 <dd>
                   Nuxt (<em>2</em>)
@@ -400,13 +387,33 @@ export default function Home({
                   Redux / Vuex (<em>3</em>)
                 </dd>
                 <dd>
-                  Lit / Web Components (<em>2</em>)
-                </dd>
-                <dd>
                   Apollo Client (<em>1</em>)
                 </dd>
                 <dd>
                   Node.js (<em>2</em>)
+                </dd>
+                <dd>
+                  Tailwind CSS (<em>3</em>)
+                </dd>
+                <dd>
+                  Bootstrap 4 (<em>3</em>)
+                </dd>
+                <dd>
+                  Tailwind UI / Headless UI (<em>2</em>)
+                </dd>
+                <dd>
+                  Emotion (<em>2</em>)
+                </dd>
+                <dd>
+                  Styled Components (<em>2</em>)
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>
+                </dt>
+                <dd>
+                  Storybook (<em>3</em>)
                 </dd>
                 <dd>
                   Jest (<em>3</em>)
@@ -424,23 +431,6 @@ export default function Home({
                   Playwright (<em>1</em>)
                 </dd>
                 <dd>
-                  Tailwind CSS (<em>3</em>)
-                </dd>
-                <dd>
-                  Bootstrap 4 (<em>3</em>)
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsOtherTitle')}</h3>
-                </dt>
-                <dd>
-                  Shopware (<em>2</em>)
-                </dd>
-                <dd>
-                  WooCommerce (<em>2</em>)
-                </dd>
-                <dd>
                   Jira (<em>3</em>)
                 </dd>
                 <dd>
@@ -448,6 +438,98 @@ export default function Home({
                 </dd>
                 <dd>
                   Figma (<em>2</em>)
+                </dd>
+                <dd>
+                  Github (<em>2</em>)
+                </dd>
+                <dd>
+                  Gitlab (<em>3</em>)
+                </dd>
+                <dd>
+                  npm (<em>3</em>)
+                </dd>
+                <dd>
+                  yarn / pnpm (<em>2</em>)
+                </dd>
+                <dd>
+                  Vite (<em>3</em>)
+                </dd>
+                <dd>
+                  Docker (<em>1</em>)
+                </dd>
+                <dd>
+                  AWS (<em>1</em>)
+                </dd>
+              </dl>
+              <dl>
+                <dt>
+                  <h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>
+                </dt>
+                <dd>
+                  Scrum (<em>3</em>)
+                </dd>
+                <dd>
+                  Kanban (<em>2</em>)
+                </dd>
+                <dd>
+                  OKRs (<em>1</em>)
+                </dd>
+                <dd>
+                  Atomic Design (<em>3</em>)
+                </dd>
+                <dd>
+                  Block Element Modifier (BEM) (<em>3</em>)
+                </dd>
+                <dd>
+                  Self-contained Systems (SCS) (<em>2</em>)
+                </dd>
+                <dd>
+                  Component-driven Development (CDD) (<em>3</em>)
+                </dd>
+                <dd>
+                  Test-driven Development (TDD) (<em>2</em>)
+                </dd>
+                <dd>
+                  End-to-End Testing (<em>3</em>)
+                </dd>
+                <dd>
+                  Monorepo (<em>2</em>)
+                </dd>
+                <dd>
+                  Micro Frontends (<em>1</em>)
+                </dd>
+                <dd>
+                  Responsive Design (<em>3</em>)
+                </dd>
+                <dd>
+                  Refactoring (<em>3</em>)
+                </dd>
+                <dd>
+                  Code Reviews (<em>3</em>)
+                </dd>
+                <dd>
+                  Pair Programming (<em>3</em>)
+                </dd>
+                <dd>
+                  Mob Programming (<em>3</em>)
+                </dd>
+                <dd>
+                  Clean Code (<em>2</em>)
+                </dd>
+                <dd>
+                  SOLID (<em>1</em>)
+                </dd>
+                <dd>
+                  Object Oriented Programming (<em>2</em>)
+                </dd>
+                <dd>
+                  Functional Programming (<em>2</em>)
+                </dd>
+                <dd>
+                  Clean Architecture (<em>2</em>)
+                </dd>
+                <dd>
+                  Continuous Integration (<em>2</em>)
                 </dd>
               </dl>
             </div>
@@ -467,28 +549,24 @@ export default function Home({
                 <dd>Mentoring</dd>
                 <dd>Wissenstransfer</dd>
                 <dd>Organisation</dd>
-                <dd>Teamwork</dd>
                 <dd>Kommunikation</dd>
                 <dd>Verlässlichkeit</dd>
-                <dd>Ehrlichkeit</dd>
-                <dd>Stressresistenz</dd>
                 <dd>Detailtreue</dd>
-                <dd>Barrierefreiheit</dd>
-                <dd>Semantik</dd>
-                <dd>User driven testing</dd>
-                <dd>User driven development</dd>
+                <dd>Semantik & Barrierefreiheit</dd>
+                <dd>User-driven Testing</dd>
               </dl>
               <dl>
                 <dt>
                   <h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>
                 </dt>
-                <dd>Serien und Filme</dd>
+                <dd>Serien, Filme & Video Games</dd>
                 <dd>Motorräder / Harley Davidson</dd>
                 <dd>Musik und Gesang</dd>
                 <dd>Cross-country Trekking</dd>
                 <dd>Reisen in der Natur</dd>
                 <dd>Smart Home</dd>
-                <dd>Web Technologien</dd>
+                <dd>Pflanzen</dd>
+                <dd>Frontend Technologien & Methoden</dd>
               </dl>
             </div>
             <hr
