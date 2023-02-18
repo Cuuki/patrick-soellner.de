@@ -1,6 +1,7 @@
 import type { I18nData } from '../types/i18n';
 
 interface Experience {
+  id: string;
   duration: {
     startDate: string;
     startDisplay: string;
@@ -16,6 +17,7 @@ interface Experience {
 }
 
 const e1: Experience = {
+  id: 'e1',
   duration: { startDate: '2023-02-01', startDisplay: '02/2023' },
   company: 'New Monday GmbH',
   jobTitle: 'Senior Frontend Developer',
@@ -24,6 +26,7 @@ const e1: Experience = {
 };
 
 const e2: Experience = {
+  id: 'e2',
   duration: {
     startDate: '2022-06-01',
     startDisplay: '06/2022',
@@ -58,6 +61,7 @@ const e2: Experience = {
 };
 
 const e3: Experience = {
+  id: 'e3',
   duration: {
     startDate: '2021-01-01',
     startDisplay: '01/2021',
@@ -87,6 +91,7 @@ const e3: Experience = {
 };
 
 const e4: Experience = {
+  id: 'e4',
   duration: {
     startDate: '2020-07-01',
     startDisplay: '07/2020',
@@ -105,6 +110,7 @@ const e4: Experience = {
 };
 
 const e5: Experience = {
+  id: 'e5',
   duration: {
     startDate: '2018-03-01',
     startDisplay: '03/2018',
@@ -138,6 +144,7 @@ const e5: Experience = {
 };
 
 const e6: Experience = {
+  id: 'e6',
   duration: {
     startDate: '2015-09-01',
     startDisplay: '09/2015',
@@ -156,6 +163,7 @@ const e6: Experience = {
 };
 
 const e7: Experience = {
+  id: 'e7',
   duration: {
     startDate: '2012-09-01',
     startDisplay: '09/2012',
@@ -234,6 +242,6 @@ const experienceDataI18n = {
       areas: ['Webentwicklung'],
     },
   ],
-} satisfies I18nData<typeof experience>;
+} satisfies I18nData<Experience[]>;
 
 export default experienceDataI18n;

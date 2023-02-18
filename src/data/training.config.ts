@@ -1,6 +1,7 @@
 import type { I18nData } from '../types/i18n';
 
 interface Training {
+  id: string;
   duration: {
     startDisplay: string;
     endDisplay?: string;
@@ -10,6 +11,7 @@ interface Training {
 }
 
 const t1: Training = {
+  id: 't1',
   duration: { startDisplay: '09/2012', endDisplay: '08/2015' },
   school: 'Vocational school in Erlangen, Germany',
   focus: [
@@ -30,6 +32,6 @@ const trainingDataI18n = {
       ],
     },
   ],
-} satisfies I18nData<typeof training>;
+} satisfies I18nData<Training[]>;
 
 export default trainingDataI18n;

@@ -250,10 +250,10 @@ export default function Home({
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('experienceHeading')}</h2>
 
-            {experienceData.map((experienceEntry, index) => {
+            {experienceData.map((experienceEntry) => {
               return (
                 <ExperienceEntry
-                  key={index}
+                  key={experienceEntry.id}
                   duration={
                     <DurationText
                       dateStartIsoString={experienceEntry.duration.startDate}
@@ -289,10 +289,10 @@ export default function Home({
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
-            {trainingData.map((training, index) => {
+            {trainingData.map((training) => {
               return (
                 <ExperienceEntry
-                  key={index}
+                  key={training.id}
                   duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
                   companyName={training.school}
                   areas={training.focus.map((focus, index) => {
