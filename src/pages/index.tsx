@@ -6,6 +6,8 @@ import pageDataI18n from '../data/page.config';
 import profileDataI18n from '../data/profile.config';
 import experienceDataI18n from '../data/experience.config';
 import trainingDataI18n from '../data/training.config';
+import skillDataI18n from '../data/skill.config';
+import certificatesDataI18n from '../data/certificate.config';
 import { withI18n } from '../utils/i18n';
 import { markdownLinkToHtml } from '../utils/markdown';
 import { PageHead } from '../components/PageHead';
@@ -19,6 +21,8 @@ import { PageHeading } from '../components/PageHeading';
 import { PageFooter } from '../components/PageFooter';
 import { ProfileDataList } from '../components/ProfileDataList';
 import { DurationText } from '../components/DurationText';
+import { SkillGroup } from '../components/SkillGroup';
+import { TopSkillList } from '../components/TopSkillList';
 
 const cvSectionStyle = {
   ml: 'auto',
@@ -86,6 +90,8 @@ export const getStaticProps: GetStaticProps<{
   profileData: typeof profileDataI18n[Locale];
   experienceData: typeof experienceDataI18n[Locale];
   trainingData: typeof trainingDataI18n[Locale];
+  skillData: typeof skillDataI18n[Locale];
+  certificatesData: typeof certificatesDataI18n[Locale];
 }> = async ({ locale = 'en' }) => {
   const l = locale as Locale;
 
@@ -96,6 +102,8 @@ export const getStaticProps: GetStaticProps<{
       profileData: profileDataI18n[l],
       experienceData: experienceDataI18n[l],
       trainingData: trainingDataI18n[l],
+      skillData: skillDataI18n[l],
+      certificatesData: certificatesDataI18n[l],
     },
   };
 };
@@ -106,6 +114,8 @@ export default function Home({
   profileData,
   experienceData,
   trainingData,
+  skillData,
+  certificatesData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { theme } = useThemeUI();
   const t = withI18n(i18n, locale);
@@ -158,56 +168,21 @@ export default function Home({
         >
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
             <h2 sx={{ mt: 0 }}>{t('topSkillsHeading')}</h2>
-            {/* TODO: extract into component with skills from data (with topSkill=true) and auto grouping */}
-            <progress
-              id="progressBarExpert"
-              max={3}
-              value={3}
-              sx={{ width: '100%', accentColor: theme.colors?.primary }}
-            >
-              {t('skillsRatingExpertText')}
-            </progress>
-            <ul aria-describedby="progressBarExpert">
-              <li>React</li>
-              <li>Vue.js</li>
-              <li>TypeScript</li>
-              <li>JavaScript</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Tailwind CSS</li>
-              <li>Sass</li>
-              <li>Storybook</li>
-              <li>Jest</li>
-              <li>Testing Library</li>
-            </ul>
-
-            <progress
-              id="progressBarExtended"
-              max={3}
-              value={2}
-              sx={{ width: '100%', accentColor: theme.colors?.primary }}
-            >
-              {t('skillsRatingExtendedText')}
-            </progress>
-            <ul aria-describedby="progressBarExtended">
-              <li>Next.js</li>
-              <li>Redux</li>
-              <li>Styled Components</li>
-              <li>Cypress</li>
-            </ul>
-
-            <progress
-              id="progressBarBasic"
-              max={3}
-              value={1}
-              sx={{ width: '100%', accentColor: theme.colors?.primary }}
-            >
-              {t('skillsRatingBasicText')}
-            </progress>
-            <ul aria-describedby="progressBarBasic">
-              <li>Playwright</li>
-              <li>Docker</li>
-            </ul>
+            <TopSkillList
+              ratingText={t('skillsRatingExpertText')}
+              rating={3}
+              skills={skillData.filter((skill) => skill.rating === 3 && skill.isTop)}
+            />
+            <TopSkillList
+              ratingText={t('skillsRatingExtendedText')}
+              rating={2}
+              skills={skillData.filter((skill) => skill.rating === 2 && skill.isTop)}
+            />
+            <TopSkillList
+              ratingText={t('skillsRatingBasicText')}
+              rating={1}
+              skills={skillData.filter((skill) => skill.rating === 1 && skill.isTop)}
+            />
 
             <hr
               sx={{
@@ -320,8 +295,8 @@ export default function Home({
             />
           </div>
           <div sx={cvSectionStyle}>
-            {/* TODO: extract into component with skills from data and auto grouping */}
             <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
+            {/* TODO: extract into typed rating legend component */}
             <em>
               (1) - {t('skillsRatingBasicText')}, (2) - {t('skillsRatingExtendedText')}, (3) -{' '}
               {t('skillsRatingExpertText')}
@@ -335,203 +310,22 @@ export default function Home({
                 },
               }}
             >
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsLanguagesTitle')}</h3>
-                </dt>
-                <dd>
-                  JavaScript (<em>3</em>)
-                </dd>
-                <dd>
-                  TypeScript (<em>3</em>)
-                </dd>
-                <dd>
-                  Go (<em>1</em>)
-                </dd>
-                <dd>
-                  CSS3 (<em>3</em>)
-                </dd>
-                <dd>
-                  Sass (<em>3</em>)
-                </dd>
-                <dd>
-                  HTML5 (<em>3</em>)
-                </dd>
-                <dd>
-                  Markdown (<em>3</em>)
-                </dd>
-                <dd>
-                  GraphQL (<em>2</em>)
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>
-                </dt>
-                <dd>
-                  React (<em>3</em>)
-                </dd>
-                <dd>
-                  Vue.js (<em>3</em>)
-                </dd>
-                <dd>
-                  Web Components / Lit (<em>2</em>)
-                </dd>
-                <dd>
-                  Next.js (<em>2</em>)
-                </dd>
-                <dd>
-                  Nuxt (<em>2</em>)
-                </dd>
-                <dd>
-                  Redux / Vuex (<em>3</em>)
-                </dd>
-                <dd>
-                  Apollo Client (<em>1</em>)
-                </dd>
-                <dd>
-                  Node.js (<em>2</em>)
-                </dd>
-                <dd>
-                  Tailwind CSS (<em>3</em>)
-                </dd>
-                <dd>
-                  Bootstrap 4 (<em>3</em>)
-                </dd>
-                <dd>
-                  Tailwind UI / Headless UI (<em>2</em>)
-                </dd>
-                <dd>
-                  Emotion (<em>2</em>)
-                </dd>
-                <dd>
-                  Styled Components (<em>2</em>)
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>
-                </dt>
-                <dd>
-                  Storybook (<em>3</em>)
-                </dd>
-                <dd>
-                  Jest (<em>3</em>)
-                </dd>
-                <dd>
-                  Testing Library (<em>3</em>)
-                </dd>
-                <dd>
-                  Cypress (<em>3</em>)
-                </dd>
-                <dd>
-                  Testcafe (<em>2</em>)
-                </dd>
-                <dd>
-                  Playwright (<em>1</em>)
-                </dd>
-                <dd>
-                  Jira (<em>3</em>)
-                </dd>
-                <dd>
-                  Confluence (<em>3</em>)
-                </dd>
-                <dd>
-                  Figma (<em>2</em>)
-                </dd>
-                <dd>
-                  Github (<em>2</em>)
-                </dd>
-                <dd>
-                  Gitlab (<em>3</em>)
-                </dd>
-                <dd>
-                  npm (<em>3</em>)
-                </dd>
-                <dd>
-                  yarn / pnpm (<em>2</em>)
-                </dd>
-                <dd>
-                  Vite (<em>3</em>)
-                </dd>
-                <dd>
-                  Docker (<em>1</em>)
-                </dd>
-                <dd>
-                  AWS (<em>1</em>)
-                </dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>
-                </dt>
-                <dd>
-                  Scrum (<em>3</em>)
-                </dd>
-                <dd>
-                  Kanban (<em>2</em>)
-                </dd>
-                <dd>
-                  OKRs (<em>1</em>)
-                </dd>
-                <dd>
-                  Atomic Design (<em>3</em>)
-                </dd>
-                <dd>
-                  Block Element Modifier (BEM) (<em>3</em>)
-                </dd>
-                <dd>
-                  Self-contained Systems (SCS) (<em>2</em>)
-                </dd>
-                <dd>
-                  Component-driven Development (CDD) (<em>3</em>)
-                </dd>
-                <dd>
-                  Test-driven Development (TDD) (<em>2</em>)
-                </dd>
-                <dd>
-                  End-to-End Testing (<em>3</em>)
-                </dd>
-                <dd>
-                  Monorepo (<em>2</em>)
-                </dd>
-                <dd>
-                  Micro Frontends (<em>1</em>)
-                </dd>
-                <dd>
-                  Responsive Design (<em>3</em>)
-                </dd>
-                <dd>
-                  Refactoring (<em>3</em>)
-                </dd>
-                <dd>
-                  Code Reviews (<em>3</em>)
-                </dd>
-                <dd>
-                  Pair Programming (<em>3</em>)
-                </dd>
-                <dd>
-                  Mob Programming (<em>3</em>)
-                </dd>
-                <dd>
-                  Clean Code (<em>2</em>)
-                </dd>
-                <dd>
-                  SOLID (<em>1</em>)
-                </dd>
-                <dd>
-                  Object Oriented Programming (<em>2</em>)
-                </dd>
-                <dd>
-                  Functional Programming (<em>2</em>)
-                </dd>
-                <dd>
-                  Clean Architecture (<em>2</em>)
-                </dd>
-                <dd>
-                  Continuous Integration (<em>2</em>)
-                </dd>
-              </dl>
+              <SkillGroup
+                title={<h3 sx={{ mt: 0 }}>{t('skillsLanguagesTitle')}</h3>}
+                skills={skillData.filter((skill) => skill.group === 'languages')}
+              />
+              <SkillGroup
+                title={<h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>}
+                skills={skillData.filter((skill) => skill.group === 'frameworks')}
+              />
+              <SkillGroup
+                title={<h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>}
+                skills={skillData.filter((skill) => skill.group === 'tools')}
+              />
+              <SkillGroup
+                title={<h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>}
+                skills={skillData.filter((skill) => skill.group === 'methods')}
+              />
             </div>
             <div
               sx={{
@@ -542,32 +336,14 @@ export default function Home({
                 },
               }}
             >
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsStrengthsTitle')}</h3>
-                </dt>
-                <dd>Mentoring</dd>
-                <dd>Wissenstransfer</dd>
-                <dd>Organisation</dd>
-                <dd>Kommunikation</dd>
-                <dd>Verlässlichkeit</dd>
-                <dd>Detailtreue</dd>
-                <dd>Semantik & Barrierefreiheit</dd>
-                <dd>User-driven Testing</dd>
-              </dl>
-              <dl>
-                <dt>
-                  <h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>
-                </dt>
-                <dd>Serien, Filme & Video Games</dd>
-                <dd>Motorräder / Harley Davidson</dd>
-                <dd>Musik und Gesang</dd>
-                <dd>Cross-country Trekking</dd>
-                <dd>Reisen in der Natur</dd>
-                <dd>Smart Home</dd>
-                <dd>Pflanzen</dd>
-                <dd>Frontend Technologien & Methoden</dd>
-              </dl>
+              <SkillGroup
+                title={<h3 sx={{ mt: 0 }}>{t('skillsStrengthsTitle')}</h3>}
+                skills={skillData.filter((skill) => skill.group === 'strengths')}
+              />
+              <SkillGroup
+                title={<h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>}
+                skills={skillData.filter((skill) => skill.group === 'interests')}
+              />
             </div>
             <hr
               sx={{
@@ -581,8 +357,9 @@ export default function Home({
           <div sx={{ ...cvSectionStyle, pb: 0 }}>
             <h2 sx={{ mt: 0 }}>{t('certificatesHeading')}</h2>
             <ul>
-              <li>ISTQB® Certified Tester - Foundation level</li>
-              <li>ITIL® Foundation Certificate in IT Service Management</li>
+              {certificatesData.map((certificate) => {
+                return <li key={certificate.id}>{certificate.name}</li>;
+              })}
             </ul>
           </div>
         </div>

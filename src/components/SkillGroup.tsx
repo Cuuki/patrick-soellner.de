@@ -1,8 +1,9 @@
 /** @jsxImportSource theme-ui */
+import type { ReactElement } from 'react';
 import type { Skill } from '../data/skill.config';
 
 type SkillGroupProps = {
-  title: string;
+  title: string | ReactElement;
   skills: Pick<Skill, 'id' | 'rating' | 'text'>[];
 };
 
