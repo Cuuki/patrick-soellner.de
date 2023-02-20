@@ -1,9 +1,10 @@
 /** @jsxImportSource theme-ui */
+import type { Locale } from '../types/i18n';
 import { SocialButtonList } from './SocialButtonList';
-import pageConfig from '../data/page.config';
+import pageDataI18n from '../data/page.config';
 
 type PageFooterProps = {
-  socialData: typeof pageConfig.social;
+  socialData: typeof pageDataI18n[Locale]['social'];
 };
 
 export const PageFooter = ({ socialData }: PageFooterProps) => (

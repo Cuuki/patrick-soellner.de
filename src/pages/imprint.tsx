@@ -1,16 +1,17 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { Locale } from '../types/i18n';
 import { darken } from '@theme-ui/color';
-import pageConfig from '../data/page.config';
+import pageDataI18n from '../data/page.config';
 import { Layout } from '../components/Layout';
 import { PageHead } from '../components/PageHead';
 import { Header } from '../components/Header';
 
-export const getStaticProps: GetStaticProps<typeof pageConfig> = async () => {
-  return {
-    props: pageConfig,
-  };
-};
+export const getStaticProps: GetStaticProps<{
+  pageData: typeof pageDataI18n[Locale];
+}> = async ({ locale = 'en' }) => ({
+  props: { pageData: pageDataI18n[locale as Locale] },
+});
 
 const linkStyle = {
   'color': 'text',
@@ -20,12 +21,14 @@ const linkStyle = {
   },
 };
 
-export default function ImprintPage({ metadata }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function ImprintPage({
+  pageData: { metadata },
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="Impressum" metadata={metadata} />
 
-      <h1>Impressum</h1>
+      <h1>Impressum (DE)</h1>
 
       <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
       <p>

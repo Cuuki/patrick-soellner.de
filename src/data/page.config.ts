@@ -1,14 +1,15 @@
+import type { I18nData } from '../types/i18n';
+
 const experienceInYears = new Date().getFullYear() - 2015;
 
-const pageConfig = {
+const page = {
   metadata: {
     url: 'https://patrick-soellner.de',
     title: 'Patrick Söllner',
-    description: `I'm a passionate web developer with around ${experienceInYears} years of professional experience, specialising in frontend technologies. My personal focus lies in E-Commerce with Vue/React and I am an advocate for accessibility in the web. Continuously questioning the status quo, being open to new perspectives and trying to learn as much as possible is what drives me on a daily basis.`,
+    description: `I'm a passionate Frontend Developer with more than ${experienceInYears} years of professional experience in agile projects. My focus lies in Design Systems, Component Development with React, and UI Testing. I'm also an advocate for accessibility on the web. Continuously questioning the status quo, being open to new perspectives, and trying to learn as much as possible drive me daily.`,
     twitterAuthor: '@PatrickSllner',
   },
   nickname: '@Cuuki',
-  tagline: `Hi there, I'm Patrick! Nice to meet you and welcome to my digital CV.`,
   social: {
     github: 'https://github.com/Cuuki',
     twitter: 'https://twitter.com/PatrickSllner',
@@ -17,4 +18,17 @@ const pageConfig = {
   },
 };
 
-export default pageConfig;
+const pageDataI18n = {
+  de: {
+    ...page,
+    metadata: {
+      ...page.metadata,
+      description: `Ich bin leidenschaftlicher Frontend-Entwickler mit mehr als ${experienceInYears} Jahren Berufserfahrung in agilen Projekten. Mein Fokus liegt auf Design Systemen, Komponentenentwicklung mit React und UI Testing. Ich setzte mich außerdem für Barrierefreiheit im Web ein. Kontinuierlich den Status quo zu hinterfragen, offen für neue Perspektiven zu sein und zu versuchen, so viel wie möglich dazuzulernen, treibt mich täglich an.`,
+    },
+  },
+  en: {
+    ...page,
+  },
+} satisfies I18nData<typeof page>;
+
+export default pageDataI18n;

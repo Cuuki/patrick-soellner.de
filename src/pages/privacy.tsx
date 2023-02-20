@@ -1,16 +1,17 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { Locale } from '../types/i18n';
 import { darken } from '@theme-ui/color';
-import pageConfig from '../data/page.config';
+import pageDataI18n from '../data/page.config';
 import { Layout } from '../components/Layout';
 import { PageHead } from '../components/PageHead';
 import { Header } from '../components/Header';
 
-export const getStaticProps: GetStaticProps<typeof pageConfig> = async () => {
-  return {
-    props: pageConfig,
-  };
-};
+export const getStaticProps: GetStaticProps<{
+  pageData: typeof pageDataI18n[Locale];
+}> = async ({ locale = 'en' }) => ({
+  props: { pageData: pageDataI18n[locale as Locale] },
+});
 
 const linkStyle = {
   'color': 'text',
@@ -20,12 +21,14 @@ const linkStyle = {
   },
 };
 
-export default function PrivacyPage({ metadata }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function PrivacyPage({
+  pageData: { metadata },
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="Datenschutzerklärung" metadata={metadata} />
 
-      <h1>Datenschutz&shy;erkl&auml;rung</h1>
+      <h1>Datenschutz&shy;erkl&auml;rung (DE)</h1>
       <h2>1. Datenschutz auf einen Blick</h2>
       <h3>Allgemeine Hinweise</h3>
       <p>
