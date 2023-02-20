@@ -38,7 +38,7 @@ const i18n = {
     profileMailTitle: 'E-Mail:',
     profileLanguagesTitle: 'Sprachen:',
     experienceHeading: 'Erfahrung',
-    experienceDurationNowText: 'jetzt',
+    experienceDurationNowText: 'heute',
     trainingHeading: 'Ausbildung',
     skillsHeading: 'Fähigkeiten und Eigenschaften',
     skillsLanguagesTitle: 'Sprachen & Notationen',
