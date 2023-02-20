@@ -1,17 +1,18 @@
 /** @jsxImportSource theme-ui */
 import type { ReactElement } from 'react';
 import type { I18nRecord } from '../types/i18n';
+import { Children } from 'react';
 import useI18n from '../utils/hooks/useI18n';
+import { markdownLinkToHtml } from '../utils/markdown';
 
 type ExperienceEntryProps = {
   duration: string | ReactElement;
   companyName: string;
   jobTitle?: string;
   description?: string | ReactElement;
-  // @TODO: figure out why this causes JSX elements in array to throw key prop eslint error
-  areas: (ReactElement | string)[];
-  technologies?: (ReactElement | string)[];
-  projects?: ReactElement[];
+  areas: string[];
+  technologies?: string[];
+  projects?: string[];
   hasSeparator?: boolean;
 };
 
@@ -31,6 +32,14 @@ const i18n = {
     projectsHeading: 'Public projects',
   },
 } satisfies I18nRecord;
+
+const cvLinkStyle = {
+  'color': 'text',
+  'textDecoration': 'none',
+  '&:hover': {
+    color: 'primary',
+  },
+};
 
 export const ExperienceEntry = ({
   duration,
@@ -72,9 +81,16 @@ export const ExperienceEntry = ({
           <div>
             <h4 sx={{ mb: 1 }}>{t('areasHeading')}:</h4>
             <ul sx={{ mt: 0 }}>
-              {areas.map((area, index) => (
-                <li key={`area-${index}`}>{area}</li>
-              ))}
+              {Children.toArray(
+                areas.map((area) => (
+                  <li
+                    sx={{ '> a': cvLinkStyle }}
+                    dangerouslySetInnerHTML={{
+                      __html: markdownLinkToHtml(area),
+                    }}
+                  />
+                )),
+              )}
             </ul>
           </div>
           {technologies.length > 0 && (
@@ -87,9 +103,7 @@ export const ExperienceEntry = ({
                   gridTemplateColumns: '1fr 1fr',
                 }}
               >
-                {technologies.map((technology, index) => (
-                  <li key={`tech-${index}`}>{technology}</li>
-                ))}
+                {Children.toArray(technologies.map((technology) => <li>{technology}</li>))}
               </ul>
             </div>
           )}
@@ -97,9 +111,16 @@ export const ExperienceEntry = ({
             <div>
               <h4 sx={{ mb: 1 }}>{t('projectsHeading')}:</h4>
               <ul sx={{ mt: 0 }}>
-                {projects.map((project, index) => (
-                  <li key={`project-${index}`}>{project}</li>
-                ))}
+                {Children.toArray(
+                  projects.map((project) => (
+                    <li
+                      sx={{ '> a': cvLinkStyle }}
+                      dangerouslySetInnerHTML={{
+                        __html: markdownLinkToHtml(project),
+                      }}
+                    />
+                  )),
+                )}
               </ul>
             </div>
           )}

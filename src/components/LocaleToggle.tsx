@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useRouter } from 'next/router';
+import { Children } from 'react';
 
 export const LocaleToggle = () => {
   const router = useRouter();
@@ -24,11 +25,9 @@ export const LocaleToggle = () => {
           router.push(route, route, { locale: e.currentTarget.value });
         }}
       >
-        {locales?.map((locale, index) => (
-          <option key={locale + index} value={locale}>
-            {locale.toUpperCase()}
-          </option>
-        ))}
+        {Children.toArray(
+          locales?.map((locale) => <option value={locale}>{locale.toUpperCase()}</option>),
+        )}
       </select>
     </label>
   );

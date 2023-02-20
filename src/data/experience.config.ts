@@ -13,7 +13,7 @@ interface Experience {
   description?: string;
   areas: string[];
   technologies?: string[];
-  projects?: { text: string; link: string }[];
+  projects?: string[];
 }
 
 const e1: Experience = {
@@ -36,10 +36,10 @@ const e2: Experience = {
   company: 'E. Breuninger GmbH & Co.',
   jobTitle: 'Software Developer',
   description:
-    'Replacement of the existing content & campaign architecture within the Breuninger fashion e-commerce product. Development of React based UI extensions for the new headless contentmanagement system.',
+    'Replacement of the existing content & campaign architecture within the Breuninger fashion e-commerce product. Development of React based UI extensions for the new headless content management system.',
   areas: [
     'Frontend application development',
-    'Creation of a build system based on Vite and Node to generate self-containedcomponents',
+    'Creation of a build system based on Vite and Node to generate self-contained components',
     'Development of campaign pages & content modules built with Web Components,Storybook and Go Templates',
     'Support to continually improve the Breuninger Design System',
     'E2E testing automation for content modules',
@@ -71,7 +71,7 @@ const e3: Experience = {
   company: 'i22 Digitalagentur GmbH',
   jobTitle: 'Senior Frontend Developer',
   description:
-    'Development of many projects inside the Telekom e-commerce multi-client platform within thei22 shop product team.',
+    'Development of many projects inside the Telekom e-commerce multi-client platform within the i22 shop product team.',
   areas: [
     'Frontend application development',
     'E2E testing automation as a service',
@@ -81,13 +81,7 @@ const e3: Experience = {
     'Company wide accessibility working group initiative',
   ],
   technologies: ['Vue', 'Nuxt', 'TypeScript', 'CSS3', 'Sass', 'Clean architecture', 'Cypress'],
-  projects: [
-    { link: 'https://smarthome.de', text: 'smarthome.de' },
-    {
-      link: 'https://shop.telekom.de',
-      text: 'shop.telekom.de',
-    },
-  ],
+  projects: ['[smarthome.de](https://smarthome.de)', '[shop.telekom.de](https://shop.telekom.de)'],
 };
 
 const e4: Experience = {
@@ -101,7 +95,7 @@ const e4: Experience = {
   company: 'ISO Public Services GmbH',
   jobTitle: 'Frontend Developer',
   description:
-    'Development of an internal tool to streamline the employee profile generation process. In-houseproduct development.',
+    'Development of an internal tool to streamline the employee profile generation process. In-house product development.',
   areas: [
     'Frontend application development',
     'Leadership, technical planning and coordination of frontend for a new product',
@@ -120,26 +114,17 @@ const e5: Experience = {
   company: 'LottaLeben Media GmbH',
   jobTitle: 'Software Developer',
   description:
-    'Multiple projects in tourism & medicine as well as the development of a Wordpress basedwebsite builder as a product.',
+    'Multiple projects in tourism & medicine as well as the development of a Wordpress based website builder as a product.',
   areas: [
     'Fullstack web development (Focus Frontend)',
     'Coordination and communication with brasil-based development team',
   ],
   technologies: ['React', 'JavaScript', 'jQuery', 'CSS3', 'Sass', 'Wordpress'],
   projects: [
-    { link: 'https://www.lindau.de', text: 'lindau.de' },
-    {
-      link: 'https://www.lindau.de/aroundme',
-      text: 'lindau.de/aroundme',
-    },
-    {
-      link: 'https://www.insel-sylt.de',
-      text: 'insel-sylt.de',
-    },
-    {
-      link: 'https://www.canvayo.com',
-      text: 'canvayo.com',
-    },
+    '[lindau.de](https://www.lindau.de)',
+    '[lindau.de/aroundme](https://www.lindau.de/aroundme)',
+    '[insel-sylt.de](https://www.insel-sylt.de)',
+    '[canvayo.com](https://www.canvayo.com)',
   ],
 };
 

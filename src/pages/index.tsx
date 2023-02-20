@@ -9,7 +9,6 @@ import trainingDataI18n from '../data/training.config';
 import skillDataI18n from '../data/skill.config';
 import certificatesDataI18n from '../data/certificate.config';
 import { withI18n } from '../utils/i18n';
-import { markdownLinkToHtml } from '../utils/markdown';
 import { PageHead } from '../components/PageHead';
 import { Layout } from '../components/Layout';
 import { Header } from '../components/Header';
@@ -245,19 +244,7 @@ export default function Home({
                   description={experienceEntry.description}
                   areas={experienceEntry.areas}
                   technologies={experienceEntry.technologies}
-                  projects={(experienceEntry.projects || []).map((project, index) => {
-                    return (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        sx={cvLinkStyle}
-                        key={index}
-                      >
-                        {project.text}
-                      </a>
-                    );
-                  })}
+                  projects={experienceEntry.projects}
                 />
               );
             })}
@@ -270,17 +257,7 @@ export default function Home({
                   key={training.id}
                   duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
                   companyName={training.school}
-                  areas={training.focus.map((focus, index) => {
-                    return (
-                      <div
-                        key={index}
-                        sx={{ '> a': cvLinkStyle }}
-                        dangerouslySetInnerHTML={{
-                          __html: markdownLinkToHtml(focus),
-                        }}
-                      />
-                    );
-                  })}
+                  areas={training.focus}
                   hasSeparator={false}
                 />
               );
