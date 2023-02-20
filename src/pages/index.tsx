@@ -30,13 +30,6 @@ const cvSectionStyle = {
   width: ['100%', null, '70%'],
   borderLeft: [null, null, '2px dashed currentColor'],
 };
-const cvLinkStyle = {
-  'color': 'text',
-  'textDecoration': 'none',
-  '&:hover': {
-    color: 'primary',
-  },
-};
 
 const i18n = {
   de: {
@@ -273,7 +266,7 @@ export default function Home({
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
-            {/* TODO: extract into typed rating legend component */}
+            {/* @TODO: extract into typed rating legend component */}
             <em>
               (1) - {t('skillsRatingBasicText')}, (2) - {t('skillsRatingExtendedText')}, (3) -{' '}
               {t('skillsRatingExpertText')}

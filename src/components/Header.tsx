@@ -1,9 +1,11 @@
 /** @jsxImportSource theme-ui */
 import Link from 'next/link';
-import { Home } from 'emotion-icons/fa-solid';
+import { User } from 'emotion-icons/fa-solid';
 import { darken } from '@theme-ui/color';
 import { ColorModeToggle } from './ColorModeToggle';
 import { LocaleToggle } from './LocaleToggle';
+import type { I18nRecord } from '../types/i18n';
+import useI18n from '../utils/hooks/useI18n';
 
 export type HeaderProps = {
   siteTitle: string;
@@ -21,7 +23,19 @@ const linkStyle = {
   },
 };
 
+const i18n = {
+  de: {
+    titleText: (siteTitle: HeaderProps['siteTitle']) => `Gehe zu ${siteTitle}'s CV`,
+  },
+  en: {
+    titleText: (siteTitle: HeaderProps['siteTitle']) => `Go to ${siteTitle}'s CV`,
+  },
+} satisfies I18nRecord;
+
+// @TODO: theme color mode changes after router navigation
 export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => {
+  const { t } = useI18n(i18n);
+
   return (
     <header
       sx={{
@@ -41,8 +55,8 @@ export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => {
           maxWidth,
         }}
       >
-        <Link href="/" title={`Go to "${siteTitle}" cv page`} sx={linkStyle}>
-          <Home size={30} />
+        <Link href="/" title={t('titleText')(siteTitle)} sx={linkStyle}>
+          <User size={30} />
         </Link>
         <LocaleToggle />
         <ColorModeToggle />

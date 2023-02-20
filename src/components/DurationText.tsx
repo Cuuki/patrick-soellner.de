@@ -1,23 +1,31 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
+import type { ReactElement } from 'react';
 import { Clock } from 'emotion-icons/fa-solid';
 import { calcDiffInYears, formatDurationString } from '../utils/date';
-import { useRouter } from 'next/router';
-import type { Locale } from '../types/i18n';
+import type { I18nRecord } from '../types/i18n';
+import useI18n from '../utils/hooks/useI18n';
 
 type DurationTextProps = {
   dateStartIsoString: string;
   dateEndIsoString?: string;
-  children: React.ReactElement | string;
+  children: ReactElement | string;
 };
+
+const i18n = {
+  de: {
+    labelText: 'Dauer',
+  },
+  en: {
+    labelText: 'Duration',
+  },
+} satisfies I18nRecord;
 
 export const DurationText = ({
   dateStartIsoString,
   dateEndIsoString,
   children,
 }: DurationTextProps) => {
-  const router = useRouter();
-  const locale = router.locale as Locale;
+  const { t, locale } = useI18n(i18n);
 
   return (
     <span
@@ -36,7 +44,7 @@ export const DurationText = ({
         }}
       >
         <Clock
-          aria-label="Duration"
+          aria-label={t('labelText')}
           size={16}
           sx={{
             mr: 1,

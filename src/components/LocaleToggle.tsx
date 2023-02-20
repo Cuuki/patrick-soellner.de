@@ -1,10 +1,22 @@
 /** @jsxImportSource theme-ui */
 import { useRouter } from 'next/router';
 import { Children } from 'react';
+import type { I18nRecord, Locale } from '../types/i18n';
+import { withI18n } from '../utils/i18n';
+
+const i18n = {
+  de: {
+    labelText: 'Sprache wählen',
+  },
+  en: {
+    labelText: 'Select language',
+  },
+} satisfies I18nRecord;
 
 export const LocaleToggle = () => {
   const router = useRouter();
   const { locales, locale: activeLocale, route } = router;
+  const t = withI18n(i18n, activeLocale as Locale);
 
   return (
     <label
@@ -12,7 +24,7 @@ export const LocaleToggle = () => {
         ml: 2,
       }}
     >
-      <strong>Select language: </strong>
+      <strong>{t('labelText')}: </strong>
       <select
         sx={{
           backgroundColor: 'transparent',

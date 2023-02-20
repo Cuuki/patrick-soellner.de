@@ -1,6 +1,5 @@
 import type { Locale } from '../types/i18n';
 import NextHead from 'next/head';
-import React from 'react';
 import pageDataI18n from '../data/page.config';
 import { useThemeUI } from 'theme-ui';
 

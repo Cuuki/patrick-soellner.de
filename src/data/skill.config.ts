@@ -94,19 +94,40 @@ const strengths: Skill[] = [
   { id: 's7', text: 'Semantik & Barrierefreiheit', group: 'strengths', isTop: false },
   { id: 's8', text: 'User-driven Testing', group: 'strengths', isTop: false },
 ];
+const strengthsEn: Skill[] = [
+  { id: 's1', text: 'Mentoring', group: 'strengths', isTop: false },
+  { id: 's2', text: 'Knowledge transfer', group: 'strengths', isTop: false },
+  { id: 's3', text: 'Organisation', group: 'strengths', isTop: false },
+  { id: 's4', text: 'Communication', group: 'strengths', isTop: false },
+  { id: 's5', text: 'Reliability', group: 'strengths', isTop: false },
+  { id: 's6', text: 'Attention to detail', group: 'strengths', isTop: false },
+  { id: 's7', text: 'Semantics & Accessibility', group: 'strengths', isTop: false },
+  { id: 's8', text: 'User-driven Testing', group: 'strengths', isTop: false },
+];
+
 const interests: Skill[] = [
   { id: 'i1', text: 'Serien, Filme & Video Games', group: 'interests', isTop: false },
   { id: 'i2', text: 'Motorräder / Harley Davidson', group: 'interests', isTop: false },
-  { id: 'i3', text: 'Musik und Gesang', group: 'interests', isTop: false },
+  { id: 'i3', text: 'Musik & Gesang', group: 'interests', isTop: false },
   { id: 'i4', text: 'Cross-country Trekking', group: 'interests', isTop: false },
   { id: 'i5', text: 'Reisen in der Natur', group: 'interests', isTop: false },
   { id: 'i6', text: 'Smart Home', group: 'interests', isTop: false },
   { id: 'i7', text: 'Pflanzen', group: 'interests', isTop: false },
   { id: 'i8', text: 'Frontend Technologien & Methoden', group: 'interests', isTop: false },
 ];
+const interestsEn: Skill[] = [
+  { id: 'i1', text: 'TV Shows, Movies & Video Games', group: 'interests', isTop: false },
+  { id: 'i2', text: 'Motorcycles / Harley Davidson', group: 'interests', isTop: false },
+  { id: 'i3', text: 'Music & Singing', group: 'interests', isTop: false },
+  { id: 'i4', text: 'Cross-country Trekking', group: 'interests', isTop: false },
+  { id: 'i5', text: 'Nature traveling', group: 'interests', isTop: false },
+  { id: 'i6', text: 'Smart Home', group: 'interests', isTop: false },
+  { id: 'i7', text: 'Plants', group: 'interests', isTop: false },
+  { id: 'i8', text: 'Frontend Technologies & Methods', group: 'interests', isTop: false },
+];
 
 const skillDataI18n = {
-  en: [...technical, ...strengths, ...interests],
+  en: [...technical, ...strengthsEn, ...interestsEn],
   de: [...technical, ...strengths, ...interests],
 } satisfies I18nData<Skill[]>;
 
