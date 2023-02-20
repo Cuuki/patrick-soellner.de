@@ -32,7 +32,7 @@ const i18n = {
   },
 } satisfies I18nRecord;
 
-// @TODO: theme color mode changes after router navigation
+// @TODO: #6 - theme color mode changes after router navigation
 export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => {
   const { t } = useI18n(i18n);
 
