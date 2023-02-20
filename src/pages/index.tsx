@@ -36,7 +36,6 @@ const i18n = {
     topSkillsHeading: 'Tech Stack',
     profileHeading: 'Profil',
     profileMailTitle: 'E-Mail:',
-    profileBirthdayTitle: 'Geboren am:',
     profileLanguagesTitle: 'Sprachen:',
     experienceHeading: 'Erfahrung',
     experienceDurationNowText: 'jetzt',
@@ -57,7 +56,6 @@ const i18n = {
     topSkillsHeading: 'Tech Stack',
     profileHeading: 'Profile',
     profileMailTitle: 'Mail:',
-    profileBirthdayTitle: 'Date of birth:',
     profileLanguagesTitle: 'Languages:',
     experienceHeading: 'Experience',
     experienceDurationNowText: 'now',
@@ -187,10 +185,6 @@ export default function Home({
             <h2 sx={{ mt: 4 }}>{t('profileHeading')}</h2>
             <ProfileDataList>
               <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
-              <ProfileDataListItem
-                title={t('profileBirthdayTitle')}
-                items={profileData.birthdayItems}
-              />
               <ProfileDataListItem
                 title={t('profileLanguagesTitle')}
                 items={profileData.languagesItems}

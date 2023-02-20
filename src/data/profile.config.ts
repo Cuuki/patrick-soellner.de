@@ -2,7 +2,6 @@ import type { I18nData } from '../types/i18n';
 
 const profile = {
   mailItems: ['mail@patrick-soellner.de'],
-  birthdayItems: ['18.11.1995'],
   languagesItems: ['German (Native)', 'English (Fluid)', 'French (Basics)'],
 };
 
