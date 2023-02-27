@@ -1,15 +1,15 @@
 /** @jsxImportSource theme-ui */
 import type { ReactElement } from 'react';
-import type { I18nRecord } from '../types/i18n';
 import { Children } from 'react';
+import type { I18nRecord } from '../types/i18n';
 import useI18n from '../utils/hooks/useI18n';
-import { markdownLinkToHtml } from '../utils/markdown';
+import { MarkdownContent } from './MarkdownContent';
 
 type ExperienceEntryProps = {
   duration: string | ReactElement;
   companyName: string;
   jobTitle?: string;
-  description?: string | ReactElement;
+  description?: string;
   areas: string[];
   technologies?: string[];
   projects?: string[];
@@ -32,14 +32,6 @@ const i18n = {
     projectsHeading: 'Public projects',
   },
 } satisfies I18nRecord;
-
-const cvLinkStyle = {
-  'color': 'text',
-  'textDecoration': 'none',
-  '&:hover': {
-    color: 'primary',
-  },
-};
 
 export const ExperienceEntry = ({
   duration,
@@ -75,7 +67,7 @@ export const ExperienceEntry = ({
           {!!description && (
             <div>
               <h4 sx={{ mb: 1 }}>{t('descriptionHeading')}:</h4>
-              <p sx={{ mt: 0 }}>{description}</p>
+              <MarkdownContent>{description}</MarkdownContent>
             </div>
           )}
           <div>
@@ -83,12 +75,9 @@ export const ExperienceEntry = ({
             <ul sx={{ mt: 0 }}>
               {Children.toArray(
                 areas.map((area) => (
-                  <li
-                    sx={{ '> a': cvLinkStyle }}
-                    dangerouslySetInnerHTML={{
-                      __html: markdownLinkToHtml(area),
-                    }}
-                  />
+                  <li sx={{ p: { mb: 0 } }}>
+                    <MarkdownContent>{area}</MarkdownContent>
+                  </li>
                 )),
               )}
             </ul>
@@ -113,12 +102,9 @@ export const ExperienceEntry = ({
               <ul sx={{ mt: 0 }}>
                 {Children.toArray(
                   projects.map((project) => (
-                    <li
-                      sx={{ '> a': cvLinkStyle }}
-                      dangerouslySetInnerHTML={{
-                        __html: markdownLinkToHtml(project),
-                      }}
-                    />
+                    <li sx={{ p: { mb: 0 } }}>
+                      <MarkdownContent>{project}</MarkdownContent>
+                    </li>
                   )),
                 )}
               </ul>
