@@ -1,16 +1,16 @@
 /** @jsxImportSource theme-ui */
-import type { Skill, SkillRating } from '../data/skill.config';
-import { SKILL_MAX_RATING } from '../data/skill.config';
 import { useId } from 'react';
 import { useThemeUI } from 'theme-ui';
+import type { Skill } from '../data/skill.config';
+import { SKILL_MAX_RATING } from '../data/skill.config';
+import { SkillRatingText } from './SkillRatingText';
 
 type TopSkillListProps = {
-  ratingText: string;
-  rating: SkillRating;
+  rating: NonNullable<Skill['rating']>;
   skills: Pick<Skill, 'id' | 'text'>[];
 };
 
-export const TopSkillList = ({ rating, ratingText, skills }: TopSkillListProps) => {
+export const TopSkillList = ({ rating, skills }: TopSkillListProps) => {
   const id = useId();
   const { theme } = useThemeUI();
 
@@ -22,7 +22,7 @@ export const TopSkillList = ({ rating, ratingText, skills }: TopSkillListProps) 
         value={rating}
         sx={{ width: '100%', accentColor: theme.colors?.primary }}
       >
-        {ratingText}
+        <SkillRatingText rating={rating} />
       </progress>
       <ul aria-describedby={id}>
         {skills.map((skill) => (

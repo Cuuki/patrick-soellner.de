@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { I18nRecord, Locale } from '../types/i18n';
-import { useThemeUI } from 'theme-ui';
 import pageDataI18n from '../data/page.config';
 import profileDataI18n from '../data/profile.config';
 import experienceDataI18n from '../data/experience.config';
@@ -22,6 +21,7 @@ import { ProfileDataList } from '../components/ProfileDataList';
 import { DurationText } from '../components/DurationText';
 import { SkillGroup } from '../components/SkillGroup';
 import { TopSkillList } from '../components/TopSkillList';
+import { SkillRatingLegend } from '../components/SkillRatingLegend';
 
 const cvSectionStyle = {
   ml: 'auto',
@@ -47,9 +47,6 @@ const i18n = {
     skillsFrameworksTitle: 'Frameworks / Libraries',
     skillsStrengthsTitle: 'Stärken',
     skillsInterestsTitle: 'Interessen',
-    skillsRatingBasicText: 'Grundwissen',
-    skillsRatingExtendedText: 'Vertiefte Kenntnisse',
-    skillsRatingExpertText: 'Spezialwissen',
     certificatesHeading: 'Zertifikate',
   },
   en: {
@@ -67,9 +64,6 @@ const i18n = {
     skillsFrameworksTitle: 'Frameworks / Libraries',
     skillsStrengthsTitle: 'Strengths',
     skillsInterestsTitle: 'Interests',
-    skillsRatingBasicText: 'Basic knowledge',
-    skillsRatingExtendedText: 'In-depth knowledge',
-    skillsRatingExpertText: 'Specialized knowledge',
     certificatesHeading: 'Certificates',
   },
 } satisfies I18nRecord;
@@ -107,7 +101,6 @@ export default function Home({
   skillData,
   certificatesData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { theme } = useThemeUI();
   const t = withI18n(i18n, locale);
 
   return (
@@ -159,17 +152,14 @@ export default function Home({
           <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
             <h2 sx={{ mt: 0 }}>{t('topSkillsHeading')}</h2>
             <TopSkillList
-              ratingText={t('skillsRatingExpertText')}
               rating={3}
               skills={skillData.filter((skill) => skill.rating === 3 && skill.isTop)}
             />
             <TopSkillList
-              ratingText={t('skillsRatingExtendedText')}
               rating={2}
               skills={skillData.filter((skill) => skill.rating === 2 && skill.isTop)}
             />
             <TopSkillList
-              ratingText={t('skillsRatingBasicText')}
               rating={1}
               skills={skillData.filter((skill) => skill.rating === 1 && skill.isTop)}
             />
@@ -260,11 +250,7 @@ export default function Home({
           </div>
           <div sx={cvSectionStyle}>
             <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
-            {/* @TODO: #5 - extract into typed rating legend component */}
-            <em>
-              (1) - {t('skillsRatingBasicText')}, (2) - {t('skillsRatingExtendedText')}, (3) -{' '}
-              {t('skillsRatingExpertText')}
-            </em>
+            <SkillRatingLegend />
             <div
               sx={{
                 'display': 'grid',

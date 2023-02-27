@@ -1,17 +1,14 @@
 import type { I18nData } from '../types/i18n';
 
-type SkillGroup = 'languages' | 'frameworks' | 'tools' | 'methods' | 'strengths' | 'interests';
-export type SkillRating = 1 | 2 | 3;
-
 export interface Skill {
   id: string;
   text: string;
   isTop: boolean;
-  group: SkillGroup;
-  rating?: SkillRating;
+  group: 'languages' | 'frameworks' | 'tools' | 'methods' | 'strengths' | 'interests';
+  rating?: 1 | 2 | 3;
 }
 
-export const SKILL_MAX_RATING: SkillRating = 3;
+export const SKILL_MAX_RATING: NonNullable<Skill['rating']> = 3;
 
 const technical: Skill[] = [
   { id: 't0', text: 'JavaScript', rating: 3, group: 'languages', isTop: true },
