@@ -16,10 +16,11 @@ export const ProfilePortrait = () => {
   const { t } = useI18n(i18n);
 
   return (
-    <div
+    <figure
       sx={{
         maxWidth: 280,
         mx: 'auto',
+        mt: 0,
         mb: 3,
         borderRadius: '100%',
         border: '0.625rem solid currentColor',
@@ -33,6 +34,6 @@ export const ProfilePortrait = () => {
         width={260}
         height={260}
       />
-    </div>
+    </figure>
   );
 };

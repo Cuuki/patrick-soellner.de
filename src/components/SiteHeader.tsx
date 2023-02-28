@@ -7,7 +7,7 @@ import { LocaleToggle } from './LocaleToggle';
 import type { I18nRecord } from '../types/i18n';
 import useI18n from '../utils/hooks/useI18n';
 
-export type HeaderProps = {
+type SiteHeaderProps = {
   siteTitle: string;
   maxWidth?: number;
 };
@@ -25,15 +25,15 @@ const linkStyle = {
 
 const i18n = {
   de: {
-    titleText: (siteTitle: HeaderProps['siteTitle']) => `Gehe zu ${siteTitle}'s CV`,
+    titleText: (siteTitle: SiteHeaderProps['siteTitle']) => `Gehe zu ${siteTitle}'s CV`,
   },
   en: {
-    titleText: (siteTitle: HeaderProps['siteTitle']) => `Go to ${siteTitle}'s CV`,
+    titleText: (siteTitle: SiteHeaderProps['siteTitle']) => `Go to ${siteTitle}'s CV`,
   },
 } satisfies I18nRecord;
 
 // @TODO: #6 - theme color mode changes after router navigation
-export const Header = ({ siteTitle, maxWidth = 960 }: HeaderProps) => {
+export const SiteHeader = ({ siteTitle, maxWidth = 960 }: SiteHeaderProps) => {
   const { t } = useI18n(i18n);
 
   return (

@@ -9,8 +9,8 @@ import skillDataI18n from '../data/skill.config';
 import certificatesDataI18n from '../data/certificate.config';
 import { withI18n } from '../utils/i18n';
 import { PageHead } from '../components/PageHead';
-import { Layout } from '../components/Layout';
-import { Header } from '../components/Header';
+import { DefaultLayout } from '../components/DefaultLayout';
+import { SiteHeader } from '../components/SiteHeader';
 import { ProfilePortrait } from '../components/ProfilePortrait';
 import { SocialButtonList } from '../components/SocialButtonList';
 import { ExperienceEntry } from '../components/ExperienceEntry';
@@ -104,224 +104,219 @@ export default function Home({
   const t = withI18n(i18n, locale);
 
   return (
-    <Layout header={<Header siteTitle={pageData.metadata.title} maxWidth={1280} />} maxWidth={1280}>
+    <DefaultLayout
+      header={<SiteHeader siteTitle={pageData.metadata.title} maxWidth={1280} />}
+      maxWidth={1280}
+    >
       <PageHead pageTitle="CV" metadata={pageData.metadata} />
 
-      <div
+      <ProfilePortrait />
+
+      <PageHeading
+        title={pageData.metadata.title}
+        nickname={pageData.nickname}
+        githubUrl={pageData.social.github}
+      />
+      <p
         sx={{
-          maxWidth: 280,
           mx: 'auto',
-          mb: 3,
+          mb: 4,
+          maxWidth: 620,
+          width: '100%',
+          textAlign: ['left', 'justify'],
         }}
       >
-        <ProfilePortrait />
+        {pageData.metadata.description}
+      </p>
+
+      <hr
+        sx={{
+          borderWidth: '2px',
+          borderColor: 'primary',
+          borderStyle: 'solid',
+        }}
+      />
+      <div
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          mx: 'auto',
+          py: 4,
+          maxWidth: 1024,
+        }}
+      >
+        <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
+          <h2 sx={{ mt: 0 }}>{t('topSkillsHeading')}</h2>
+          <TopSkillList
+            rating={3}
+            skills={skillData.filter((skill) => skill.rating === 3 && skill.isTop)}
+          />
+          <TopSkillList
+            rating={2}
+            skills={skillData.filter((skill) => skill.rating === 2 && skill.isTop)}
+          />
+          <TopSkillList
+            rating={1}
+            skills={skillData.filter((skill) => skill.rating === 1 && skill.isTop)}
+          />
+
+          <hr
+            sx={{
+              mt: 4,
+              borderWidth: '1px',
+              borderColor: 'primary',
+              borderStyle: 'solid',
+            }}
+          />
+          <h2 sx={{ mt: 4 }}>{t('profileHeading')}</h2>
+          <ProfileDataList>
+            <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
+            <ProfileDataListItem
+              title={t('profileLanguagesTitle')}
+              items={profileData.languagesItems}
+            />
+          </ProfileDataList>
+          <div
+            sx={{
+              '@media print': {
+                display: 'none',
+              },
+            }}
+          >
+            <SocialButtonList socialData={pageData.social} size={16} />
+          </div>
+          <hr
+            sx={{
+              mt: 4,
+              borderWidth: '2px',
+              borderColor: 'primary',
+              borderStyle: 'solid',
+            }}
+          />
+        </aside>
+        <section sx={cvSectionStyle}>
+          <h2 sx={{ mt: 0 }}>{t('experienceHeading')}</h2>
+
+          {experienceData.map((experienceEntry) => {
+            return (
+              <ExperienceEntry
+                key={experienceEntry.id}
+                duration={
+                  <DurationText
+                    dateStartIsoString={experienceEntry.duration.startDate}
+                    dateEndIsoString={experienceEntry.duration.endDate}
+                  >
+                    <span>
+                      {experienceEntry.duration.startDisplay} -{' '}
+                      {experienceEntry.duration.endDisplay || t('experienceDurationNowText')}
+                    </span>
+                  </DurationText>
+                }
+                companyName={experienceEntry.company}
+                jobTitle={experienceEntry.jobTitle}
+                description={experienceEntry.description}
+                areas={experienceEntry.areas}
+                technologies={experienceEntry.technologies}
+                projects={experienceEntry.projects}
+              />
+            );
+          })}
+        </section>
+        <section sx={cvSectionStyle}>
+          <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
+          {trainingData.map((training) => {
+            return (
+              <ExperienceEntry
+                key={training.id}
+                duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
+                companyName={training.school}
+                areas={training.focus}
+                hasSeparator={false}
+              />
+            );
+          })}
+          <hr
+            sx={{
+              mt: 4,
+              borderWidth: '2px',
+              borderColor: 'primary',
+              borderStyle: 'solid',
+            }}
+          />
+        </section>
+        <section sx={cvSectionStyle}>
+          <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
+          <SkillRatingLegend />
+          <div
+            sx={{
+              'display': 'grid',
+              'gridTemplateColumns': ['1fr', '1fr 1fr'],
+              '@media print': {
+                gridTemplateColumns: '1fr 1fr',
+              },
+            }}
+          >
+            <SkillGroup
+              title={<h3 sx={{ mt: 0 }}>{t('skillsLanguagesTitle')}</h3>}
+              skills={skillData.filter((skill) => skill.group === 'languages')}
+            />
+            <SkillGroup
+              title={<h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>}
+              skills={skillData.filter((skill) => skill.group === 'frameworks')}
+            />
+            <SkillGroup
+              title={<h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>}
+              skills={skillData.filter((skill) => skill.group === 'tools')}
+            />
+            <SkillGroup
+              title={<h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>}
+              skills={skillData.filter((skill) => skill.group === 'methods')}
+            />
+          </div>
+          <div
+            sx={{
+              'display': 'grid',
+              'gridTemplateColumns': ['1fr', '1fr 1fr'],
+              '@media print': {
+                gridTemplateColumns: '1fr 1fr',
+              },
+            }}
+          >
+            <SkillGroup
+              title={<h3 sx={{ mt: 0 }}>{t('skillsStrengthsTitle')}</h3>}
+              skills={skillData.filter((skill) => skill.group === 'strengths')}
+            />
+            <SkillGroup
+              title={<h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>}
+              skills={skillData.filter((skill) => skill.group === 'interests')}
+            />
+          </div>
+          <hr
+            sx={{
+              mt: 4,
+              borderWidth: '2px',
+              borderColor: 'primary',
+              borderStyle: 'solid',
+            }}
+          />
+        </section>
+        <section sx={{ ...cvSectionStyle, pb: 0 }}>
+          <h2 sx={{ mt: 0 }}>{t('certificatesHeading')}</h2>
+          <ul>
+            {certificatesData.map((certificate) => {
+              return <li key={certificate.id}>{certificate.name}</li>;
+            })}
+          </ul>
+        </section>
       </div>
-      <article>
-        <PageHeading
-          title={pageData.metadata.title}
-          nickname={pageData.nickname}
-          githubUrl={pageData.social.github}
-        />
-        <div
-          sx={{
-            mx: 'auto',
-            mb: 4,
-            maxWidth: 620,
-            width: '100%',
-            textAlign: ['left', 'justify'],
-          }}
-        >
-          <p>{pageData.metadata.description}</p>
-        </div>
-        <hr
-          sx={{
-            borderWidth: '2px',
-            borderColor: 'primary',
-            borderStyle: 'solid',
-          }}
-        />
-        <div
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            mx: 'auto',
-            py: 4,
-            maxWidth: 1024,
-          }}
-        >
-          <aside sx={{ mb: [4, null], pr: [0, 0, 3], width: ['100%', null, '30%'] }}>
-            <h2 sx={{ mt: 0 }}>{t('topSkillsHeading')}</h2>
-            <TopSkillList
-              rating={3}
-              skills={skillData.filter((skill) => skill.rating === 3 && skill.isTop)}
-            />
-            <TopSkillList
-              rating={2}
-              skills={skillData.filter((skill) => skill.rating === 2 && skill.isTop)}
-            />
-            <TopSkillList
-              rating={1}
-              skills={skillData.filter((skill) => skill.rating === 1 && skill.isTop)}
-            />
-
-            <hr
-              sx={{
-                mt: 4,
-                borderWidth: '1px',
-                borderColor: 'primary',
-                borderStyle: 'solid',
-              }}
-            />
-            <h2 sx={{ mt: 4 }}>{t('profileHeading')}</h2>
-            <ProfileDataList>
-              <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
-              <ProfileDataListItem
-                title={t('profileLanguagesTitle')}
-                items={profileData.languagesItems}
-              />
-            </ProfileDataList>
-            <div
-              sx={{
-                '@media print': {
-                  display: 'none',
-                },
-              }}
-            >
-              <SocialButtonList socialData={pageData.social} size={16} />
-            </div>
-            <hr
-              sx={{
-                mt: 4,
-                borderWidth: '2px',
-                borderColor: 'primary',
-                borderStyle: 'solid',
-              }}
-            />
-          </aside>
-          <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>{t('experienceHeading')}</h2>
-
-            {experienceData.map((experienceEntry) => {
-              return (
-                <ExperienceEntry
-                  key={experienceEntry.id}
-                  duration={
-                    <DurationText
-                      dateStartIsoString={experienceEntry.duration.startDate}
-                      dateEndIsoString={experienceEntry.duration.endDate}
-                    >
-                      <span>
-                        {experienceEntry.duration.startDisplay} -{' '}
-                        {experienceEntry.duration.endDisplay || t('experienceDurationNowText')}
-                      </span>
-                    </DurationText>
-                  }
-                  companyName={experienceEntry.company}
-                  jobTitle={experienceEntry.jobTitle}
-                  description={experienceEntry.description}
-                  areas={experienceEntry.areas}
-                  technologies={experienceEntry.technologies}
-                  projects={experienceEntry.projects}
-                />
-              );
-            })}
-          </div>
-          <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
-            {trainingData.map((training) => {
-              return (
-                <ExperienceEntry
-                  key={training.id}
-                  duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
-                  companyName={training.school}
-                  areas={training.focus}
-                  hasSeparator={false}
-                />
-              );
-            })}
-            <hr
-              sx={{
-                mt: 4,
-                borderWidth: '2px',
-                borderColor: 'primary',
-                borderStyle: 'solid',
-              }}
-            />
-          </div>
-          <div sx={cvSectionStyle}>
-            <h2 sx={{ mt: 0 }}>{t('skillsHeading')}</h2>
-            <SkillRatingLegend />
-            <div
-              sx={{
-                'display': 'grid',
-                'gridTemplateColumns': ['1fr', '1fr 1fr'],
-                '@media print': {
-                  gridTemplateColumns: '1fr 1fr',
-                },
-              }}
-            >
-              <SkillGroup
-                title={<h3 sx={{ mt: 0 }}>{t('skillsLanguagesTitle')}</h3>}
-                skills={skillData.filter((skill) => skill.group === 'languages')}
-              />
-              <SkillGroup
-                title={<h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>}
-                skills={skillData.filter((skill) => skill.group === 'frameworks')}
-              />
-              <SkillGroup
-                title={<h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>}
-                skills={skillData.filter((skill) => skill.group === 'tools')}
-              />
-              <SkillGroup
-                title={<h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>}
-                skills={skillData.filter((skill) => skill.group === 'methods')}
-              />
-            </div>
-            <div
-              sx={{
-                'display': 'grid',
-                'gridTemplateColumns': ['1fr', '1fr 1fr'],
-                '@media print': {
-                  gridTemplateColumns: '1fr 1fr',
-                },
-              }}
-            >
-              <SkillGroup
-                title={<h3 sx={{ mt: 0 }}>{t('skillsStrengthsTitle')}</h3>}
-                skills={skillData.filter((skill) => skill.group === 'strengths')}
-              />
-              <SkillGroup
-                title={<h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>}
-                skills={skillData.filter((skill) => skill.group === 'interests')}
-              />
-            </div>
-            <hr
-              sx={{
-                mt: 4,
-                borderWidth: '2px',
-                borderColor: 'primary',
-                borderStyle: 'solid',
-              }}
-            />
-          </div>
-          <div sx={{ ...cvSectionStyle, pb: 0 }}>
-            <h2 sx={{ mt: 0 }}>{t('certificatesHeading')}</h2>
-            <ul>
-              {certificatesData.map((certificate) => {
-                return <li key={certificate.id}>{certificate.name}</li>;
-              })}
-            </ul>
-          </div>
-        </div>
-        <hr
-          sx={{
-            borderWidth: '2px',
-            borderColor: 'primary',
-            borderStyle: 'solid',
-          }}
-        />
-        <PageFooter socialData={pageData.social} />
-      </article>
-    </Layout>
+      <hr
+        sx={{
+          borderWidth: '2px',
+          borderColor: 'primary',
+          borderStyle: 'solid',
+        }}
+      />
+      <PageFooter socialData={pageData.social} />
+    </DefaultLayout>
   );
 }

@@ -28,7 +28,7 @@ const i18n = {
 } satisfies I18nRecord;
 
 // @TODO: #6 - theme color mode changes after router navigation
-export const Footer = () => {
+export const SiteFooter = () => {
   const { t } = useI18n(i18n);
 
   return (

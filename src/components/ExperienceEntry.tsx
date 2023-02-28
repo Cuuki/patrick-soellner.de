@@ -46,7 +46,7 @@ export const ExperienceEntry = ({
   const { t } = useI18n(i18n);
   return (
     <>
-      <div
+      <article
         sx={{
           display: 'flex',
           alignItems: 'flex-start',
@@ -75,8 +75,14 @@ export const ExperienceEntry = ({
             <ul sx={{ mt: 0 }}>
               {Children.toArray(
                 areas.map((area) => (
-                  <li sx={{ p: { mb: 0 } }}>
-                    <MarkdownContent>{area}</MarkdownContent>
+                  <li>
+                    <MarkdownContent
+                      componentStyles={{
+                        p: { mb: 0 },
+                      }}
+                    >
+                      {area}
+                    </MarkdownContent>
                   </li>
                 )),
               )}
@@ -102,8 +108,14 @@ export const ExperienceEntry = ({
               <ul sx={{ mt: 0 }}>
                 {Children.toArray(
                   projects.map((project) => (
-                    <li sx={{ p: { mb: 0 } }}>
-                      <MarkdownContent>{project}</MarkdownContent>
+                    <li>
+                      <MarkdownContent
+                        componentStyles={{
+                          p: { mb: 0 },
+                        }}
+                      >
+                        {project}
+                      </MarkdownContent>
                     </li>
                   )),
                 )}
@@ -111,7 +123,7 @@ export const ExperienceEntry = ({
             </div>
           )}
         </div>
-      </div>
+      </article>
       {hasSeparator && (
         <hr
           sx={{

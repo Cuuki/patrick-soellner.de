@@ -1,15 +1,15 @@
 /** @jsxImportSource theme-ui */
 import type { ReactElement } from 'react';
-import type { HeaderProps } from './Header';
-import { Footer } from './Footer';
+import type { SiteHeader } from './SiteHeader';
+import { SiteFooter } from './SiteFooter';
 
-type LayoutProps = {
+type DefaultLayoutProps = {
   maxWidth?: number;
-  header: ReactElement<HeaderProps>;
+  header: ReactElement<typeof SiteHeader>;
   children: ReactElement | ReactElement[];
 };
 
-export const Layout = ({ header, maxWidth = 960, children }: LayoutProps) => (
+export const DefaultLayout = ({ header, maxWidth = 960, children }: DefaultLayoutProps) => (
   <div
     sx={{
       display: 'flex',
@@ -17,7 +17,7 @@ export const Layout = ({ header, maxWidth = 960, children }: LayoutProps) => (
       minHeight: '100vh',
     }}
   >
-    <>{header}</>
+    {header}
     <div
       sx={{
         display: 'flex',
@@ -41,7 +41,7 @@ export const Layout = ({ header, maxWidth = 960, children }: LayoutProps) => (
       >
         {children}
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   </div>
 );

@@ -3,9 +3,9 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { Locale } from '../types/i18n';
 import { darken } from '@theme-ui/color';
 import pageDataI18n from '../data/page.config';
-import { Layout } from '../components/Layout';
+import { DefaultLayout } from '../components/DefaultLayout';
 import { PageHead } from '../components/PageHead';
-import { Header } from '../components/Header';
+import { SiteHeader } from '../components/SiteHeader';
 
 export const getStaticProps: GetStaticProps<{
   pageData: typeof pageDataI18n[Locale];
@@ -25,7 +25,7 @@ export default function ImprintPage({
   pageData: { metadata },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout header={<Header siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
+    <DefaultLayout header={<SiteHeader siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
       <PageHead pageTitle="Impressum" metadata={metadata} />
 
       <h1>Impressum (DE)</h1>
@@ -52,6 +52,6 @@ export default function ImprintPage({
           eRecht24
         </a>
       </p>
-    </Layout>
+    </DefaultLayout>
   );
 }

@@ -21,7 +21,7 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
         url={socialData.xing}
         type="xing"
         size={size}
-        sx={{
+        styles={{
           mx: 2,
         }}
       />
@@ -29,7 +29,7 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
         url={socialData.linkedIn}
         type="linkedIn"
         size={size}
-        sx={{
+        styles={{
           mx: 2,
         }}
       />
@@ -37,7 +37,7 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
         url={socialData.github}
         type="github"
         size={size}
-        sx={{
+        styles={{
           mx: 2,
         }}
       />
@@ -45,7 +45,7 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
         url={socialData.twitter}
         type="twitter"
         size={size}
-        sx={{
+        styles={{
           mx: 2,
         }}
       />

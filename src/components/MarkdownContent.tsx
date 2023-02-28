@@ -5,15 +5,27 @@ import ReactMarkdown from 'react-markdown';
 
 type MarkdownContentProps = {
   children: Options['children'];
-  sx?: ThemeUICSSObject;
+  styles?: ThemeUICSSObject;
+  componentStyles?: { p?: ThemeUICSSObject; a?: ThemeUICSSObject };
 };
 
-// @TODO: #9 - SX prop not recognised
-export const MarkdownContent = ({ sx, children }: MarkdownContentProps) => (
-  <div sx={sx}>
+export const MarkdownContent = ({
+  children,
+  styles = {},
+  componentStyles = {},
+}: MarkdownContentProps) => (
+  <div sx={styles}>
     <ReactMarkdown
       components={{
-        p: ({ node, ...props }) => <p sx={{ mt: 0 }} {...props} />,
+        p: ({ node, ...props }) => (
+          <p
+            sx={{
+              mt: 0,
+              ...componentStyles?.p,
+            }}
+            {...props}
+          />
+        ),
         a: ({ node, ...props }) => (
           <a
             target="_blank"
@@ -24,6 +36,7 @@ export const MarkdownContent = ({ sx, children }: MarkdownContentProps) => (
               '&:hover': {
                 color: 'primary',
               },
+              ...componentStyles?.a,
             }}
             {...props}
           />

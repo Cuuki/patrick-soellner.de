@@ -32,7 +32,7 @@ type SocialButtonProps = {
   url: string;
   type: SocialIconProps['type'];
   size?: number;
-  sx?: ThemeUICSSObject;
+  styles?: ThemeUICSSObject;
 };
 
 const i18n = {
@@ -48,7 +48,7 @@ export const SocialButton = ({
   url = '',
   type = 'xing',
   size = 30,
-  sx = {},
+  styles = {},
 }: SocialButtonProps) => {
   const { t } = useI18n(i18n);
 
@@ -59,12 +59,12 @@ export const SocialButton = ({
       rel="noopener noreferrer"
       title={t('titleText')(type)}
       sx={{
-        ...sx,
         'p': 1,
         'color': 'primary',
         '&:hover': {
           color: darken('primary', 0.1),
         },
+        ...styles,
       }}
     >
       <SocialIcon type={type} size={size} />
