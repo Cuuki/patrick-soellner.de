@@ -3,12 +3,12 @@ import NextHead from 'next/head';
 import pageDataI18n from '../data/page.config';
 import { useThemeUI } from 'theme-ui';
 
-type HeadProps = {
+type SiteHeadProps = {
   pageTitle: string;
   metadata: typeof pageDataI18n[Locale]['metadata'];
 };
 
-export const PageHead = ({ pageTitle, metadata }: HeadProps) => {
+export const SiteHead = ({ pageTitle, metadata }: SiteHeadProps) => {
   const { theme } = useThemeUI();
 
   return (

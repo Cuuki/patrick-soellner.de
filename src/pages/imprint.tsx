@@ -4,7 +4,7 @@ import type { Locale } from '../types/i18n';
 import { darken } from '@theme-ui/color';
 import pageDataI18n from '../data/page.config';
 import { DefaultLayout } from '../components/DefaultLayout';
-import { PageHead } from '../components/PageHead';
+import { SiteHead } from '../components/SiteHead';
 import { SiteHeader } from '../components/SiteHeader';
 
 export const getStaticProps: GetStaticProps<{
@@ -25,9 +25,11 @@ export default function ImprintPage({
   pageData: { metadata },
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <DefaultLayout header={<SiteHeader siteTitle={metadata.title} maxWidth={1280} />} maxWidth={1280}>
-      <PageHead pageTitle="Impressum" metadata={metadata} />
-
+    <DefaultLayout
+      head={<SiteHead pageTitle="Impressum" metadata={metadata} />}
+      header={<SiteHeader siteTitle={metadata.title} maxWidth={1280} />}
+      maxWidth={1280}
+    >
       <h1>Impressum (DE)</h1>
 
       <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>

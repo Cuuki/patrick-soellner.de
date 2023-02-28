@@ -8,15 +8,13 @@ import trainingDataI18n from '../data/training.config';
 import skillDataI18n from '../data/skill.config';
 import certificatesDataI18n from '../data/certificate.config';
 import { withI18n } from '../utils/i18n';
-import { PageHead } from '../components/PageHead';
+import { SiteHead } from '../components/SiteHead';
 import { DefaultLayout } from '../components/DefaultLayout';
 import { SiteHeader } from '../components/SiteHeader';
 import { ProfilePortrait } from '../components/ProfilePortrait';
 import { SocialButtonList } from '../components/SocialButtonList';
 import { ExperienceEntry } from '../components/ExperienceEntry';
 import { ProfileDataListItem } from '../components/ProfileDataListItem';
-import { PageHeading } from '../components/PageHeading';
-import { PageFooter } from '../components/PageFooter';
 import { ProfileDataList } from '../components/ProfileDataList';
 import { DurationText } from '../components/DurationText';
 import { SkillGroup } from '../components/SkillGroup';
@@ -106,17 +104,33 @@ export default function Home({
   return (
     <DefaultLayout
       header={<SiteHeader siteTitle={pageData.metadata.title} maxWidth={1280} />}
+      head={<SiteHead pageTitle="CV" metadata={pageData.metadata} />}
       maxWidth={1280}
     >
-      <PageHead pageTitle="CV" metadata={pageData.metadata} />
-
       <ProfilePortrait />
 
-      <PageHeading
-        title={pageData.metadata.title}
-        nickname={pageData.nickname}
-        githubUrl={pageData.social.github}
-      />
+      <h1
+        sx={{
+          textAlign: 'center',
+        }}
+      >
+        {pageData.metadata.title} (
+        <a
+          href={pageData.social.github}
+          target="_blank"
+          rel="noreferrer"
+          sx={{
+            'color': 'text',
+            'textDecoration': 'none',
+            '&:hover': {
+              color: 'primary',
+            },
+          }}
+        >
+          {pageData.nickname}
+        </a>
+        )
+      </h1>
       <p
         sx={{
           mx: 'auto',
@@ -316,7 +330,8 @@ export default function Home({
           borderStyle: 'solid',
         }}
       />
-      <PageFooter socialData={pageData.social} />
+
+      <SocialButtonList socialData={pageData.social} />
     </DefaultLayout>
   );
 }
