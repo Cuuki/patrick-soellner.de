@@ -21,7 +21,7 @@ const e1: Experience = {
   duration: { startDate: '2023-02-01', startDisplay: '02/2023' },
   company: 'New Monday GmbH',
   jobTitle: 'Senior Frontend Developer',
-  areas: ['Design Systems / Component Libraries', 'Knowledge transfer'],
+  areas: ['Design Systems / Component Libraries', 'Development for UX/UI Design', 'Accessibility talks'],
   technologies: ['React', 'TypeScript'],
 };
 
