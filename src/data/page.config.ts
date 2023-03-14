@@ -6,7 +6,7 @@ const page = {
   metadata: {
     url: 'https://patrick-soellner.de',
     title: 'Patrick Söllner',
-    description: `I'm a passionate Frontend Developer with more than ${experienceInYears} years of professional experience in agile projects. My focus lies in Design Systems, Component Development with React, and UI Testing. I'm also an advocate for accessibility on the web. Continuously questioning the status quo, being open to new perspectives, and trying to learn as much as possible drive me daily.`,
+    description: `I'm a passionate Frontend Developer with more than ${experienceInYears} years of professional experience in agile projects. My focus lies in modular Software Design, Design Systems, Component Driven Development with React, and UI Testing. I'm also an advocate for accessibility on the web. Continuously questioning the status quo, being open to new perspectives, and trying to learn as much as possible drive me daily.`,
     twitterAuthor: '@PatrickSllner',
   },
   nickname: '@Cuuki',
@@ -23,7 +23,7 @@ const pageDataI18n = {
     ...page,
     metadata: {
       ...page.metadata,
-      description: `Ich bin leidenschaftlicher Frontend-Entwickler mit mehr als ${experienceInYears} Jahren Berufserfahrung in agilen Projekten. Mein Fokus liegt auf Design Systemen, Komponentenentwicklung mit React und UI Testing. Ich setzte mich außerdem für Barrierefreiheit im Web ein. Kontinuierlich den Status quo zu hinterfragen, offen für neue Perspektiven zu sein und zu versuchen, so viel wie möglich dazuzulernen, treibt mich täglich an.`,
+      description: `Ich bin leidenschaftlicher Frontend-Entwickler mit mehr als ${experienceInYears} Jahren Berufserfahrung in agilen Projekten. Mein Fokus liegt auf modularem Software-Design, Design Systemen, Komponentenentwicklung mit React und UI Testing. Ich setzte mich außerdem für Barrierefreiheit im Web ein. Kontinuierlich den Status quo zu hinterfragen, offen für neue Perspektiven zu sein und zu versuchen, so viel wie möglich dazuzulernen, treibt mich täglich an.`,
     },
   },
   en: {
