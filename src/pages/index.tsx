@@ -20,6 +20,7 @@ import { DurationText } from '../components/DurationText';
 import { SkillGroup } from '../components/SkillGroup';
 import { TopSkillList } from '../components/TopSkillList';
 import { SkillRatingLegend } from '../components/SkillRatingLegend';
+import { fetchContent } from '../utils/fetch';
 
 const cvSectionStyle = {
   ml: 'auto',
@@ -76,11 +77,24 @@ export const getStaticProps: GetStaticProps<{
   certificatesData: typeof certificatesDataI18n[Locale];
 }> = async ({ locale = 'en' }) => {
   const l = locale as Locale;
+  const cvPageData = await fetchContent<{ cv: { title: string } }>(`
+    query {
+      cv(id: "3loz5idkdut5kqsuUlBjVP", locale: "${l}") {
+        title
+      }
+    }
+  `);
 
   return {
     props: {
       locale: l,
-      pageData: pageDataI18n[l],
+      pageData: {
+        ...pageDataI18n[l],
+        metadata: {
+          ...pageDataI18n[l].metadata,
+          title: cvPageData?.cv?.title || pageDataI18n[l].metadata.title,
+        },
+      },
       profileData: profileDataI18n[l],
       experienceData: experienceDataI18n[l],
       trainingData: trainingDataI18n[l],
