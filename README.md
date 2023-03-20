@@ -4,7 +4,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First you need to configure a `.env.local` file with credentials from the Contentful space as provided in `.env.local.example`.
+
+Then, run the development server:
 
 ```bash
 pnpm run dev
@@ -17,7 +19,15 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 Start a production build:
 
 ```bash
-pnpm run build
+pnpm run build && pnpm run start
+```
+
+### Testing
+
+Start E2E tests:
+
+```bash
+pnpm run test:e2e
 ```
 
 ## Learn More
