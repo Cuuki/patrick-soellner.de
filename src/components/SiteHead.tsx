@@ -6,9 +6,10 @@ import { useThemeUI } from 'theme-ui';
 type SiteHeadProps = {
   pageTitle: string;
   metadata: typeof pageDataI18n[Locale]['metadata'];
+  noIndex?: boolean;
 };
 
-export const SiteHead = ({ pageTitle, metadata }: SiteHeadProps) => {
+export const SiteHead = ({ pageTitle, metadata, noIndex = false }: SiteHeadProps) => {
   const { theme } = useThemeUI();
 
   return (
@@ -34,6 +35,8 @@ export const SiteHead = ({ pageTitle, metadata }: SiteHeadProps) => {
       <meta property="twitter:description" content={metadata.description} />
       <meta name="twitter:url" content={metadata.url} />
       <meta name="twitter:image" content={`${metadata.url}/icons/android-chrome-192x192.png`} />
+
+      {noIndex && <meta name="robots" content="noindex,nofollow" />}
 
       <link rel="icon" href="/icons/favicon.ico" />
       <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />

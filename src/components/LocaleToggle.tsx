@@ -15,7 +15,7 @@ const i18n = {
 
 export const LocaleToggle = () => {
   const router = useRouter();
-  const { locales, locale: activeLocale, route } = router;
+  const { locales, locale: activeLocale, pathname, query, asPath } = router;
   const t = withI18n(i18n, activeLocale as Locale);
 
   return (
@@ -34,7 +34,7 @@ export const LocaleToggle = () => {
         }}
         defaultValue={activeLocale}
         onChange={(e) => {
-          router.push(route, route, { locale: e.currentTarget.value });
+          router.push({ pathname, query }, asPath, { locale: e.currentTarget.value });
         }}
       >
         {Children.toArray(
