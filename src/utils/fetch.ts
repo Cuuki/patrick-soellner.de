@@ -1,4 +1,6 @@
 // @TODO: #11 - include error handling
+import { IS_DEVELOPMENT, IS_PREVIEW, IS_PRODUCTION } from './environment';
+
 /**
  * Fetch content from Contentful for static site generation at build time
  * This function should only be used for build time fetching, otherwise errors need to be handled on the client
@@ -17,7 +19,11 @@ export const fetchStaticContent = async <TData extends Record<string, unknown>>(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+        'Authorization': `Bearer ${
+          IS_PRODUCTION
+            ? process.env.CONTENTFUL_ACCESS_TOKEN
+            : process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+        }`,
       },
       body: JSON.stringify({ query }),
     },
