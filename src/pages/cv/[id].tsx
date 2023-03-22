@@ -5,7 +5,7 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import type { Locale } from '../../types/i18n';
-import { fetchContent } from '../../utils/fetch';
+import { fetchStaticContent } from '../../utils/fetch';
 import { DefaultLayout } from '../../components/DefaultLayout';
 import { SiteHeader } from '../../components/SiteHeader';
 import { SiteHead } from '../../components/SiteHead';
@@ -13,7 +13,7 @@ import { SiteHead } from '../../components/SiteHead';
 const fetchStaticPathsForLocale = async (
   locale: Locale,
 ): Promise<GetStaticPathsResult['paths'] | null> => {
-  const data = await fetchContent<{
+  const data = await fetchStaticContent<{
     cvCollection: {
       items: {
         sys: {
@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps<{
   data: CvData | null;
 }> = async ({ params, locale = 'en' }) => {
   const l = locale as Locale;
-  const data = await fetchContent<CvData>(`
+  const data = await fetchStaticContent<CvData>(`
     query {
       cv(id: "${params?.id}", locale: "${l}") {
         title

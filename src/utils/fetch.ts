@@ -1,44 +1,49 @@
 // @TODO: #11 - include error handling
-const logMessage = (message: Error | string, level: 'error' | 'warn' | 'info' = 'error') => {
-  switch (level) {
-    case 'info':
-      console.log(message);
-      return;
-    case 'warn':
-      console.warn(message);
-      return;
-    case 'error':
-    default:
-      console.error(message);
-      return;
-  }
-};
-
-// @TODO: #10 - include typed graphql queries
-export const fetchContent = async <TData>(query: string): Promise<TData | null> => {
-  try {
-    const response = await fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-        },
-        body: JSON.stringify({ query }),
+/**
+ * Fetch content from Contentful for static site generation at build time
+ * This function should only be used for build time fetching, otherwise errors need to be handled on the client
+ * See Contentful error codes here: https://www.contentful.com/developers/docs/references/graphql/#/reference/graphql-errors
+ *
+ * @param {string} query - GraphQL query string for fetch call
+ * @throws {Error} Static generation is interrupted if fetch failed, response was unsuccessful or data is empty
+ */
+export const fetchStaticContent = async <TData extends Record<string, unknown>>(
+  // @TODO: #10 - include typed graphql queries
+  query: string,
+): Promise<TData> => {
+  const response = await fetch(
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       },
-    );
+      body: JSON.stringify({ query }),
+    },
+  );
+  let responseAsJson: {
+    data: TData | null;
+    errors?: { message: string }[];
+  } = { data: null, errors: [] };
 
-    if (!response.ok) {
-      logMessage(response.statusText);
-      return null;
-    }
-
-    const { data } = await response.json();
-
-    return data as TData;
-  } catch (e: unknown) {
-    logMessage(e as Error);
-    return null;
+  try {
+    responseAsJson = await response.json();
+  } catch (e) {
+    throw new Error(`${response.status}: ${response.statusText}`);
   }
+
+  const { data, errors } = responseAsJson;
+
+  if (errors?.length) {
+    const errorsMultiLine = errors.map((error) => error.message).join('\n');
+
+    throw new Error(`The following query errors were thrown:\n${errorsMultiLine}`);
+  }
+
+  if (!data || Object.values(data).some((entry) => !entry)) {
+    throw new Error(`Missing entry data for response: ${JSON.stringify(data)}`);
+  }
+
+  return data as TData;
 };
