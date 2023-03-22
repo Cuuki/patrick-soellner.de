@@ -11,13 +11,14 @@ export const fetchStaticContent = async <TData extends Record<string, unknown>>(
   // @TODO: #10 - include typed graphql queries
   query: string,
 ): Promise<TData> => {
+  throw new Error(`node env: ${process.env.NODE_ENV}, vercel env: ${process.env.VERCEL_ENV}`);
   const response = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+        'Authorization': `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
       },
       body: JSON.stringify({ query }),
     },

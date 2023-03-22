@@ -31,7 +31,7 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
-      - name: Create .env.local file
+      - name: Create file with environment variables
         run: |
           touch .env.local
           echo CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} >> .env.local
