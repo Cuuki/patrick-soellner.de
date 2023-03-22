@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps<{
   const l = locale as Locale;
   const cvPageData = await fetchStaticContent<{ cv: { title: string } }>(`
     query {
-      cv(id: "foobar", d: "${l}") {
+      cv(id: "3loz5idkdut5kqsuUlBjVP", locale: "${l}") {
         title
       }
     }
