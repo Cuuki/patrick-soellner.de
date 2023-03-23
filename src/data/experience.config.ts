@@ -21,7 +21,11 @@ const e1: Experience = {
   duration: { startDate: '2023-02-01', startDisplay: '02/2023' },
   company: 'New Monday GmbH',
   jobTitle: 'Senior Frontend Developer',
-  areas: ['Design Systems / Component Libraries', 'Development for UX/UI Design', 'Accessibility talks'],
+  areas: [
+    'Design Systems / Component Libraries',
+    'Development for UX/UI Design',
+    'Accessibility talks',
+  ],
   technologies: ['React', 'TypeScript'],
 };
 
@@ -74,13 +78,25 @@ const e3: Experience = {
     'Development of many projects inside the Telekom e-commerce multi-client platform within the i22 shop product team.',
   areas: [
     'Frontend application development',
+    'Component libraries & shared code patterns',
     'E2E testing automation as a service',
     'Tech recruiting support',
     'Mentoring and training of junior developers',
     'Company wide frontend and accessibility tech talks',
     'Company wide accessibility working group initiative',
   ],
-  technologies: ['Vue', 'Nuxt', 'TypeScript', 'CSS3', 'Sass', 'Clean architecture', 'Cypress'],
+  technologies: [
+    'Vue',
+    'Nuxt',
+    'Vuex',
+    'TypeScript',
+    'CSS3',
+    'Sass',
+    'Clean architecture',
+    'Atomic Design',
+    'Storybook',
+    'Cypress',
+  ],
   projects: ['[smarthome.de](https://smarthome.de)', '[shop.telekom.de](https://shop.telekom.de)'],
 };
 
