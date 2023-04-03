@@ -177,15 +177,15 @@ export default function Home({
           <h2 sx={{ mt: 0 }}>{t('topSkillsHeading')}</h2>
           <TopSkillList
             rating={3}
-            skills={skillData.filter((skill) => skill.rating === 3 && skill.isTop)}
+            skills={skillData.filter((skill) => skill.rating === 3 && skill.isTopSkill)}
           />
           <TopSkillList
             rating={2}
-            skills={skillData.filter((skill) => skill.rating === 2 && skill.isTop)}
+            skills={skillData.filter((skill) => skill.rating === 2 && skill.isTopSkill)}
           />
           <TopSkillList
             rating={1}
-            skills={skillData.filter((skill) => skill.rating === 1 && skill.isTop)}
+            skills={skillData.filter((skill) => skill.rating === 1 && skill.isTopSkill)}
           />
 
           <hr

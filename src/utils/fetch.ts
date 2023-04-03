@@ -1,5 +1,5 @@
 // @TODO: #11 - include error handling
-import { IS_DEVELOPMENT, IS_PREVIEW, IS_PRODUCTION } from './environment';
+import { IS_PRODUCTION } from './environment';
 
 /**
  * Fetch content from Contentful for static site generation at build time
@@ -7,11 +7,16 @@ import { IS_DEVELOPMENT, IS_PREVIEW, IS_PRODUCTION } from './environment';
  * See Contentful error codes here: https://www.contentful.com/developers/docs/references/graphql/#/reference/graphql-errors
  *
  * @param {string} query - GraphQL query string for fetch call
+ * @param {Object} variables - Optional GraphQL variables for query
  * @throws {Error} Static generation is interrupted if fetch failed, response was unsuccessful or data is empty
  */
-export const fetchStaticContent = async <TData extends Record<string, unknown>>(
+export const fetchStaticContent = async <
+  TData extends Record<string, unknown>,
+  TVariables extends Record<string, string> = Record<string, string>,
+>(
   // @TODO: #10 - include typed graphql queries
   query: string,
+  variables?: TVariables,
 ): Promise<TData> => {
   const response = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -25,7 +30,7 @@ export const fetchStaticContent = async <TData extends Record<string, unknown>>(
             : process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
         }`,
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query, variables }),
     },
   );
   let responseAsJson: {
