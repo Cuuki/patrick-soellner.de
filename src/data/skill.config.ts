@@ -43,7 +43,7 @@ const technical: Skill[] = [
   { id: 't27', text: 'Jira', rating: 3, group: 'tools', isTopSkill: false },
   { id: 't28', text: 'Confluence', rating: 3, group: 'tools', isTopSkill: false },
   { id: 't29', text: 'Figma', rating: 2, group: 'tools', isTopSkill: false },
-  { id: 't30', text: 'Github', rating: 2, group: 'tools', isTopSkill: false },
+  { id: 't30', text: 'Github', rating: 3, group: 'tools', isTopSkill: false },
   { id: 't31', text: 'Gitlab', rating: 3, group: 'tools', isTopSkill: false },
   { id: 't32', text: 'npm', rating: 3, group: 'tools', isTopSkill: false },
   { id: 't33', text: 'yarn / pnpm', rating: 2, group: 'tools', isTopSkill: false },
