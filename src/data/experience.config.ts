@@ -24,7 +24,7 @@ const e0: Experience = {
   },
   company: 'eCommerceDB GmbH',
   jobTitle: 'Frontend Developer',
-  areas: ['Frontend application development', 'Creating CI / CD automation with Github Actions', 'Migrating Nuxt from v2 to v3'],
+  areas: ['Frontend application development', 'Creating CI / CD automation with Github Actions', 'Migrating Nuxt from v2 to v3', 'Improving the technical workflows and organisation'],
   technologies: ['Vue', 'Nuxt', 'TypeScript', 'Github Actions'],
 };
 
