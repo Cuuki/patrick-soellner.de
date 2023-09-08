@@ -12,11 +12,11 @@ dependencies:
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.21)(react@18.2.0)
   '@theme-ui/color':
-    specifier: ^0.15.7
-    version: 0.15.7(@emotion/react@11.11.1)
+    specifier: ^0.16.1
+    version: 0.16.1(@emotion/react@11.11.1)
   '@theme-ui/presets':
-    specifier: ^0.15.7
-    version: 0.15.7(@emotion/react@11.11.1)(@theme-ui/css@0.15.7)
+    specifier: ^0.16.1
+    version: 0.16.1(@emotion/react@11.11.1)(@theme-ui/css@0.16.1)
   emotion-icons:
     specifier: ^3.27.0
     version: 3.27.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(react@18.2.0)
@@ -42,11 +42,11 @@ dependencies:
     specifier: ^13.0.0
     version: 13.0.0
   theme-ui:
-    specifier: ^0.15.7
-    version: 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
+    specifier: ^0.16.1
+    version: 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
   typescript:
-    specifier: ^4.9.5
-    version: 4.9.5
+    specifier: ^5.2.2
+    version: 5.2.2
 
 devDependencies:
   '@playwright/test':
@@ -66,7 +66,7 @@ devDependencies:
     version: 8.48.0
   eslint-config-next:
     specifier: ^13.4.19
-    version: 13.4.19(eslint@8.48.0)(typescript@4.9.5)
+    version: 13.4.19(eslint@8.48.0)(typescript@5.2.2)
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
@@ -2256,225 +2256,228 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@theme-ui/color-modes@0.15.7(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-iF44OeCJD7+Fq+JiVaCkG0dqJJlksF39u3trEP2PyZ2GVkZE9j9UZh5/AozFnfGXek4T0I8Pn6lyNbs0lAEOrQ==}
+  /@theme-ui/color-modes@0.16.1(@emotion/react@11.11.1)(react@18.2.0):
+    resolution: {integrity: sha512-G2YoNEMwZroRS0DcftUG+E/8WM5/Osf8TRrQLLK+L43HJ4BmaWuBmVeyoNOaPBDlAuqMBx2203VRgoPmUaMqOg==}
     peerDependencies:
-      '@emotion/react': ^11
+      '@emotion/react': ^11.11.1
       react: '>=18'
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
-      '@theme-ui/core': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/core': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
       deepmerge: 4.3.1
       react: 18.2.0
     dev: false
 
-  /@theme-ui/color@0.15.7(@emotion/react@11.11.1):
-    resolution: {integrity: sha512-05hZo6Mieua6Ln/cp6YKqcYkqJaLq49L5EvS/55XIdoa3YpANqjDR67tOL0g3jD11dv7YQIegYHjGZwApaEj+w==}
+  /@theme-ui/color@0.16.1(@emotion/react@11.11.1):
+    resolution: {integrity: sha512-oWNd1ZDCRgiqQLjE0f1YHFzWDcL+Vm3/QqyvkAU/NyD+fDsS+xcHHejqwii7yBbwbETVr2s5TzNWP8vZ5crcIw==}
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
       polished: 4.2.2
     transitivePeerDependencies:
       - '@emotion/react'
     dev: false
 
-  /@theme-ui/components@0.15.7(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-niSZQyFJQ/rojYdUyFl53OJ3J6g3w6GBO76Wc/AHDLJXsXlRvC3+Y3m5AlDlAE0q/v+qfHNhnVo16ufXIxlfwQ==}
+  /@theme-ui/components@0.16.1(@emotion/react@11.11.1)(@theme-ui/theme-provider@0.16.1)(react@18.2.0):
+    resolution: {integrity: sha512-3v56xR8Rn9LgLzknt4TXLSvnxmAZ//lN8lW87J5yKqp+reJUPDWqItLCOv899sMRcOMpihyMfHUpBRhSG/Aeng==}
     peerDependencies:
-      '@emotion/react': ^11
+      '@emotion/react': ^11.11.1
+      '@theme-ui/theme-provider': ^0.16.1
       react: '>=18'
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
       '@styled-system/color': 5.1.2
       '@styled-system/should-forward-prop': 5.1.5
       '@styled-system/space': 5.1.2
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/core': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/theme-provider': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
       '@types/styled-system': 5.1.17
       react: 18.2.0
     dev: false
 
-  /@theme-ui/core@0.15.7(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-87GcBbnpOvOwx0RYvWt4apuJEQ0+O8JvZuSYxdSVMXMbW0BUV6cU61KYRVArXIilNQgj49vYqiE6MGDBecoPmA==}
+  /@theme-ui/core@0.16.1(@emotion/react@11.11.1)(react@18.2.0):
+    resolution: {integrity: sha512-9Z0Fn50zdIWre0Apz3ObwfHXZ/zjw7NUhgRrSLYn/gdkJSPZZ8fcaY7Q2rnjfcrMt9DRCg5CPfQGLJqL1NY8xw==}
     peerDependencies:
-      '@emotion/react': ^11
+      '@emotion/react': ^11.11.1
       react: '>=18'
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
       deepmerge: 4.3.1
       react: 18.2.0
     dev: false
 
-  /@theme-ui/css@0.15.7(@emotion/react@11.11.1):
-    resolution: {integrity: sha512-RBCoA3ElO3+DrMPeBKcwbP668Kjj/d5z9SSxJFnfVnawKQfYK0ZNWqMnyV89XO3rZm342rCNG0uVhc19jVQifg==}
+  /@theme-ui/css@0.16.1(@emotion/react@11.11.1):
+    resolution: {integrity: sha512-8TO2DbiqPrRyTlGRIElDak/p0M4ykyd8LkeavyOF/sTE9s93AwyFcle6KYYMEULrJP49SyYiEvTif7J7Z50DhA==}
     peerDependencies:
-      '@emotion/react': ^11
+      '@emotion/react': ^11.11.1
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
       csstype: 3.1.2
     dev: false
 
-  /@theme-ui/global@0.15.7(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-kyaJPTzDzGY4UXiVCffsHfDFpl1xgeoJNvS9FEkKrO0clrY/wvhuYGH5guFlKImjvu7OjQY7ST/duSxkSWt9nw==}
+  /@theme-ui/global@0.16.1(@emotion/react@11.11.1)(react@18.2.0):
+    resolution: {integrity: sha512-2GHRYAz4meF5sn3XxwdFSJMENICSJNj6ZEfQyHaioIXt3t46wXdPpZNjCStxdElQ3QVQgYxY6jR+ILUFORaR0w==}
     peerDependencies:
-      '@emotion/react': ^11
+      '@emotion/react': ^11.11.1
       react: '>=18'
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
-      '@theme-ui/core': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/core': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
       react: 18.2.0
     dev: false
 
-  /@theme-ui/preset-base@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-lJXVKPIMN31MpoGTlX4Kwa7tKauToRf8FPPoglCL3VBVcaZKI1zbYaTPLRqBVngICoVpzysZ5umrdalEKgxsqA==}
+  /@theme-ui/preset-base@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-RCbIc/7oCLpY3q8ll69ryYFJJ97Ume/B2ykH7pJfmjvS8/BWajhLm1jDoxloGNle8zzje/0C0HVEF6Kv1eJaWw==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-bootstrap@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-ETWzHxgDjd6/9gp3V5LCTsmREtB/LQpjnZiuSZS8C3ZK7CIIGRJ+DbnwE3GuaijTr0z/Y4ttQPSw8BsqsxK0yA==}
+  /@theme-ui/preset-bootstrap@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-a0uhy/vAuEfazN0Rrt29+daQ8uBFDtjJCtpOqGM0yI9k3/bakbsdDlHWi7l00zBVU4SoccyeY7unsyWp+oxv0g==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-bulma@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-hkeUtRrYsVSUclVj+PAwb8vaM40vaq2MNrNmzg847jl7jOmXD/MA0X2hiaQi3EELD9M+Bhk3hjuH6GdGaKCbVQ==}
+  /@theme-ui/preset-bulma@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-rzu1DhwtUm/+emz8pHUJ7/gFzNwjrGeKpTZO6LOQDXBlEevBLEuilYe3Wkuyd3IUqhlBlaEQSOQ7j7hGcquyCA==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/preset-base': 0.15.7(@theme-ui/css@0.15.7)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/preset-base': 0.16.1(@theme-ui/css@0.16.1)
     dev: false
 
-  /@theme-ui/preset-dark@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-aQJj0+ymwOtwuNqdKjmrD98Xl8WBcA+ll48lTZ8xUNs9ENBZSSsLiUvfYRjh991IKkfEBMtB1WAm2Kh3MwnPIA==}
+  /@theme-ui/preset-dark@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-hZ8P5DaBImtaz7fjjoRHJDgJzN6XDuyhkr38NTgJnLMcMpYMY/M5FIkiAOh7pMGnaJsxD0hFqemLIXcbAxsXCQ==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-deep@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-PtN4i9218hMRNqNWV3akmMxMZyFmJwB5c1iB5jdPIYccuvE0jCWOfVuaIGCdMOszKy8AEVZWzSsWUGBRcu7OAQ==}
+  /@theme-ui/preset-deep@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-HUXKSS28RyEdH2QFPhORErB2chfMN8O7B8LXKkiVUmkxmCHotxaXI/hMBSUUoHSuAcBaspoPTTo0c03ILrwBXQ==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-funk@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-ajq1YUGOayUnqrgDnZAHn7a2j/QdL+EwKDqrzamwVQNX3KQRakuHKp+nAstJENMJ1APhD7HBE0Zf53eFedFbSA==}
+  /@theme-ui/preset-funk@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-GrouaeLJ3dEyedj0f5Z9rIkjOPd0YD5DMqh1BUVPx6JjjCMKlw0nEhylueSTAq//oBNFnDLIqFUnhWr2dr4VgA==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/preset-base': 0.15.7(@theme-ui/css@0.15.7)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/preset-base': 0.16.1(@theme-ui/css@0.16.1)
     dev: false
 
-  /@theme-ui/preset-future@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-ZTpaJVTZcATCIVvAf9b3IawxVRYnSYf/We95N4o2EXasozx+OJMLrJb5H4tjLrcQwjXMuLDSi8NY5OuH21FjOw==}
+  /@theme-ui/preset-future@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-z9223i7RlwPfveU/uBgZUNcyMcRxieHrD/V6VMe91CEyMyQ2R+bH88cGsNa6FDDJkeaCiQXkjloBhIusZTlNIA==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/preset-base': 0.15.7(@theme-ui/css@0.15.7)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/preset-base': 0.16.1(@theme-ui/css@0.16.1)
     dev: false
 
-  /@theme-ui/preset-polaris@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-CViA6Q14J4norhNbqulj2nFhNZcXwMoHtrCxzFdFUERFgzQr+mLiuE6fSpJGW1fenV42kInVvabEEJSik1fotQ==}
+  /@theme-ui/preset-polaris@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-GAvY8zaR5czP4Z5AwRP019lfkS0J7siGg84n++moXopKxCbf52OgZxZcV+PKQ+yr2wh33fBqJeqRZDYxi/s56A==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/preset-base': 0.15.7(@theme-ui/css@0.15.7)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/preset-base': 0.16.1(@theme-ui/css@0.16.1)
     dev: false
 
-  /@theme-ui/preset-roboto@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-2nD0fAg8/dS6IvEp97fOs8X2vTiyY1oi695wc3Mgk51aVChPT5d6Pie6Es3w5sifuxnVn8j16zJNfeUzn3hmsA==}
+  /@theme-ui/preset-roboto@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-pbwPqyXaOm1PNpZqGzkYsgZIlV3AgjEGVOo/vqc49cn1l8qG1QVb+TT7EYUeixjfB8FCgv2tXJcvM+PB+UKryg==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/preset-base': 0.15.7(@theme-ui/css@0.15.7)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/preset-base': 0.16.1(@theme-ui/css@0.16.1)
     dev: false
 
-  /@theme-ui/preset-sketchy@0.15.7(@emotion/react@11.11.1):
-    resolution: {integrity: sha512-LcSd3xQxtUxzVFpepKl2bdWk+gqSVvQs/xtaJVGJQhtjpf7HpKUJRr9Ts4s1n1HV9MVmj5wZDxv6HKLML7hOIg==}
+  /@theme-ui/preset-sketchy@0.16.1(@emotion/react@11.11.1):
+    resolution: {integrity: sha512-Rj4Yf9ifNsVNn986sTM7MrzztVjYOHSiSd5iTa6TVU8Li9FJPFAGxklnEmQydYFG9Uy06xvOG/zoC7MJCOTv1A==}
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     transitivePeerDependencies:
       - '@emotion/react'
     dev: false
 
-  /@theme-ui/preset-swiss@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-l7OF4yVVUVD0KXCJuxHYB6wWLfmzFAuDAVH1elUYM86c5C9n6du6lUD+g/NtgZcz/sZ8PXNw1Lq41WuTw2cCRw==}
+  /@theme-ui/preset-swiss@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-wsYvOjOAgPAWuV6C2jbGKg1u5JzuapC5keX9XP/McmC3/ClPMYFu1NigCs63fdQxvp6KRikzhaxEbifWgqwxOQ==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-system@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-2KeDCsHszfc3JoXR5sVd8cVsH2a6MaAr555NnksfW835hmhd8efuMSGc3t8/YTl3/KxwSWM6o5LGfVvkz2qAKQ==}
+  /@theme-ui/preset-system@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-nCP4C/28F9f/JRUptDuQTbCE7slS/3r7ySW3AR9g+awKLrK03AynDrOX5B2uipnhdJACVMHAbY4f8afrDqCsbw==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-tailwind@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-k+LOl/m4RFv1WDU+5IDTGwSL7/mORc0zsGoyV0JShgfjyFsuaB9I5me68q7DSI7BftFMRcw1aY4WGx2E2foJiw==}
+  /@theme-ui/preset-tailwind@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-nt3uZYcB/zuIY6e1vbxW1u6OPLcCCITG2CLmpvQcidhogjV9C6sCpdqyKN5xxHVeXxy7T7Zvcq8tofgKkDps9g==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/preset-tosh@0.15.7(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-KjWYJLuUn573FS5WXiybAnl2tpgyZyL0lIHsmwm2glO/fB/tbm0hBqyNpjK88Q5yI47ISpLZc0P09zlErt3sTw==}
+  /@theme-ui/preset-tosh@0.16.1(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-VtUuCtc1Lmbmzf54RHP9lQQ80RMMHcwjUF+dN13UKpFWnQNLIpyM07+Ewaloql9leQdESvAwqridGtWFXMiQKg==}
     peerDependencies:
-      '@theme-ui/css': ^0.15.7
+      '@theme-ui/css': ^0.16.1
     dependencies:
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
     dev: false
 
-  /@theme-ui/presets@0.15.7(@emotion/react@11.11.1)(@theme-ui/css@0.15.7):
-    resolution: {integrity: sha512-UzbPkQpdqBgJxqE+tAXnec4CcEFlboipWNS58vSJEdw0LLosM4aXXfXgepbMFtYwcd9WCIj27dw10bXsPOfBBQ==}
+  /@theme-ui/presets@0.16.1(@emotion/react@11.11.1)(@theme-ui/css@0.16.1):
+    resolution: {integrity: sha512-Rq2rxlBhr2DYjcLTLvPf0MTJIAcXQ74qxWVThnuuEYp0RdanmptELGqYpqCQYviCiTLUAYxTjiWR2QtiVlqJGw==}
     dependencies:
-      '@theme-ui/preset-base': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-bootstrap': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-bulma': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-dark': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-deep': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-funk': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-future': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-polaris': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-roboto': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-sketchy': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/preset-swiss': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-system': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-tailwind': 0.15.7(@theme-ui/css@0.15.7)
-      '@theme-ui/preset-tosh': 0.15.7(@theme-ui/css@0.15.7)
+      '@theme-ui/preset-base': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-bootstrap': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-bulma': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-dark': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-deep': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-funk': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-future': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-polaris': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-roboto': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-sketchy': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/preset-swiss': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-system': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-tailwind': 0.16.1(@theme-ui/css@0.16.1)
+      '@theme-ui/preset-tosh': 0.16.1(@theme-ui/css@0.16.1)
     transitivePeerDependencies:
       - '@emotion/react'
       - '@theme-ui/css'
     dev: false
 
-  /@theme-ui/theme-provider@0.15.7(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-p0HLpFGhK9KrLdgshBULGHtkVmbfwAkkTbGDSMaCTLT5lxGPVKRlgaibYwbqT/4+bFX/BGm2/aC9y2pjEWGcFw==}
+  /@theme-ui/theme-provider@0.16.1(@emotion/react@11.11.1)(react@18.2.0):
+    resolution: {integrity: sha512-+/3BJYLIOC2DwTS76cqNhigRQJJ+qOT845DYF7t3TaG2fXDfgh16/DGZSnVjGOGc9dYE3C/ZFAYcVDVwO94Guw==}
     peerDependencies:
-      '@emotion/react': ^11
+      '@emotion/react': ^11.11.1
       react: '>=18'
     dependencies:
       '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
-      '@theme-ui/color-modes': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/core': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
+      '@theme-ui/color-modes': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/core': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
       react: 18.2.0
     dev: false
 
@@ -2587,7 +2590,7 @@ packages:
     resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==}
     dev: false
 
-  /@typescript-eslint/parser@6.6.0(eslint@8.48.0)(typescript@4.9.5):
+  /@typescript-eslint/parser@6.6.0(eslint@8.48.0)(typescript@5.2.2):
     resolution: {integrity: sha512-setq5aJgUwtzGrhW177/i+DMLqBaJbdwGj2CPIVFFLE0NCliy5ujIdLHd2D1ysmlmsjdL2GWW+hR85neEfc12w==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
@@ -2599,11 +2602,11 @@ packages:
     dependencies:
       '@typescript-eslint/scope-manager': 6.6.0
       '@typescript-eslint/types': 6.6.0
-      '@typescript-eslint/typescript-estree': 6.6.0(typescript@4.9.5)
+      '@typescript-eslint/typescript-estree': 6.6.0(typescript@5.2.2)
       '@typescript-eslint/visitor-keys': 6.6.0
       debug: 4.3.4
       eslint: 8.48.0
-      typescript: 4.9.5
+      typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2621,7 +2624,7 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
     dev: true
 
-  /@typescript-eslint/typescript-estree@6.6.0(typescript@4.9.5):
+  /@typescript-eslint/typescript-estree@6.6.0(typescript@5.2.2):
     resolution: {integrity: sha512-hMcTQ6Al8MP2E6JKBAaSxSVw5bDhdmbCEhGW/V8QXkb9oNsFkA4SBuOMYVPxD3jbtQ4R/vSODBsr76R6fP3tbA==}
     engines: {node: ^16.0.0 || >=18.0.0}
     peerDependencies:
@@ -2636,8 +2639,8 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.4
-      ts-api-utils: 1.0.3(typescript@4.9.5)
-      typescript: 4.9.5
+      ts-api-utils: 1.0.3(typescript@5.2.2)
+      typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3484,7 +3487,7 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-next@13.4.19(eslint@8.48.0)(typescript@4.9.5):
+  /eslint-config-next@13.4.19(eslint@8.48.0)(typescript@5.2.2):
     resolution: {integrity: sha512-WE8367sqMnjhWHvR5OivmfwENRQ1ixfNE9hZwQqNCsd+iM3KnuMc1V8Pt6ytgjxjf23D+xbesADv9x3xaKfT3g==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
@@ -3495,7 +3498,7 @@ packages:
     dependencies:
       '@next/eslint-plugin-next': 13.4.19
       '@rushstack/eslint-patch': 1.3.3
-      '@typescript-eslint/parser': 6.6.0(eslint@8.48.0)(typescript@4.9.5)
+      '@typescript-eslint/parser': 6.6.0(eslint@8.48.0)(typescript@5.2.2)
       eslint: 8.48.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.48.0)
@@ -3503,7 +3506,7 @@ packages:
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.48.0)
       eslint-plugin-react: 7.33.2(eslint@8.48.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.48.0)
-      typescript: 4.9.5
+      typescript: 5.2.2
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
@@ -3563,7 +3566,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 6.6.0(eslint@8.48.0)(typescript@4.9.5)
+      '@typescript-eslint/parser': 6.6.0(eslint@8.48.0)(typescript@5.2.2)
       debug: 3.2.7
       eslint: 8.48.0
       eslint-import-resolver-node: 0.3.9
@@ -3582,7 +3585,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 6.6.0(eslint@8.48.0)(typescript@4.9.5)
+      '@typescript-eslint/parser': 6.6.0(eslint@8.48.0)(typescript@5.2.2)
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.3
       array.prototype.flat: 1.3.2
@@ -5728,20 +5731,20 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
 
-  /theme-ui@0.15.7(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-STwxHsv3oMLm+00eg0KeKEzX/k7qsBWGqvOhD4bF401+JFxKV/pQvDu4CGdHRpY3X3gLVWVSIfGquZuBY7SkKA==}
+  /theme-ui@0.16.1(@emotion/react@11.11.1)(react@18.2.0):
+    resolution: {integrity: sha512-QozvNUorEbrFBZUwO5RaaHA+YU/aJLIpeB9vplJERW+vcauldilxhnAjr8KeTv8LY2QMU4iyWWreamJ8/5KzEQ==}
     peerDependencies:
+      '@emotion/react': '>=11.1.1'
       react: '>=18'
     dependencies:
-      '@theme-ui/color-modes': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/components': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/core': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/css': 0.15.7(@emotion/react@11.11.1)
-      '@theme-ui/global': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
-      '@theme-ui/theme-provider': 0.15.7(@emotion/react@11.11.1)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.21)(react@18.2.0)
+      '@theme-ui/color-modes': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/components': 0.16.1(@emotion/react@11.11.1)(@theme-ui/theme-provider@0.16.1)(react@18.2.0)
+      '@theme-ui/core': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/css': 0.16.1(@emotion/react@11.11.1)
+      '@theme-ui/global': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
+      '@theme-ui/theme-provider': 0.16.1(@emotion/react@11.11.1)(react@18.2.0)
       react: 18.2.0
-    transitivePeerDependencies:
-      - '@emotion/react'
     dev: false
 
   /to-fast-properties@2.0.0:
@@ -5769,13 +5772,13 @@ packages:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: false
 
-  /ts-api-utils@1.0.3(typescript@4.9.5):
+  /ts-api-utils@1.0.3(typescript@5.2.2):
     resolution: {integrity: sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==}
     engines: {node: '>=16.13.0'}
     peerDependencies:
       typescript: '>=4.2.0'
     dependencies:
-      typescript: 4.9.5
+      typescript: 5.2.2
     dev: true
 
   /tsconfig-paths@3.14.2:
@@ -5842,9 +5845,9 @@ packages:
       for-each: 0.3.3
       is-typed-array: 1.1.12
 
-  /typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
+  /typescript@5.2.2:
+    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+    engines: {node: '>=14.17'}
     hasBin: true
 
   /unbox-primitive@1.0.2:
