@@ -16,11 +16,25 @@ interface Experience {
   projects?: string[];
 }
 
+const eNow: Experience = {
+  id: 'eNow',
+  duration: {
+    startDate: '2023-08-01',
+    startDisplay: '08/2023',
+  },
+  company: 'AVIV Group',
+  jobTitle: 'Senior Frontend Engineer',
+  areas: ['Design System'],
+  technologies: ['React', 'TypeScript', 'Storybook'],
+};
+
 const e0: Experience = {
-  id: 'e1',
+  id: 'e0',
   duration: {
     startDate: '2023-04-20',
     startDisplay: '05/2023',
+    endDate: '2023-07-31',
+    endDisplay: '07/2023',
   },
   company: 'eCommerceDB GmbH',
   jobTitle: 'Frontend Developer',
@@ -193,11 +207,17 @@ const e7: Experience = {
   areas: ['Web development'],
 };
 
-const experience = [e0, e1, e2, e3, e4, e5, e6, e7];
+const experience = [eNow, e0, e1, e2, e3, e4, e5, e6, e7];
 
 const experienceDataI18n = {
   en: experience,
   de: [
+    {
+      ...eNow,
+    },
+    {
+      ...e0,
+    },
     {
       ...e1,
       areas: ['Design Systeme / Component Libraries', 'Wissenstransfer'],
