@@ -24,8 +24,24 @@ const eNow: Experience = {
   },
   company: 'AVIV Group',
   jobTitle: 'Senior Frontend Engineer',
-  areas: ['Design System'],
-  technologies: ['React', 'TypeScript', 'Storybook'],
+  description:
+    "Driving the evolution and maintenance of AVIV's centralized Design System, built with React, TypeScript, and Emotion, covering 9 brands with Figma-based tokens and themes.",
+  areas: [
+    'Managing inner-sourcing contributions, ensuring smooth integration, and providing consumer support for component-related issues.',
+    'Driving strategic decisions and communication across teams, fostering collaboration between design and development.',
+    'Spearheading technical project management for testing strategies and a data visualization initiative.',
+    'Enhancing team health by co-facilitating retrospectives, improving collaboration, and organizational practices.',
+  ],
+  technologies: [
+    'React',
+    'TypeScript',
+    'React Aria',
+    'Emotion',
+    'Storybook',
+    'Chromatic',
+    'Vitest',
+    'Playwright',
+  ],
 };
 
 const e0: Experience = {
@@ -219,6 +235,14 @@ const experienceDataI18n = {
   de: [
     {
       ...eNow,
+      description:
+        'Vorantreiben der Weiterentwicklung und Wartung des zentralen Design-Systems von AVIV, entwickelt mit React, TypeScript und Emotion, welches 9 Brands mit Figma-basierten Tokens und Themes abdeckt.',
+      areas: [
+        'Verantwortung für die Verwaltung von Inner-Sourcing Contributions, Sicherstellung einer reibungslosen Integration und Consumer Support für Komponenten-bezogene Probleme.',
+        'Vorantreiben strategischer Entscheidungen und der Kommunikation über verschiedene Teams hinweg, Förderung der Zusammenarbeit zwischen Design und Entwicklung.',
+        'Übernahme des technischen Projektmanagements für Testing Strategien und der Initiative "Data Visualization".',
+        'Förderung der Teamgesundheit durch Moderation von Retrospektiven, Verbesserung der Zusammenarbeit und organisatorischer Praktiken.',
+      ],
     },
     {
       ...e0,

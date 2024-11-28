@@ -6,14 +6,12 @@ const page = {
   metadata: {
     url: 'https://patrick-soellner.de',
     title: 'Patrick Söllner',
-    description: `I'm a passionate Frontend Developer with more than ${experienceInYears} years of professional experience in agile projects. My focus lies in modular Software Design, Design Systems, Component Driven Development with React, Vue or Web Components, and UI Testing. I'm also an advocate for accessibility on the web. Continuously questioning the status quo, being open to new perspectives, and trying to learn as much as possible drive me daily.`,
+    description: `I am a Senior Frontend Engineer with over ${experienceInYears} years of professional experience in agile environments, specializing in modular Software Design, Design Systems, and Component Driven Development using React, Vue, or Web Components. My expertise extends to UI testing and advocating for web accessibility, ensuring inclusive and reliable user experiences. Driven by curiosity and a commitment to growth, I thrive on challenging the status quo, embracing diverse perspectives, and continuously learning to deliver meaningful, innovative solutions.`,
     twitterAuthor: '@PatrickSllner',
   },
   nickname: '@Cuuki',
   social: {
     github: 'https://github.com/Cuuki',
-    twitter: 'https://twitter.com/PatrickSllner',
-    xing: 'https://www.xing.com/profile/Patrick_Soellner/',
     linkedIn: 'https://www.linkedin.com/in/patrick-s%C3%B6llner-8360a1184/',
   },
 };
@@ -23,7 +21,7 @@ const pageDataI18n = {
     ...page,
     metadata: {
       ...page.metadata,
-      description: `Ich bin leidenschaftlicher Frontend-Entwickler mit mehr als ${experienceInYears} Jahren Berufserfahrung in agilen Projekten. Mein Fokus liegt auf modularem Software-Design, Design Systemen, Komponentenentwicklung mit React, Vue oder Web Komponenten und UI Testing. Ich setzte mich außerdem für Barrierefreiheit im Web ein. Kontinuierlich den Status quo zu hinterfragen, offen für neue Perspektiven zu sein und zu versuchen, so viel wie möglich dazuzulernen, treibt mich täglich an.`,
+      description: `Ich bin ein Senior Frontend Engineer mit über ${experienceInYears} Jahren Berufserfahrung im agilen Umfeld, spezialisiert auf modulares Software-Design, Design Systeme und komponentenbasierte Entwicklung mit React, Vue oder Web Components. Meine Expertise umfasst außerdem UI-Testing und Förderung der Barrierefreiheit im Web, um inklusive und zuverlässige Nutzererfahrungen zu gewährleisten. Getrieben von Neugier und dem Streben nach persönlichem Wachstum, hinterfrage ich gerne den Status quo, integriere unterschiedliche Perspektiven und lerne kontinuierlich, um bedeutungsvolle und innovative Lösungen zu schaffen.`,
     },
   },
   en: {

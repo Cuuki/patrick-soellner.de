@@ -10,7 +10,7 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
     <div
       sx={{
         display: 'flex',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
         mx: 'auto',
         mt: 4,
         maxWidth: 480,
@@ -18,19 +18,11 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
       }}
     >
       <SocialButton
-        url={socialData.xing}
-        type="xing"
-        size={size}
-        styles={{
-          mx: 2,
-        }}
-      />
-      <SocialButton
         url={socialData.linkedIn}
         type="linkedIn"
         size={size}
         styles={{
-          mx: 2,
+          mx: 3,
         }}
       />
       <SocialButton
@@ -38,15 +30,7 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
         type="github"
         size={size}
         styles={{
-          mx: 2,
-        }}
-      />
-      <SocialButton
-        url={socialData.twitter}
-        type="twitter"
-        size={size}
-        styles={{
-          mx: 2,
+          mx: 3,
         }}
       />
     </div>
