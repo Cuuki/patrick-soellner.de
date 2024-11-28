@@ -3,7 +3,7 @@ import type { Locale } from '../types/i18n';
 import { SocialButton } from './SocialButton';
 import pageDataI18n from '../data/page.config';
 
-type SocialButtonListProps = { socialData: typeof pageDataI18n[Locale]['social']; size?: number };
+type SocialButtonListProps = { socialData: (typeof pageDataI18n)[Locale]['social']; size?: number };
 
 export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProps) => {
   return (

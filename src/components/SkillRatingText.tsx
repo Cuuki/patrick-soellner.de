@@ -3,7 +3,7 @@ import type { Skill } from '../data/skill.config';
 import useI18n from '../utils/hooks/useI18n';
 
 type SkillRating = NonNullable<Skill['rating']>;
-type I18nKeys = keyof typeof i18n[Locale];
+type I18nKeys = keyof (typeof i18n)[Locale];
 type SkillRatingTextProps = {
   rating: SkillRating;
 };

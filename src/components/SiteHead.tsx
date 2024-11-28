@@ -5,7 +5,7 @@ import { useThemeUI } from 'theme-ui';
 
 type SiteHeadProps = {
   pageTitle: string;
-  metadata: typeof pageDataI18n[Locale]['metadata'];
+  metadata: (typeof pageDataI18n)[Locale]['metadata'];
   noIndex?: boolean;
 };
 

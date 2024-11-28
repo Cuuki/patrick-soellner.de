@@ -19,11 +19,11 @@
     "@theme-ui/presets": "^0.17.1",
     "emotion-icons": "^3.27.0",
     "full-icu": "^1.5.0",
-    "next": "^13.5.7",
+    "next": "^14.2.18",
     "next-pwa": "^5.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-markdown": "^8.0.7",
+    "react-markdown": "^9.0.1",
     "sanitize.css": "^13.0.0",
     "theme-ui": "^0.17.1",
     "typescript": "^5.7.2"
@@ -34,8 +34,8 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^13.5.7",
-    "prettier": "^2.8.8"
+    "eslint-config-next": "^14.2.18",
+    "prettier": "^3.4.1"
   },
   "engines": {
     "node": "22.11"

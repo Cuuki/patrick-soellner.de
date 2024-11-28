@@ -69,12 +69,12 @@ const i18n = {
 
 export const getStaticProps: GetStaticProps<{
   locale: Locale;
-  pageData: typeof pageDataI18n[Locale];
-  profileData: typeof profileDataI18n[Locale];
-  experienceData: typeof experienceDataI18n[Locale];
-  trainingData: typeof trainingDataI18n[Locale];
-  skillData: typeof skillDataI18n[Locale];
-  certificatesData: typeof certificatesDataI18n[Locale];
+  pageData: (typeof pageDataI18n)[Locale];
+  profileData: (typeof profileDataI18n)[Locale];
+  experienceData: (typeof experienceDataI18n)[Locale];
+  trainingData: (typeof trainingDataI18n)[Locale];
+  skillData: (typeof skillDataI18n)[Locale];
+  certificatesData: (typeof certificatesDataI18n)[Locale];
 }> = async ({ locale = 'en' }) => {
   const l = locale as Locale;
   const cvPageData = await fetchStaticContent<{ cv: { title: string } }>(`

@@ -8,7 +8,7 @@ import { SiteHead } from '../components/SiteHead';
 import { SiteHeader } from '../components/SiteHeader';
 
 export const getStaticProps: GetStaticProps<{
-  pageData: typeof pageDataI18n[Locale];
+  pageData: (typeof pageDataI18n)[Locale];
 }> = async ({ locale = 'en' }) => ({
   props: { pageData: pageDataI18n[locale as Locale] },
 });
