@@ -29,7 +29,7 @@ const eNow: Experience = {
   areas: [
     'Managing inner-sourcing contributions, ensuring smooth integration, and providing consumer support for component-related issues.',
     'Driving strategic decisions and communication across teams, fostering collaboration between design and development.',
-    'Spearheading technical project management for testing strategies and a data visualization initiative.',
+    'Spearheading technical planning and implementation of the testing strategy and data visualization initiatives.',
     'Enhancing team health by co-facilitating retrospectives, improving collaboration, and organizational practices.',
   ],
   technologies: [
@@ -240,7 +240,7 @@ const experienceDataI18n = {
       areas: [
         'Verantwortung für die Verwaltung von Inner-Sourcing Contributions, Sicherstellung einer reibungslosen Integration und Consumer Support für Komponenten-bezogene Probleme.',
         'Vorantreiben strategischer Entscheidungen und der Kommunikation über verschiedene Teams hinweg, Förderung der Zusammenarbeit zwischen Design und Entwicklung.',
-        'Übernahme des technischen Projektmanagements für Testing Strategien und der Initiative "Data Visualization".',
+        'Leitung der technischen Planung & Umsetzung für die Initativen "Testing Strategy" und "Data Visualization".',
         'Förderung der Teamgesundheit durch Moderation von Retrospektiven, Verbesserung der Zusammenarbeit und organisatorischer Praktiken.',
       ],
     },
