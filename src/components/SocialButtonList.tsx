@@ -33,6 +33,14 @@ export const SocialButtonList = ({ socialData, size = 30 }: SocialButtonListProp
           mx: 3,
         }}
       />
+      <SocialButton
+        url={socialData.medium}
+        type="medium"
+        size={size}
+        styles={{
+          mx: 3,
+        }}
+      />
     </div>
   );
 };

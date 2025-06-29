@@ -2,7 +2,7 @@
 import type { ThemeUICSSObject } from 'theme-ui';
 import type { EmotionIconProps } from 'emotion-icons/types';
 import { darken } from '@theme-ui/color';
-import { Github, LinkedinIn, Twitter, Xing } from 'emotion-icons/fa-brands';
+import { Github, LinkedinIn, Twitter, Xing, Medium } from 'emotion-icons/fa-brands';
 import type { I18nRecord } from '../types/i18n';
 import useI18n from '../utils/hooks/useI18n';
 
@@ -11,6 +11,7 @@ const SOCIAL_TITLE_MAPPING = {
   linkedIn: 'LinkedIn',
   github: 'Github',
   twitter: 'Twitter',
+  medium: 'Medium',
 } as const;
 
 type SocialIconProps = EmotionIconProps & {
@@ -23,7 +24,8 @@ const SocialIcon = ({ type = 'xing', ...otherProps }: SocialIconProps) => {
       {(type === 'xing' && <Xing {...otherProps} />) ||
         (type === 'linkedIn' && <LinkedinIn {...otherProps} />) ||
         (type === 'github' && <Github {...otherProps} />) ||
-        (type === 'twitter' && <Twitter {...otherProps} />)}
+        (type === 'twitter' && <Twitter {...otherProps} />) ||
+        (type === 'medium' && <Medium {...otherProps} />)}
     </>
   );
 };

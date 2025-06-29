@@ -13,6 +13,7 @@ const page = {
   social: {
     github: 'https://github.com/Cuuki',
     linkedIn: 'https://www.linkedin.com/in/patrick-s%C3%B6llner-8360a1184/',
+    medium: 'https://patricksoellner.medium.com/'
   },
 };
 
