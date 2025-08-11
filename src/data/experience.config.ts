@@ -16,11 +16,25 @@ interface Experience {
   projects?: string[];
 }
 
-const eNow: Experience = {
-  id: 'eNow',
+const twt: Experience = {
+  id: 'twt',
+  duration: {
+    startDate: '2025-06-01',
+    startDisplay: '06/2025',
+  },
+  company: 'TWT Group GmbH',
+  jobTitle: 'Senior Frontend Developer',
+  areas: ['Frontend application development'],
+  technologies: ['React', 'TypeScript'],
+};
+
+const aviv: Experience = {
+  id: 'aviv',
   duration: {
     startDate: '2023-08-01',
     startDisplay: '08/2023',
+    endDate: '2025-05-31',
+    endDisplay: '05/2025',
   },
   company: 'AVIV Group',
   jobTitle: 'Senior Frontend Engineer',
@@ -44,8 +58,8 @@ const eNow: Experience = {
   ],
 };
 
-const e0: Experience = {
-  id: 'e0',
+const ecommercedb: Experience = {
+  id: 'ecommercedb',
   duration: {
     startDate: '2023-04-20',
     startDisplay: '05/2023',
@@ -63,8 +77,8 @@ const e0: Experience = {
   technologies: ['Vue', 'Nuxt', 'TypeScript', 'Github Actions'],
 };
 
-const e1: Experience = {
-  id: 'e1',
+const newmonday: Experience = {
+  id: 'newmonday',
   duration: {
     startDate: '2023-02-01',
     startDisplay: '02/2023',
@@ -81,8 +95,8 @@ const e1: Experience = {
   technologies: ['React', 'TypeScript'],
 };
 
-const e2: Experience = {
-  id: 'e2',
+const breuninger: Experience = {
+  id: 'breuninger',
   duration: {
     startDate: '2022-06-01',
     startDisplay: '06/2022',
@@ -116,8 +130,8 @@ const e2: Experience = {
   ],
 };
 
-const e3: Experience = {
-  id: 'e3',
+const i22: Experience = {
+  id: 'i22',
   duration: {
     startDate: '2021-01-01',
     startDisplay: '01/2021',
@@ -152,8 +166,8 @@ const e3: Experience = {
   projects: ['[smarthome.de](https://smarthome.de)', '[shop.telekom.de](https://shop.telekom.de)'],
 };
 
-const e4: Experience = {
-  id: 'e4',
+const iso: Experience = {
+  id: 'iso',
   duration: {
     startDate: '2020-07-01',
     startDisplay: '07/2020',
@@ -171,8 +185,8 @@ const e4: Experience = {
   technologies: ['Angular', 'Stencil', 'TypeScript', 'CSS3', 'Sass', 'Test-driven development'],
 };
 
-const e5: Experience = {
-  id: 'e5',
+const lottaleben: Experience = {
+  id: 'lottaleben',
   duration: {
     startDate: '2018-03-01',
     startDisplay: '03/2018',
@@ -196,8 +210,8 @@ const e5: Experience = {
   ],
 };
 
-const e6: Experience = {
-  id: 'e6',
+const drow: Experience = {
+  id: 'drow',
   duration: {
     startDate: '2015-09-01',
     startDisplay: '09/2015',
@@ -215,8 +229,8 @@ const e6: Experience = {
   technologies: ['HTML5', 'JavaScript', 'jQuery', 'CSS3', 'Sass', 'Wordpress', 'Shopware'],
 };
 
-const e7: Experience = {
-  id: 'e7',
+const publicis: Experience = {
+  id: 'publicis',
   duration: {
     startDate: '2012-09-01',
     startDisplay: '09/2012',
@@ -228,13 +242,25 @@ const e7: Experience = {
   areas: ['Web development'],
 };
 
-const experience = [eNow, e0, e1, e2, e3, e4, e5, e6, e7];
+const experience = [
+  twt,
+  aviv,
+  ecommercedb,
+  newmonday,
+  breuninger,
+  i22,
+  iso,
+  lottaleben,
+  drow,
+  publicis,
+];
 
 const experienceDataI18n = {
   en: experience,
   de: [
+    { ...twt },
     {
-      ...eNow,
+      ...aviv,
       description:
         'Vorantreiben der Weiterentwicklung und Wartung des zentralen Design-Systems von AVIV, entwickelt mit React, TypeScript und Emotion, welches 9 Brands mit Figma-basierten Tokens und Themes abdeckt.',
       areas: [
@@ -245,14 +271,14 @@ const experienceDataI18n = {
       ],
     },
     {
-      ...e0,
+      ...ecommercedb,
     },
     {
-      ...e1,
+      ...newmonday,
       areas: ['Design Systeme / Component Libraries', 'Wissenstransfer'],
     },
     {
-      ...e2,
+      ...breuninger,
       description:
         'Ablösung der bestehenden Content & Campaign Architektur innerhalb des Breuninger Fashion E-Commerce Produktes. Entwicklung von React-basierten UI-Erweiterungen für das neue Headless-Content-Management-System.',
       areas: [
@@ -264,7 +290,7 @@ const experienceDataI18n = {
       ],
     },
     {
-      ...e3,
+      ...i22,
       description:
         'Entwicklung vieler Projekte innerhalb der Telekom E-Commerce Multi-Client Plattform im i22 Shop-Produktteam.',
       areas: [
@@ -277,7 +303,7 @@ const experienceDataI18n = {
       ],
     },
     {
-      ...e4,
+      ...iso,
       description:
         'Entwicklung eines internen Tools zur vereinfachten Erstellung von Mitarbeiterprofilen. In-house Produktentwicklung.',
       areas: [
@@ -286,7 +312,7 @@ const experienceDataI18n = {
       ],
     },
     {
-      ...e5,
+      ...lottaleben,
       description:
         'Mehrere Projekte in Tourismus & Medizin sowie die Entwicklung eines WordPress-basierten Website-Builders als Produkt.',
       areas: [
@@ -295,7 +321,7 @@ const experienceDataI18n = {
       ],
     },
     {
-      ...e6,
+      ...drow,
       description: 'Mehrere E-Commerce-Projekte, die mit Shopware & WooCommerce erstellt wurden.',
       areas: [
         'Fullstack Webentwicklung (Fokus Frontend)',
@@ -304,7 +330,7 @@ const experienceDataI18n = {
       ],
     },
     {
-      ...e7,
+      ...publicis,
       jobTitle: 'Ausbildung zum Fachinformatiker für Anwendungsentwicklung',
       areas: ['Webentwicklung'],
     },

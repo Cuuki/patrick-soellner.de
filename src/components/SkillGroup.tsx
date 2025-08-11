@@ -9,9 +9,17 @@ type SkillGroupProps = {
 
 export const SkillGroup = ({ title, skills }: SkillGroupProps) => (
   <dl>
-    <dt>{title}</dt>
+    <dt sx={{ mb: 2 }}>{title}</dt>
     {skills.map((skill) => (
-      <dd key={skill.id}>{skill.rating ? `${skill.text} (${skill.rating})` : skill.text}</dd>
+      <dd key={skill.id} sx={{ ml: 2 }}>
+        {skill.rating ? (
+          <>
+            {skill.text} <em>({skill.rating})</em>
+          </>
+        ) : (
+          skill.text
+        )}
+      </dd>
     ))}
   </dl>
 );

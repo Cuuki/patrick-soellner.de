@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import type { ReactElement } from 'react';
 import { Clock } from 'emotion-icons/fa-solid';
-import { calcDiffInYears, formatDurationString } from '../utils/date';
+import { calcDiffInMonths, formatDurationFromMonths } from '../utils/date';
 import type { I18nRecord } from '../types/i18n';
 import useI18n from '../utils/hooks/useI18n';
 
@@ -30,12 +30,13 @@ export const DurationText = ({
   return (
     <span
       sx={{
-        display: ['inline-flex', 'block', 'inline-flex', 'block'],
+        display: 'flex',
         alignItems: 'center',
+        flexWrap: 'wrap',
       }}
     >
       {children}
-      {', '}
+      {'; '}
       <span
         sx={{
           display: ['inline-flex', 'flex', 'inline-flex', 'flex'],
@@ -51,11 +52,11 @@ export const DurationText = ({
           }}
         />{' '}
         {dateEndIsoString
-          ? formatDurationString(
-              calcDiffInYears(dateStartIsoString, Date.parse(dateEndIsoString)),
+          ? formatDurationFromMonths(
+              calcDiffInMonths(dateStartIsoString, Date.parse(dateEndIsoString)),
               locale,
             )
-          : formatDurationString(calcDiffInYears(dateStartIsoString), locale)}
+          : formatDurationFromMonths(calcDiffInMonths(dateStartIsoString), locale)}
       </span>
     </span>
   );

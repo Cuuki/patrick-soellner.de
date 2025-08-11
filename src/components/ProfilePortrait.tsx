@@ -28,11 +28,15 @@ export const ProfilePortrait = () => {
       }}
     >
       <Image
-        src="/images/portrait.jpg"
+        src="/images/portrait.jpeg"
         alt={t('altText')}
         priority={true}
         width={260}
         height={260}
+        sx={{
+          maxWidth: '100%',
+          height: 'auto',
+        }}
       />
     </figure>
   );

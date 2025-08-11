@@ -36,8 +36,8 @@ export const DefaultLayout = ({ head, header, children, maxWidth = 960 }: Defaul
         <main
           sx={{
             my: 'auto',
-            px: 4,
-            py: 5,
+            px: [3, 4],
+            py: [3, 5],
             borderRadius: 25,
             bg: 'muted',
             boxShadow: (theme) => `0 0 40px ${theme?.colors?.muted}`,

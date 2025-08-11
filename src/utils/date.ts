@@ -7,56 +7,61 @@ const i18n = {
     monthsText: 'Monate',
     yearText: 'Jahr',
     yearsText: 'Jahre',
+    lessThanOneMonth: '< 1 Monat',
   },
   en: {
     monthText: 'month',
     monthsText: 'months',
     yearText: 'year',
     yearsText: 'years',
+    lessThanOneMonth: '< 1 month',
   },
 } satisfies I18nRecord;
 
 const getEndOfMonthTimestamp = () => {
   const today = new Date();
   const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-
   return endOfMonth.getTime();
 };
 
-export const calcDiffInYears = (
+export const calcDiffInMonths = (
   startDateString: string,
   endDateTimestamp: number = getEndOfMonthTimestamp(),
+  { inclusiveEndMonth = true }: { inclusiveEndMonth?: boolean } = {},
 ): number => {
-  const yearInMs = 1000 * 60 * 60 * 24 * 365;
+  const start = new Date(startDateString);
+  const end = new Date(endDateTimestamp);
+  let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
 
-  return (endDateTimestamp - Date.parse(startDateString)) / yearInMs;
-};
-
-export const formatDurationString = (years: number, locale: Locale = 'en'): string => {
-  const t = withI18n(i18n, locale);
-
-  if (years < 1) {
-    const yearsInMonths = years * 12;
-    const yearsInFullMonths =
-      yearsInMonths < 1 ? Math.ceil(yearsInMonths) : Math.floor(yearsInMonths);
-
-    const monthString = yearsInFullMonths.toLocaleString(locale, {
-      style: 'decimal',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 1,
-    });
-
-    const monthSuffix = monthString === '1' ? t('monthText') : t('monthsText');
-
-    return `${monthString} ${monthSuffix}`;
+  if (end.getDate() >= start.getDate()) {
+    months += 1;
   }
 
-  const yearString = years.toLocaleString(locale, {
-    style: 'decimal',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 1,
-  });
-  const yearSuffix = yearString === '1' ? t('yearText') : t('yearsText');
+  if (inclusiveEndMonth && end.getDate() < start.getDate()) {
+    months += 1;
+  }
 
-  return `${yearString} ${yearSuffix}`;
+  return Math.max(0, months);
+};
+
+export const formatDurationFromMonths = (totalMonths: number, locale: Locale = 'en'): string => {
+  const t = withI18n(i18n, locale);
+
+  if (totalMonths < 1) return t('lessThanOneMonth');
+
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const parts: string[] = [];
+
+  if (years > 0) {
+    parts.push(`${years.toLocaleString(locale)} ${years === 1 ? t('yearText') : t('yearsText')}`);
+  }
+  if (months > 0) {
+    parts.push(
+      `${months.toLocaleString(locale)} ${months === 1 ? t('monthText') : t('monthsText')}`,
+    );
+  }
+
+  return parts.join(', ');
 };

@@ -285,19 +285,19 @@ export default function Home({
             }}
           >
             <SkillGroup
-              title={<h3 sx={{ mt: 0 }}>{t('skillsLanguagesTitle')}</h3>}
+              title={<h3 sx={{ m: 0 }}>{t('skillsLanguagesTitle')}</h3>}
               skills={skillData.filter((skill) => skill.group === 'languages')}
             />
             <SkillGroup
-              title={<h3 sx={{ mt: 0 }}>{t('skillsFrameworksTitle')}</h3>}
+              title={<h3 sx={{ m: 0 }}>{t('skillsFrameworksTitle')}</h3>}
               skills={skillData.filter((skill) => skill.group === 'frameworks')}
             />
             <SkillGroup
-              title={<h3 sx={{ mt: 0 }}>{t('skillsToolsTitle')}</h3>}
+              title={<h3 sx={{ m: 0 }}>{t('skillsToolsTitle')}</h3>}
               skills={skillData.filter((skill) => skill.group === 'tools')}
             />
             <SkillGroup
-              title={<h3 sx={{ mt: 0 }}>{t('skillsMethodsTitle')}</h3>}
+              title={<h3 sx={{ m: 0 }}>{t('skillsMethodsTitle')}</h3>}
               skills={skillData.filter((skill) => skill.group === 'methods')}
             />
           </div>
@@ -311,11 +311,11 @@ export default function Home({
             }}
           >
             <SkillGroup
-              title={<h3 sx={{ mt: 0 }}>{t('skillsStrengthsTitle')}</h3>}
+              title={<h3 sx={{ m: 0 }}>{t('skillsStrengthsTitle')}</h3>}
               skills={skillData.filter((skill) => skill.group === 'strengths')}
             />
             <SkillGroup
-              title={<h3 sx={{ mt: 0 }}>{t('skillsInterestsTitle')}</h3>}
+              title={<h3 sx={{ m: 0 }}>{t('skillsInterestsTitle')}</h3>}
               skills={skillData.filter((skill) => skill.group === 'interests')}
             />
           </div>
