@@ -21,11 +21,13 @@ const twt: Experience = {
   duration: {
     startDate: '2025-06-01',
     startDisplay: '06/2025',
+    endDate: '2025-11-30',
+    endDisplay: '11/2025',
   },
   company: 'TWT Group GmbH',
   jobTitle: 'Senior Frontend Developer',
-  areas: ['Frontend application development'],
-  technologies: ['React', 'TypeScript'],
+  areas: ['Modernisation and architectural improvements of legacy React projects.'],
+  technologies: ['React', 'TypeScript', 'Emotion', 'Storybook'],
 };
 
 const aviv: Experience = {
@@ -258,7 +260,10 @@ const experience = [
 const experienceDataI18n = {
   en: experience,
   de: [
-    { ...twt },
+    {
+      ...twt,
+      areas: ['Modernisierung und architektonische Weiterentwicklung bestehender React-Projekte.'],
+    },
     {
       ...aviv,
       description:
