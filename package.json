@@ -19,26 +19,26 @@
     "@theme-ui/presets": "^0.17.2",
     "emotion-icons": "^3.27.0",
     "full-icu": "^1.5.0",
-    "next": "^14.2.31",
+    "next": "^14.2.33",
     "next-pwa": "^5.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.1.0",
     "sanitize.css": "^13.0.0",
     "theme-ui": "^0.17.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
-    "@types/node": "^22.17.1",
-    "@types/react": "^18.3.23",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^22.19.2",
+    "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.31",
-    "prettier": "^3.6.2"
+    "eslint-config-next": "^14.2.33",
+    "prettier": "^3.7.4"
   },
   "engines": {
-    "node": "22.17"
+    "node": "24.11"
   },
-  "packageManager": "pnpm@10.12.4"
+  "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501"
 }
