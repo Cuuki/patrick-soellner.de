@@ -1,32 +1,12 @@
 /** @jsxImportSource theme-ui */
-import type { ReactElement } from 'react';
-import { Clock } from 'emotion-icons/fa-solid';
-import { calcDiffInMonths, formatDurationFromMonths } from '../utils/date';
-import type { I18nRecord } from '../types/i18n';
-import useI18n from '../utils/hooks/useI18n';
+import { CalendarAlt } from 'emotion-icons/fa-solid';
 
 type DurationTextProps = {
-  dateStartIsoString: string;
-  dateEndIsoString?: string;
-  children: ReactElement | string;
+  dateStart: { isoString: string; displayText: string };
+  dateEnd: { isoString: string; displayText: string };
 };
 
-const i18n = {
-  de: {
-    labelText: 'Dauer',
-  },
-  en: {
-    labelText: 'Duration',
-  },
-} satisfies I18nRecord;
-
-export const DurationText = ({
-  dateStartIsoString,
-  dateEndIsoString,
-  children,
-}: DurationTextProps) => {
-  const { t, locale } = useI18n(i18n);
-
+export const DurationText = ({ dateStart, dateEnd }: DurationTextProps) => {
   return (
     <span
       sx={{
@@ -35,28 +15,15 @@ export const DurationText = ({
         flexWrap: 'wrap',
       }}
     >
-      {children}
-      {'; '}
-      <span
+      <CalendarAlt
+        size={18}
         sx={{
-          display: ['inline-flex', 'flex', 'inline-flex', 'flex'],
-          alignItems: 'center',
-          ml: [1, 0, 1, 0],
+          mr: 1,
         }}
-      >
-        <Clock
-          aria-label={t('labelText')}
-          size={16}
-          sx={{
-            mr: 1,
-          }}
-        />{' '}
-        {dateEndIsoString
-          ? formatDurationFromMonths(
-              calcDiffInMonths(dateStartIsoString, Date.parse(dateEndIsoString)),
-              locale,
-            )
-          : formatDurationFromMonths(calcDiffInMonths(dateStartIsoString), locale)}
+      />
+      <span>
+        <time dateTime={dateStart.isoString}>{dateStart.displayText}</time> -{' '}
+        <time dateTime={dateEnd.isoString}>{dateEnd.displayText}</time>
       </span>
     </span>
   );

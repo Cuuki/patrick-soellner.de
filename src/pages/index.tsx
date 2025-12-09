@@ -231,14 +231,17 @@ export default function Home({
                 key={experienceEntry.id}
                 duration={
                   <DurationText
-                    dateStartIsoString={experienceEntry.duration.startDate}
-                    dateEndIsoString={experienceEntry.duration.endDate}
-                  >
-                    <span>
-                      {experienceEntry.duration.startDisplay} -{' '}
-                      {experienceEntry.duration.endDisplay || t('experienceDurationNowText')}
-                    </span>
-                  </DurationText>
+                    dateStart={{
+                      isoString: experienceEntry.duration.startDate,
+                      displayText: experienceEntry.duration.startDisplay,
+                    }}
+                    dateEnd={{
+                      isoString:
+                        experienceEntry.duration.endDate || new Date().toISOString().split('T')[0],
+                      displayText:
+                        experienceEntry.duration.endDisplay || t('experienceDurationNowText'),
+                    }}
+                  />
                 }
                 companyName={experienceEntry.company}
                 jobTitle={experienceEntry.jobTitle}
