@@ -26,7 +26,10 @@ const twt: Experience = {
   },
   company: 'TWT Group GmbH',
   jobTitle: 'Senior Frontend Developer',
-  areas: ['Modernisation and architectural improvements of legacy React projects.'],
+  areas: [
+    'Modernisation and architectural improvements of legacy React projects.',
+    'Creation and maintenance of technical documentation and project workflows.',
+  ],
   technologies: ['React', 'TypeScript', 'Emotion', 'Storybook'],
 };
 
@@ -41,7 +44,7 @@ const aviv: Experience = {
   company: 'AVIV Group',
   jobTitle: 'Senior Frontend Engineer',
   description:
-    "Driving the evolution and maintenance of AVIV's centralized Design System, built with React, TypeScript, and Emotion, covering 9 brands with Figma-based tokens and themes.",
+    'Contributing to the maintenance and evolution of AVIV’s centralized Design System built with React Aria, TypeScript, and Emotion — serving 9 brands through a layered monorepo architecture using a theming approach powered by Figma tokens.',
   areas: [
     'Managing inner-sourcing contributions, ensuring smooth integration, and providing consumer support for component-related issues.',
     'Driving strategic decisions and communication across teams, fostering collaboration between design and development.',
@@ -57,6 +60,12 @@ const aviv: Experience = {
     'Chromatic',
     'Vitest',
     'Playwright',
+  ],
+  projects: [
+    '[immowelt.de](https://www.immowelt.de)',
+    '[seloger.com](https://www.seloger.com)',
+    '[meilleursagents.com](https://www.meilleursagents.com)',
+    '[immoweb.be](https://www.immoweb.be)',
   ],
 };
 
@@ -77,6 +86,7 @@ const ecommercedb: Experience = {
     'Improving the technical workflows and organisation',
   ],
   technologies: ['Vue', 'Nuxt', 'TypeScript', 'Github Actions'],
+  projects: ['[ecdb.com](https://ecdb.com)'],
 };
 
 const newmonday: Experience = {
@@ -130,6 +140,7 @@ const breuninger: Experience = {
     'Playwright',
     'React',
   ],
+  projects: ['[breuninger.com](https://www.breuninger.com)'],
 };
 
 const i22: Experience = {
@@ -262,12 +273,15 @@ const experienceDataI18n = {
   de: [
     {
       ...twt,
-      areas: ['Modernisierung und architektonische Weiterentwicklung bestehender React-Projekte.'],
+      areas: [
+        'Modernisierung und architektonische Weiterentwicklung bestehender React-Projekte.',
+        'Erstellung und Pflege von technischen Dokumentationen und Projekt Workflows.',
+      ],
     },
     {
       ...aviv,
       description:
-        'Vorantreiben der Weiterentwicklung und Wartung des zentralen Design-Systems von AVIV, entwickelt mit React, TypeScript und Emotion, welches 9 Brands mit Figma-basierten Tokens und Themes abdeckt.',
+        'Beitrag zur Wartung und Weiterentwicklung des zentralen Designsystems von AVIV, das mit React Aria, TypeScript und Emotion entwickelt wurde und 9 Marken über eine mehrschichtige Monorepo-Architektur mit einem auf Figma-Tokens basierenden Theming unterstützt.',
       areas: [
         'Verantwortung für die Verwaltung von Inner-Sourcing Contributions, Sicherstellung einer reibungslosen Integration und Consumer Support für Komponenten-bezogene Probleme.',
         'Vorantreiben strategischer Entscheidungen und der Kommunikation über verschiedene Teams hinweg, Förderung der Zusammenarbeit zwischen Design und Entwicklung.',
@@ -280,7 +294,7 @@ const experienceDataI18n = {
     },
     {
       ...newmonday,
-      areas: ['Design Systeme / Component Libraries', 'Wissenstransfer'],
+      areas: ['Designsysteme / Komponentenbibliotheken', 'Wissenstransfer'],
     },
     {
       ...breuninger,
@@ -290,7 +304,7 @@ const experienceDataI18n = {
         'Entwicklung von Frontend-Anwendungen',
         'Erstellung eines Build-Systems auf Basis von Vite und Node zur Generierung von Self-Contained Components',
         'Entwicklung von Kampagnenseiten und Content Modulen, die mit Web Components, Storybook und Go Templates erstellt wurden',
-        'Unterstützung bei der kontinuierlichen Verbesserung des Breuninger Design Systems',
+        'Unterstützung bei der kontinuierlichen Verbesserung des Breuninger Designsystems',
         'E2E-Testautomatisierung für Content Module',
       ],
     },
@@ -300,6 +314,7 @@ const experienceDataI18n = {
         'Entwicklung vieler Projekte innerhalb der Telekom E-Commerce Multi-Client Plattform im i22 Shop-Produktteam.',
       areas: [
         'Entwicklung von Frontend-Anwendungen',
+        'Komponentenbibliotheken & Shared Code Patterns',
         'E2E-Testautomatisierung als Service',
         'Unterstützung im Tech-Recruiting',
         'Mentoring und Training von Junior Entwicklern',

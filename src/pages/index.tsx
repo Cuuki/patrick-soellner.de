@@ -128,22 +128,7 @@ export default function Home({
           textAlign: 'center',
         }}
       >
-        {pageData.metadata.title} (
-        <a
-          href={pageData.social.github}
-          target="_blank"
-          rel="noreferrer"
-          sx={{
-            'color': 'text',
-            'textDecoration': 'none',
-            '&:hover': {
-              color: 'primary',
-            },
-          }}
-        >
-          {pageData.nickname}
-        </a>
-        )
+        {pageData.metadata.title}
       </h1>
       <p
         sx={{
