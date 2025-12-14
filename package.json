@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@types/node": "^22.19.2",
+    "@types/node": "^24.0.0",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
     "eslint": "^8.57.1",
@@ -38,7 +38,7 @@
     "prettier": "^3.7.4"
   },
   "engines": {
-    "node": "24.11"
+    "node": "24.12"
   },
   "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501"
 }
