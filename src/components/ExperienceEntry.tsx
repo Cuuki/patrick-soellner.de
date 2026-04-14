@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 'use client';
 import type { ReactElement } from 'react';
-import { Children } from 'react';
 import type { I18nRecord } from '../types/i18n';
 import useI18n from '../utils/hooks/useI18n';
 import { MarkdownContent } from './MarkdownContent';
@@ -74,19 +73,11 @@ export const ExperienceEntry = ({
           <div>
             <h4 sx={{ mb: 1 }}>{t('areasHeading')}:</h4>
             <ul sx={{ mt: 0 }}>
-              {Children.toArray(
-                areas.map((area) => (
-                  <li>
-                    <MarkdownContent
-                      componentStyles={{
-                        p: { mb: 0 },
-                      }}
-                    >
-                      {area}
-                    </MarkdownContent>
-                  </li>
-                )),
-              )}
+              {areas.map((area, index) => (
+                <li key={index}>
+                  <MarkdownContent componentStyles={{ p: { mb: 0 } }}>{area}</MarkdownContent>
+                </li>
+              ))}
             </ul>
           </div>
           {technologies.length > 0 && (
@@ -99,7 +90,9 @@ export const ExperienceEntry = ({
                   gridTemplateColumns: '1fr 1fr',
                 }}
               >
-                {Children.toArray(technologies.map((technology) => <li>{technology}</li>))}
+                {technologies.map((technology) => (
+                  <li key={technology}>{technology}</li>
+                ))}
               </ul>
             </div>
           )}
@@ -107,19 +100,11 @@ export const ExperienceEntry = ({
             <div>
               <h4 sx={{ mb: 1 }}>{t('projectsHeading')}:</h4>
               <ul sx={{ mt: 0 }}>
-                {Children.toArray(
-                  projects.map((project) => (
-                    <li>
-                      <MarkdownContent
-                        componentStyles={{
-                          p: { mb: 0 },
-                        }}
-                      >
-                        {project}
-                      </MarkdownContent>
-                    </li>
-                  )),
-                )}
+                {projects.map((project, index) => (
+                  <li key={index}>
+                    <MarkdownContent componentStyles={{ p: { mb: 0 } }}>{project}</MarkdownContent>
+                  </li>
+                ))}
               </ul>
             </div>
           )}
