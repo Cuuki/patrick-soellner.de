@@ -1,0 +1,7 @@
+allowBuilds:
+  full-icu: true
+  sharp: true
+autoInstallPeers: true
+blockExoticSubdeps: true
+engineStrict: true
+strictPeerDependencies: true
