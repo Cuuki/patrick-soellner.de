@@ -13,29 +13,29 @@
     "test:e2e:ci": "playwright test"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@theme-ui/color": "^0.17.2",
-    "@theme-ui/presets": "^0.17.2",
-    "emotion-icons": "^3.27.0",
-    "full-icu": "^1.5.0",
-    "next": "^14.2.33",
-    "next-pwa": "^5.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-markdown": "^9.1.0",
-    "sanitize.css": "^13.0.0",
-    "theme-ui": "^0.17.2",
-    "typescript": "^5.9.3"
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.1",
+    "@theme-ui/color": "0.17.4",
+    "@theme-ui/presets": "0.17.4",
+    "emotion-icons": "3.27.0",
+    "full-icu": "1.5.0",
+    "next": "14.2.33",
+    "next-pwa": "5.6.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-markdown": "9.1.0",
+    "sanitize.css": "13.0.0",
+    "theme-ui": "0.17.4",
+    "typescript": "5.9.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
-    "@types/node": "^22.19.2",
-    "@types/react": "^18.3.27",
-    "@types/react-dom": "^18.3.7",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.33",
-    "prettier": "^3.7.4"
+    "@playwright/test": "1.59.1",
+    "@types/node": "25.6.0",
+    "@types/react": "18.3.27",
+    "@types/react-dom": "18.3.7",
+    "eslint": "8.57.1",
+    "eslint-config-next": "14.2.33",
+    "prettier": "3.8.2"
   },
   "engines": {
     "node": "24.14"
