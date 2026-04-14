@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import { CalendarAlt } from 'emotion-icons/fa-solid';
 
 type DurationTextProps = {

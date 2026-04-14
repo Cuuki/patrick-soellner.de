@@ -1,3 +1,4 @@
+'use client';
 import type { I18nRecord, Locale } from '../types/i18n';
 import type { Skill } from '../data/skill.config';
 import useI18n from '../utils/hooks/useI18n';

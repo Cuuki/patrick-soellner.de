@@ -1,3 +1,4 @@
+'use client';
 import { SkillRatingText } from './SkillRatingText';
 
 export const SkillRatingLegend = () => (

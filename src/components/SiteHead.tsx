@@ -1,3 +1,4 @@
+'use client';
 import type { Locale } from '../types/i18n';
 import NextHead from 'next/head';
 import pageDataI18n from '../data/page.config';

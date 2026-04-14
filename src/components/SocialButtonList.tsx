@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import type { Locale } from '../types/i18n';
 import { SocialButton } from './SocialButton';
 import pageDataI18n from '../data/page.config';

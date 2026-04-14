@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import { darken } from '@theme-ui/color';
 import Link from 'next/link';
 import type { I18nRecord } from '../types/i18n';

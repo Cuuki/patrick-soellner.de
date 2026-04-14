@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import { useRouter } from 'next/router';
 import { Children } from 'react';
 import type { I18nRecord, Locale } from '../types/i18n';

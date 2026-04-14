@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import { useEffect } from 'react';
 import { useColorMode } from 'theme-ui';
 import { darken } from '@theme-ui/color';

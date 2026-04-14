@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import { useId } from 'react';
 import { useThemeUI } from 'theme-ui';
 import type { Skill } from '../data/skill.config';

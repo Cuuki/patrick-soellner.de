@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import type { ReactElement } from 'react';
 import type { SiteHeader } from './SiteHeader';
 import type { SiteHead } from './SiteHead';

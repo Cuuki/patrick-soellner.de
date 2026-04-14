@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import Link from 'next/link';
 import { User } from 'emotion-icons/fa-solid';
 import { darken } from '@theme-ui/color';

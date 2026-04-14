@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import Image from 'next/image';
 import type { I18nRecord } from '../types/i18n';
 import useI18n from '../utils/hooks/useI18n';

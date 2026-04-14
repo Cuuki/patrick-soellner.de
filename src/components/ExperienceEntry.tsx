@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
 import type { I18nRecord } from '../types/i18n';

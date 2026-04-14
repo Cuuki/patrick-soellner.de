@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import type { ThemeUICSSObject } from 'theme-ui';
 import type { Options } from 'react-markdown';
 import ReactMarkdown from 'react-markdown';

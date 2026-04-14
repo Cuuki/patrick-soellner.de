@@ -1,4 +1,5 @@
 /** @jsxImportSource theme-ui */
+'use client';
 import type { ReactElement } from 'react';
 import type { Skill } from '../data/skill.config';
 
