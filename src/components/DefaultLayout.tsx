@@ -2,20 +2,16 @@
 'use client';
 import type { ReactElement } from 'react';
 import type { SiteHeader } from './SiteHeader';
-import type { SiteHead } from './SiteHead';
 import { SiteFooter } from './SiteFooter';
 
 type DefaultLayoutProps = {
-  head: ReactElement<typeof SiteHead>;
   header: ReactElement<typeof SiteHeader>;
   children: ReactElement | ReactElement[];
   maxWidth?: number;
 };
 
-export const DefaultLayout = ({ head, header, children, maxWidth = 960 }: DefaultLayoutProps) => (
-  <>
-    {head}
-    <div
+export const DefaultLayout = ({ header, children, maxWidth = 960 }: DefaultLayoutProps) => (
+  <div
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -49,5 +45,4 @@ export const DefaultLayout = ({ head, header, children, maxWidth = 960 }: Defaul
         <SiteFooter />
       </div>
     </div>
-  </>
 );

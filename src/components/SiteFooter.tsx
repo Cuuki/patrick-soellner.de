@@ -28,7 +28,6 @@ const i18n = {
   },
 } satisfies I18nRecord;
 
-// @TODO: #6 - theme color mode changes after router navigation
 export const SiteFooter = () => {
   const { t } = useI18n(i18n);
 
@@ -56,10 +55,10 @@ export const SiteFooter = () => {
           Vercel
         </a>
       </div>
-      <Link href="/privacy" locale="de" title={t('privacyTitleText')} sx={linkStyle}>
+      <Link href="/de/privacy" title={t('privacyTitleText')} sx={linkStyle}>
         | {t('privacyText')} (DE)
       </Link>
-      <Link href="/imprint" locale="de" title={t('imprintTitleText')} sx={linkStyle}>
+      <Link href="/de/imprint" title={t('imprintTitleText')} sx={linkStyle}>
         | {t('imprintText')} (DE)
       </Link>
     </footer>

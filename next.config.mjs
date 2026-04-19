@@ -10,10 +10,6 @@ const withSerwist = withSerwistInit({
 const nextConfig = {
   reactStrictMode: true,
   turbopack: {},
-  i18n: {
-    locales: ['en', 'de'],
-    defaultLocale: 'en',
-  },
   productionBrowserSourceMaps: true,
 };
 

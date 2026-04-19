@@ -1,26 +1,34 @@
 /** @jsxImportSource theme-ui */
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import type { I18nRecord, Locale } from '../types/i18n';
-import pageDataI18n from '../data/page.config';
-import profileDataI18n from '../data/profile.config';
-import experienceDataI18n from '../data/experience.config';
-import trainingDataI18n from '../data/training.config';
-import skillDataI18n from '../data/skill.config';
-import certificatesDataI18n from '../data/certificate.config';
-import { withI18n } from '../utils/i18n';
-import { SiteHead } from '../components/SiteHead';
-import { DefaultLayout } from '../components/DefaultLayout';
-import { SiteHeader } from '../components/SiteHeader';
-import { ProfilePortrait } from '../components/ProfilePortrait';
-import { SocialButtonList } from '../components/SocialButtonList';
-import { ExperienceEntry } from '../components/ExperienceEntry';
-import { ProfileDataListItem } from '../components/ProfileDataListItem';
-import { ProfileDataList } from '../components/ProfileDataList';
-import { DurationText } from '../components/DurationText';
-import { SkillGroup } from '../components/SkillGroup';
-import { TopSkillList } from '../components/TopSkillList';
-import { SkillRatingLegend } from '../components/SkillRatingLegend';
-import { fetchStaticContent } from '../utils/fetch';
+'use client';
+import type { I18nRecord, Locale } from '../../../types/i18n';
+import type { Skill } from '../../../data/skill.config';
+import type pageDataI18n from '../../../data/page.config';
+import type profileDataI18n from '../../../data/profile.config';
+import type experienceDataI18n from '../../../data/experience.config';
+import type trainingDataI18n from '../../../data/training.config';
+import type certificatesDataI18n from '../../../data/certificate.config';
+import { withI18n } from '../../../utils/i18n';
+import { DefaultLayout } from '../../../components/DefaultLayout';
+import { SiteHeader } from '../../../components/SiteHeader';
+import { ProfilePortrait } from '../../../components/ProfilePortrait';
+import { SocialButtonList } from '../../../components/SocialButtonList';
+import { ExperienceEntry } from '../../../components/ExperienceEntry';
+import { ProfileDataListItem } from '../../../components/ProfileDataListItem';
+import { ProfileDataList } from '../../../components/ProfileDataList';
+import { DurationText } from '../../../components/DurationText';
+import { SkillGroup } from '../../../components/SkillGroup';
+import { TopSkillList } from '../../../components/TopSkillList';
+import { SkillRatingLegend } from '../../../components/SkillRatingLegend';
+
+type HomeContentProps = {
+  locale: Locale;
+  pageData: (typeof pageDataI18n)[Locale];
+  profileData: (typeof profileDataI18n)[Locale];
+  experienceData: (typeof experienceDataI18n)[Locale];
+  trainingData: (typeof trainingDataI18n)[Locale];
+  skillData: Skill[];
+  certificatesData: { id: string; name: string }[];
+};
 
 const cvSectionStyle = {
   ml: 'auto',
@@ -67,44 +75,7 @@ const i18n = {
   },
 } satisfies I18nRecord;
 
-export const getStaticProps: GetStaticProps<{
-  locale: Locale;
-  pageData: (typeof pageDataI18n)[Locale];
-  profileData: (typeof profileDataI18n)[Locale];
-  experienceData: (typeof experienceDataI18n)[Locale];
-  trainingData: (typeof trainingDataI18n)[Locale];
-  skillData: (typeof skillDataI18n)[Locale];
-  certificatesData: (typeof certificatesDataI18n)[Locale];
-}> = async ({ locale = 'en' }) => {
-  const l = locale as Locale;
-  const cvPageData = await fetchStaticContent<{ cv: { title: string } }>(`
-    query {
-      cv(id: "3loz5idkdut5kqsuUlBjVP", locale: "${l}") {
-        title
-      }
-    }
-  `);
-
-  return {
-    props: {
-      locale: l,
-      pageData: {
-        ...pageDataI18n[l],
-        metadata: {
-          ...pageDataI18n[l].metadata,
-          title: cvPageData?.cv?.title || pageDataI18n[l].metadata.title,
-        },
-      },
-      profileData: profileDataI18n[l],
-      experienceData: experienceDataI18n[l],
-      trainingData: trainingDataI18n[l],
-      skillData: skillDataI18n[l],
-      certificatesData: certificatesDataI18n[l],
-    },
-  };
-};
-
-export default function Home({
+export const HomeContent = ({
   locale,
   pageData,
   profileData,
@@ -112,24 +83,17 @@ export default function Home({
   trainingData,
   skillData,
   certificatesData,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: HomeContentProps) => {
   const t = withI18n(i18n, locale);
 
   return (
     <DefaultLayout
       header={<SiteHeader siteTitle={pageData.metadata.title} maxWidth={1280} />}
-      head={<SiteHead pageTitle="CV" metadata={pageData.metadata} />}
       maxWidth={1280}
     >
       <ProfilePortrait />
 
-      <h1
-        sx={{
-          textAlign: 'center',
-        }}
-      >
-        {pageData.metadata.title}
-      </h1>
+      <h1 sx={{ textAlign: 'center' }}>{pageData.metadata.title}</h1>
       <p
         sx={{
           mx: 'auto',
@@ -183,9 +147,9 @@ export default function Home({
           />
           <h2 sx={{ mt: 4 }}>{t('profileHeading')}</h2>
           <ProfileDataList>
-            <ProfileDataListItem title={t('profileMailTitle')} items={profileData.mailItems} />
+            <ProfileDataListItem title={t('profileMailTitle') as string} items={profileData.mailItems} />
             <ProfileDataListItem
-              title={t('profileLanguagesTitle')}
+              title={t('profileLanguagesTitle') as string}
               items={profileData.languagesItems}
             />
           </ProfileDataList>
@@ -210,47 +174,43 @@ export default function Home({
         <section sx={cvSectionStyle}>
           <h2 sx={{ mt: 0 }}>{t('experienceHeading')}</h2>
 
-          {experienceData.map((experienceEntry) => {
-            return (
-              <ExperienceEntry
-                key={experienceEntry.id}
-                duration={
-                  <DurationText
-                    dateStart={{
-                      isoString: experienceEntry.duration.startDate,
-                      displayText: experienceEntry.duration.startDisplay,
-                    }}
-                    dateEnd={{
-                      isoString:
-                        experienceEntry.duration.endDate || new Date().toISOString().split('T')[0],
-                      displayText:
-                        experienceEntry.duration.endDisplay || t('experienceDurationNowText'),
-                    }}
-                  />
-                }
-                companyName={experienceEntry.company}
-                jobTitle={experienceEntry.jobTitle}
-                description={experienceEntry.description}
-                areas={experienceEntry.areas}
-                technologies={experienceEntry.technologies}
-                projects={experienceEntry.projects}
-              />
-            );
-          })}
+          {experienceData.map((experienceEntry) => (
+            <ExperienceEntry
+              key={experienceEntry.id}
+              duration={
+                <DurationText
+                  dateStart={{
+                    isoString: experienceEntry.duration.startDate,
+                    displayText: experienceEntry.duration.startDisplay,
+                  }}
+                  dateEnd={{
+                    isoString:
+                      experienceEntry.duration.endDate || new Date().toISOString().split('T')[0],
+                    displayText:
+                      experienceEntry.duration.endDisplay || (t('experienceDurationNowText') as string),
+                  }}
+                />
+              }
+              companyName={experienceEntry.company}
+              jobTitle={experienceEntry.jobTitle}
+              description={experienceEntry.description}
+              areas={experienceEntry.areas}
+              technologies={experienceEntry.technologies}
+              projects={experienceEntry.projects}
+            />
+          ))}
         </section>
         <section sx={cvSectionStyle}>
           <h2 sx={{ mt: 0 }}>{t('trainingHeading')}</h2>
-          {trainingData.map((training) => {
-            return (
-              <ExperienceEntry
-                key={training.id}
-                duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
-                companyName={training.school}
-                areas={training.focus}
-                hasSeparator={false}
-              />
-            );
-          })}
+          {trainingData.map((training) => (
+            <ExperienceEntry
+              key={training.id}
+              duration={`${training.duration.startDisplay} - ${training.duration.endDisplay}`}
+              companyName={training.school}
+              areas={training.focus}
+              hasSeparator={false}
+            />
+          ))}
           <hr
             sx={{
               mt: 4,
@@ -319,9 +279,9 @@ export default function Home({
         <section sx={{ ...cvSectionStyle, pb: 0 }}>
           <h2 sx={{ mt: 0 }}>{t('certificatesHeading')}</h2>
           <ul>
-            {certificatesData.map((certificate) => {
-              return <li key={certificate.id}>{certificate.name}</li>;
-            })}
+            {certificatesData.map((certificate) => (
+              <li key={certificate.id}>{certificate.name}</li>
+            ))}
           </ul>
         </section>
       </div>
@@ -336,4 +296,4 @@ export default function Home({
       <SocialButtonList socialData={pageData.social} />
     </DefaultLayout>
   );
-}
+};
