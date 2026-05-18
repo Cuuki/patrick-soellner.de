@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@serwist/next": "9.5.7",
-    "serwist": "9.5.7",
+    "serwist": "9.5.11",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
     "@theme-ui/color": "0.17.4",
