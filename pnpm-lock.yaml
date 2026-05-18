@@ -45,8 +45,8 @@ importers:
         specifier: 13.0.0
         version: 13.0.0
       serwist:
-        specifier: 9.5.7
-        version: 9.5.7(browserslist@4.28.1)(typescript@6.0.2)
+        specifier: 9.5.11
+        version: 9.5.11(browserslist@4.28.1)(typescript@6.0.2)
       theme-ui:
         specifier: 0.17.4
         version: 0.17.4(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
@@ -859,6 +859,14 @@ packages:
       '@serwist/cli':
         optional: true
       typescript:
+        optional: true
+
+  '@serwist/utils@9.5.11':
+    resolution: {integrity: sha512-zqxmwuHqWA3OwN82Wo8gFZ9QBemygJP3cap5JWAOG4UyJZgUZfmBXAXj+IMaD4eKZ/6pqrxHHDZ9uSWZmJ1mXA==}
+    peerDependencies:
+      browserslist: '>=4'
+    peerDependenciesMeta:
+      browserslist:
         optional: true
 
   '@serwist/utils@9.5.7':
@@ -2765,6 +2773,14 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  serwist@9.5.11:
+    resolution: {integrity: sha512-Bq6uwJFd4ET60BWI77v3VbazKHv6k7lECOiiCFwKyBu/slaCn0GHJ5L5RfsuJUKrnbD9lYUCDo6sqaKRM5M2vA==}
+    peerDependencies:
+      typescript: '>=5.0.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   serwist@9.5.7:
     resolution: {integrity: sha512-4R3kezBK0YAwkU6kIKbJc1I7QmbDV+wauV6Rf2+PdEHN5tBFK+3S92JPgj+XAa1ZCtg55qJGyyzAQ+d0G5AjDg==}
     peerDependencies:
@@ -4001,6 +4017,10 @@ snapshots:
       typescript: 6.0.2
     transitivePeerDependencies:
       - webpack
+
+  '@serwist/utils@9.5.11(browserslist@4.28.1)':
+    optionalDependencies:
+      browserslist: 4.28.1
 
   '@serwist/utils@9.5.7(browserslist@4.28.1)':
     optionalDependencies:
@@ -6496,6 +6516,15 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.4: {}
+
+  serwist@9.5.11(browserslist@4.28.1)(typescript@6.0.2):
+    dependencies:
+      '@serwist/utils': 9.5.11(browserslist@4.28.1)
+      idb: 8.0.3
+    optionalDependencies:
+      typescript: 6.0.2
+    transitivePeerDependencies:
+      - browserslist
 
   serwist@9.5.7(browserslist@4.28.1)(typescript@6.0.2):
     dependencies:
