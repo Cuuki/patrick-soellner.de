@@ -27,7 +27,7 @@
     "react-markdown": "10.1.0",
     "sanitize.css": "13.0.0",
     "theme-ui": "0.17.4",
-    "typescript": "6.0.2"
+    "typescript": "6.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.5",
