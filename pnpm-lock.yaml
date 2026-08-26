@@ -27,8 +27,8 @@ importers:
         specifier: 3.27.0
         version: 3.27.0(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.5))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.14)(react@19.2.5))(@types/react@19.2.14)(react@19.2.5))(react@19.2.5)
       full-icu:
-        specifier: 1.5.0
-        version: 1.5.0
+        specifier: 1.6.0
+        version: 1.6.0
       next:
         specifier: 16.2.6
         version: 16.2.6(@babel/core@7.29.0)(@playwright/test@1.59.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -1736,6 +1736,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -1846,8 +1847,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  full-icu@1.5.0:
-    resolution: {integrity: sha512-BxB2otKUSFyvENjbI8EtQscpiPOEnhrf5V4MVpa6PjzsrLmdKKUUhulbydsfKS4ve6cGXNVRLlrOjizby/ZfDA==}
+  full-icu@1.6.0:
+    resolution: {integrity: sha512-yT94XMEIMd394jVWf0m5zsFxllgCJMxVwpx9EELdnxt/P9ZKI9XIuYLlEtfRjfq7q3Il8qYptfspIvo6XoUOQg==}
     hasBin: true
 
   function-bind@1.1.2:
@@ -5303,7 +5304,7 @@ snapshots:
   fsevents@2.3.2:
     optional: true
 
-  full-icu@1.5.0:
+  full-icu@1.6.0:
     dependencies:
       yauzl: 2.10.0
 
